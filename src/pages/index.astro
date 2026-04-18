@@ -6,17 +6,581 @@ import Layout from "../layouts/Layout.astro";
 	title="LintasNusa Logistics | Beranda"
 	description="Perusahaan logistik digital Indonesia untuk brand, UMKM, dan enterprise yang membutuhkan visibilitas real-time, SLA terukur, dan kontrol operasional end-to-end."
 >
-	<main>
-		<h1>Satu Sistem. Seluruh Nusantara.</h1>
-		<p>
-			LintasNusa Logistics adalah perusahaan logistik digital Indonesia yang
-			mengintegrasikan fulfillment, pengiriman, retur, dan pelaporan dalam satu
-			sistem operasional.
-		</p>
-		<p>
-			Dibangun untuk brand, UMKM, dan enterprise yang membutuhkan visibilitas
-			real-time, service recovery yang jelas, dan pengalaman penerima yang lebih
-			baik.
-		</p>
-	</main>
+	<a href="#layanan" class="skip-to-content">Langsung ke konten</a>
+	<header
+		class="fixed top-0 right-0 left-0 z-100 h-(--nav-height) bg-mist/95 backdrop-blur-md shadow-[0_1px_0_rgba(15,39,66,0.08)] transition-[background,box-shadow] duration-300"
+		id="site-nav"
+	>
+		<div class="mx-auto flex h-full max-w-7xl items-center gap-8 px-8">
+			<a
+				href="/"
+				class="flex shrink-0 items-center gap-3 no-underline"
+				aria-label="LintasNusa Beranda"
+			>
+				<svg
+					width="32"
+					height="32"
+					viewBox="0 0 32 32"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true"
+				>
+					<rect width="32" height="32" rx="6" fill="var(--color-navy)"></rect>
+					<path
+						d="M8 16L14 10L20 16L26 10"
+						stroke="var(--color-teal)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+					<path
+						d="M8 22L14 16L20 22L26 16"
+						stroke="var(--color-teal)"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						opacity="0.5"></path>
+				</svg>
+				<span class="font-display text-navy text-lg font-bold tracking-tight">LintasNusa</span>
+			</a>
+
+			<nav class="ml-auto flex items-center gap-6" aria-label="Navigasi utama">
+				<a href="#layanan" class="nav-link">Layanan</a>
+				<a href="#jangkauan" class="nav-link">Jangkauan</a>
+				<a href="#platform" class="nav-link">Platform</a>
+				<a href="#tentang" class="nav-link">Tentang</a>
+			</nav>
+
+			<a href="#layanan" class="nav-cta hidden lg:inline-flex">Jadwalkan Demo</a>
+
+			<button
+				class="mobile-menu-toggle lg:hidden"
+				aria-expanded="false"
+				aria-controls="mobile-menu"
+				aria-label="Buka menu navigasi"
+			>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<rect x="4" y="6" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+					<rect x="4" y="11" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+					<rect x="4" y="16" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+				</svg>
+			</button>
+		</div>
+
+		<div id="mobile-menu" class="mobile-menu lg:hidden" aria-hidden="true">
+			<nav class="flex flex-col gap-1 p-4" aria-label="Menu navigasi mobile">
+				<a href="#layanan" class="mobile-nav-link">Layanan</a>
+				<a href="#jangkauan" class="mobile-nav-link">Jangkauan</a>
+				<a href="#platform" class="mobile-nav-link">Platform</a>
+				<a href="#tentang" class="mobile-nav-link">Tentang</a>
+				<a href="#layanan" class="mobile-nav-link mobile-nav-cta">Jadwalkan Demo</a>
+			</nav>
+		</div>
+	</header>
+
+	<section
+		class="bg-mist relative flex min-h-screen flex-col overflow-hidden pt-(--nav-height)"
+		aria-label="Hero LintasNusa"
+	>
+		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+			<svg
+				class="absolute inset-0 h-full w-full"
+				viewBox="0 0 1440 800"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				preserveAspectRatio="xMidYMid slice"
+				aria-hidden="true"
+			>
+				<path
+					d="M-50 600 Q200 500 400 520 T800 480 T1200 450 T1490 420"
+					stroke="var(--color-navy)"
+					stroke-width="1"
+					opacity="0.05"></path>
+				<path
+					d="M-50 560 Q160 460 360 480 T760 440 T1160 410 T1490 380"
+					stroke="var(--color-navy)"
+					stroke-width="0.5"
+					opacity="0.04"></path>
+				<path
+					d="M-50 300 Q200 350 450 320 T900 280 T1350 250 T1490 240"
+					stroke="var(--color-navy)"
+					stroke-width="1"
+					opacity="0.05"></path>
+				<line
+					x1="800"
+					y1="100"
+					x2="800"
+					y2="700"
+					stroke="var(--color-navy)"
+					stroke-width="0.5"
+					opacity="0.03"
+					stroke-dasharray="4 8"></line>
+			</svg>
+		</div>
+
+		<div
+			class="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-12 px-8 py-16 lg:grid-cols-[1fr_380px] lg:gap-20"
+		>
+			<div class="hero-reveal" style="--i: 0">
+				<h1
+					class="font-display text-navy mb-8 leading-[1.05] font-black tracking-tight"
+					style="font-size: clamp(3rem, 7vw, 5.5rem);"
+				>
+					Setiap Kiriman.<br />
+					Terlacak.<br />
+					Terkendali.
+				</h1>
+
+				<div class="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-12">
+					<div class="flex items-baseline gap-2">
+						<span
+							class="font-display text-navy tracking-tightest leading-none font-black"
+							style="font-size: clamp(3.5rem, 8vw, 6rem);">97,9</span
+						>
+						<span
+							class="font-display text-teal leading-none font-bold tracking-tight"
+							style="font-size: clamp(1.5rem, 3vw, 2.25rem);">%</span
+						>
+					</div>
+					<p class="text-charcoal-mid pb-1 font-mono text-xs font-medium tracking-widest uppercase">
+						Scan Compliance<br />2025
+					</p>
+				</div>
+
+				<p
+					class="font-body text-charcoal-mid max-w-[52ch] leading-relaxed"
+					style="font-size: clamp(1rem, 1.5vw, 1.125rem);"
+				>
+					Dari first mile hingga return — semua dalam satu dashboard. Dengan visibility real-time,
+					SLA yang terukur, dan service recovery yang jelas.
+				</p>
+			</div>
+
+			<div class="hero-reveal flex flex-col gap-8" style="--i: 1">
+				<div class="flex flex-col gap-5">
+					<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+						Diskusikan kebutuhan distribusi Anda dengan tim kami.
+					</p>
+					<a href="#layanan" class="cta-primary"> Jadwalkan Konsultasi Operasional </a>
+					<a href="#platform" class="cta-secondary">
+						Lihat Demo Dashboard
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+							<path
+								d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</a>
+				</div>
+
+				<div class="border-navy/10 border-t pt-4">
+					<p
+						class="text-charcoal-mid mb-4 font-mono text-[10px] font-medium tracking-widest uppercase"
+					>
+						Jaringan nasional, terukur
+					</p>
+					<div class="grid grid-cols-3 gap-6">
+						<div class="flex flex-col gap-0.5">
+							<span
+								class="font-display text-navy leading-none font-bold tracking-tight"
+								style="font-size: clamp(1.5rem, 3vw, 2rem);">247</span
+							>
+							<span
+								class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
+								>Kota &amp; Kabupaten</span
+							>
+						</div>
+						<div class="flex flex-col gap-0.5">
+							<span
+								class="font-display text-navy leading-none font-bold tracking-tight"
+								style="font-size: clamp(1.5rem, 3vw, 2rem);"
+								>12,4<span class="text-charcoal-mid text-xs font-normal">jt</span></span
+							>
+							<span
+								class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
+								>Paket 2025</span
+							>
+						</div>
+						<div class="flex flex-col gap-0.5">
+							<span
+								class="font-display text-navy leading-none font-bold tracking-tight"
+								style="font-size: clamp(1.5rem, 3vw, 2rem);"
+								>18,5<span class="text-charcoal-mid text-xs font-normal">rb</span></span
+							>
+							<span
+								class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
+								>Akun Aktif</span
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="hero-reveal absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+			style="--i: 2"
+			aria-hidden="true"
+		>
+			<span
+				class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+				>Lihat studi kasus</span
+			>
+			<div class="scroll-line"></div>
+		</div>
+	</section>
+
+	<section
+		id="layanan"
+		class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
+	>
+		<div class="text-center">
+			<h2 class="font-display text-navy text-xl font-semibold">Layanan</h2>
+		</div>
+	</section>
+	<section
+		id="jangkauan"
+		class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
+	>
+		<div class="text-center">
+			<h2 class="font-display text-navy text-xl font-semibold">Jangkauan</h2>
+		</div>
+	</section>
+	<section
+		id="platform"
+		class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
+	>
+		<div class="text-center">
+			<h2 class="font-display text-navy text-xl font-semibold">Platform</h2>
+		</div>
+	</section>
+	<section
+		id="tentang"
+		class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
+	>
+		<div class="text-center">
+			<h2 class="font-display text-navy text-xl font-semibold">Tentang</h2>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.nav-link {
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-charcoal-mid);
+		text-decoration: none;
+		transition: color 150ms var(--ease-out-quart);
+		padding: 0.5rem 0;
+		position: relative;
+		display: block;
+	}
+	.nav-link::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1.5px;
+		background: var(--color-teal);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 200ms var(--ease-out-quart);
+	}
+	.nav-link:hover {
+		color: var(--color-navy);
+	}
+	.nav-link:hover::after {
+		transform: scaleX(1);
+	}
+	.nav-link:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 4px;
+		border-radius: 2px;
+	}
+
+	.nav-cta {
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		color: var(--color-teal);
+		text-decoration: none;
+		border: 1.5px solid var(--color-teal);
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		transition:
+			background 150ms var(--ease-out-quart),
+			color 150ms var(--ease-out-quart);
+		flex-shrink: 0;
+	}
+	.nav-cta:hover {
+		background: var(--color-teal);
+		color: white;
+	}
+	.nav-cta:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 3px;
+	}
+
+	.cta-primary {
+		display: block;
+		background: var(--color-orange);
+		color: white;
+		font-family: var(--font-body);
+		font-size: 0.9375rem;
+		font-weight: 600;
+		text-decoration: none;
+		text-align: center;
+		padding: 1rem 1.5rem;
+		border-radius: 6px;
+		transition:
+			background 150ms var(--ease-out-quart),
+			transform 150ms var(--ease-out-quart),
+			box-shadow 150ms var(--ease-out-quart);
+		box-shadow: 0 2px 8px rgba(255, 107, 61, 0.25);
+	}
+	.cta-primary:hover {
+		background: var(--color-orange-hover);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(255, 107, 61, 0.35);
+	}
+	.cta-primary:active {
+		transform: translateY(0) scale(0.99);
+		box-shadow: 0 1px 4px rgba(255, 107, 61, 0.2);
+	}
+	.cta-primary:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 3px;
+	}
+
+	.cta-secondary {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		color: var(--color-teal);
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		font-weight: 500;
+		text-decoration: none;
+		transition: color 150ms var(--ease-out-quart);
+		padding: 0.5rem 0;
+	}
+	.cta-secondary svg {
+		transition: transform 150ms var(--ease-out-quart);
+	}
+	.cta-secondary:hover {
+		color: var(--color-navy);
+	}
+	.cta-secondary:hover svg {
+		transform: translateX(3px);
+	}
+	.cta-secondary:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 4px;
+		border-radius: 2px;
+	}
+
+	.scroll-line {
+		width: 1px;
+		height: 40px;
+		background: linear-gradient(to bottom, var(--color-charcoal-mid), transparent);
+		opacity: 0.25;
+		animation: scroll-pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes scroll-pulse {
+		0%,
+		100% {
+			opacity: 0.25;
+			transform: scaleY(1);
+		}
+		50% {
+			opacity: 0.5;
+			transform: scaleY(1.1);
+		}
+	}
+
+	.hero-reveal {
+		animation: hero-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+		animation-delay: calc(var(--i, 0) * 100ms);
+	}
+
+	@keyframes hero-reveal {
+		from {
+			opacity: 0;
+			transform: translateY(24px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-reveal {
+			animation: none;
+			opacity: 1;
+			transform: none;
+		}
+		.cta-primary,
+		.cta-secondary,
+		.nav-link,
+		.nav-cta,
+		.scroll-line {
+			transition: none;
+		}
+		.scroll-line {
+			animation: none;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		nav .nav-link {
+			display: none;
+		}
+	}
+
+	.skip-to-content {
+		position: absolute;
+		top: -100%;
+		left: 1rem;
+		z-index: 9999;
+		background: var(--color-navy);
+		color: white;
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+		padding: 0.75rem 1.25rem;
+		border-radius: 4px;
+		transition: top 150ms var(--ease-out-quart);
+	}
+	.skip-to-content:focus {
+		top: 1rem;
+		outline: 2px solid var(--color-teal);
+		outline-offset: 2px;
+	}
+
+	.mobile-menu-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		color: var(--color-navy);
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		border-radius: 4px;
+		transition: background 150ms var(--ease-out-quart);
+	}
+	.mobile-menu-toggle:hover {
+		background: var(--color-teal-dim);
+	}
+	.mobile-menu-toggle:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 2px;
+	}
+
+	.mobile-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: var(--color-mist);
+		border-bottom: 1px solid var(--color-mist-dark);
+		box-shadow: 0 4px 16px rgba(15, 39, 66, 0.08);
+		transform: translateY(-8px);
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			transform 200ms var(--ease-out-quart),
+			opacity 200ms var(--ease-out-quart),
+			visibility 200ms;
+	}
+	.mobile-menu.open {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.mobile-nav-link {
+		display: block;
+		font-family: var(--font-body);
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--color-charcoal-mid);
+		text-decoration: none;
+		padding: 0.875rem 0.5rem;
+		border-bottom: 1px solid var(--color-mist-dark);
+		transition: color 150ms var(--ease-out-quart);
+		min-height: 44px;
+	}
+	.mobile-nav-link:last-child {
+		border-bottom: none;
+	}
+	.mobile-nav-link:hover {
+		color: var(--color-navy);
+	}
+	.mobile-nav-link:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: -2px;
+	}
+
+	.mobile-nav-cta {
+		margin-top: 0.5rem;
+		color: var(--color-teal);
+		font-weight: 600;
+		border-bottom: none;
+	}
+
+	@media (max-width: 640px) {
+		:root {
+			--nav-height: 64px;
+		}
+	}
+</style>
+
+<script>
+	const nav = document.getElementById("site-nav");
+	const mobileMenu = document.getElementById("mobile-menu");
+	const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+
+	function updateNav() {
+		if (window.scrollY > 20) {
+			nav?.classList.add("bg-mist/95", "backdrop-blur-md", "shadow-[0_1px_0_rgba(15,39,66,0.08)]");
+		} else {
+			nav?.classList.remove(
+				"bg-mist/95",
+				"backdrop-blur-md",
+				"shadow-[0_1px_0_rgba(15,39,66,0.08)]",
+			);
+		}
+	}
+
+	function toggleMobileMenu() {
+		const isOpen = mobileMenu?.classList.contains("open");
+		mobileMenu?.classList.toggle("open");
+		mobileMenuToggle?.setAttribute("aria-expanded", String(!isOpen));
+		mobileMenu?.setAttribute("aria-hidden", String(isOpen));
+	}
+
+	function closeMobileMenu() {
+		mobileMenu?.classList.remove("open");
+		mobileMenuToggle?.setAttribute("aria-expanded", "false");
+		mobileMenu?.setAttribute("aria-hidden", "true");
+	}
+
+	mobileMenuToggle?.addEventListener("click", toggleMobileMenu);
+
+	mobileMenu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", closeMobileMenu);
+	});
+
+	window.addEventListener("scroll", updateNav, { passive: true });
+	window.addEventListener("resize", closeMobileMenu);
+	updateNav();
+</script>

@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { Font } from "astro:assets";
 import "../styles/global.css";
 
 export interface Props {
@@ -30,6 +31,10 @@ const siteUrl = Astro.site ? Astro.site.href : "https://lintasnusa.com";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<Font cssVariable="--font-display" />
+		<Font cssVariable="--font-body" />
+		<Font cssVariable="--font-mono" />
+
 		<SEO
 			title={title}
 			description={description}
@@ -38,7 +43,6 @@ const siteUrl = Astro.site ? Astro.site.href : "https://lintasnusa.com";
 			openGraph={{
 				basic: {
 					title: title,
-					description: description,
 					image: new URL(ogImage, siteUrl).href,
 					url: canonical,
 					type: ogType,
