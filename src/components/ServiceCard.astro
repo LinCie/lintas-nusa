@@ -13,10 +13,10 @@ const { number, tag, name, description, proofValue, proofLabel } = Astro.props;
 
 <article class="group outline-none" tabindex="0">
 	<div
-		class="bg-mist ease-out-quart has-[:focus-visible]:outline-teal relative flex h-full flex-col gap-[0.625rem] overflow-hidden rounded-md p-[1.375rem_1.5rem] transition-shadow transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-[:focus-visible]:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2"
+		class="bg-mist ease-out-quart has-focus-visible:outline-teal relative flex h-full flex-col gap-2.5 overflow-hidden rounded-md p-[1.375rem_1.5rem] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-focus-visible:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-focus-visible:outline has-focus-visible:outline-offset-2"
 	>
 		<div
-			class="bg-teal ease-out-quart absolute top-0 bottom-0 left-0 w-[3px] origin-bottom scale-y-0 transition-transform duration-200 group-focus-within:scale-y-100 group-hover:scale-y-100"
+			class="bg-teal ease-out-quart absolute top-0 bottom-0 left-0 w-0.75 origin-bottom scale-y-0 transition-transform duration-200 group-focus-within:scale-y-100 group-hover:scale-y-100"
 		>
 		</div>
 		<div class="flex items-center justify-between">
@@ -35,7 +35,7 @@ const { number, tag, name, description, proofValue, proofLabel } = Astro.props;
 				>{proofValue}</span
 			>
 			<span
-				class="text-charcoal-mid/70 font-mono text-[0.5625rem] font-medium tracking-[0.1em] uppercase"
+				class="text-charcoal-mid/70 font-mono text-[0.5625rem] font-medium tracking-widest uppercase"
 				>{proofLabel}</span
 			>
 		</div>

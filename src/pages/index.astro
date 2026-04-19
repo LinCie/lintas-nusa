@@ -9,7 +9,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 >
 	<a
 		href="#layanan"
-		class="skip-to-content bg-navy font-body focus:outline-teal absolute -top-full left-4 z-[9999] rounded-md px-5 py-3 text-sm font-semibold text-white no-underline transition-[top] duration-150 focus:top-4 focus:outline-2 focus:outline-offset-2"
+		class="skip-to-content bg-navy font-body focus:outline-teal absolute -top-full left-4 z-9999 rounded-md px-5 py-3 text-sm font-semibold text-white no-underline transition-[top] duration-150 focus:top-4 focus:outline-2 focus:outline-offset-2"
 		>Langsung ke konten</a
 	>
 	<header
@@ -73,7 +73,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 
 			<a
 				href="#layanan"
-				class="font-body text-teal border-teal hover:bg-teal focus:outline-teal hidden flex-shrink-0 rounded-md border-2 px-4 py-2 text-[13px] font-semibold no-underline transition-colors duration-150 hover:text-white focus:outline-2 focus:outline-offset-3 lg:inline-flex"
+				class="font-body text-teal border-teal hover:bg-teal focus:outline-teal hidden shrink-0 rounded-md border-2 px-4 py-2 text-[13px] font-semibold no-underline transition-colors duration-150 hover:text-white focus:outline-2 focus:outline-offset-3 lg:inline-flex"
 				>Jadwalkan Demo</a
 			>
 
@@ -99,22 +99,22 @@ import ServiceCard from "../components/ServiceCard.astro";
 			<nav class="flex flex-col gap-1 p-4" aria-label="Menu navigasi mobile">
 				<a
 					href="#layanan"
-					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-[-2px]"
+					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
 					>Layanan</a
 				>
 				<a
 					href="#jangkauan"
-					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-[-2px]"
+					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
 					>Jangkauan</a
 				>
 				<a
 					href="#platform"
-					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-[-2px]"
+					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
 					>Platform</a
 				>
 				<a
 					href="#tentang"
-					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-[-2px]"
+					class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
 					>Tentang</a
 				>
 				<a
@@ -291,7 +291,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 				class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
 				>Lihat studi kasus</span
 			>
-			<div class="scroll-line from-charcoal-mid/25 h-10 w-px bg-gradient-to-b to-transparent"></div>
+			<div class="scroll-line from-charcoal-mid/25 h-10 w-px bg-linear-to-b to-transparent"></div>
 		</div>
 	</section>
 
@@ -331,7 +331,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 					<button
 						id="tab-kirim"
 						role="tab"
-						class="service-tab active font-body text-charcoal-mid mb-[-1px] inline-flex cursor-pointer items-center gap-2 border-b-2 border-transparent bg-transparent px-5 py-3 text-sm font-medium transition-colors duration-150"
+						class="service-tab active font-body text-charcoal-mid -mb-px inline-flex cursor-pointer items-center gap-2 border-b-2 border-transparent bg-transparent px-5 py-3 text-sm font-medium transition-colors duration-150"
 						aria-selected="true"
 						aria-controls="panel-kirim"
 						tabindex="0"
@@ -356,7 +356,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 					<button
 						id="tab-kelola"
 						role="tab"
-						class="service-tab font-body text-charcoal-mid hover:text-navy mb-[-1px] inline-flex cursor-pointer items-center gap-2 border-b-2 border-transparent bg-transparent px-5 py-3 text-sm font-medium transition-colors duration-150"
+						class="service-tab font-body text-charcoal-mid hover:text-navy -mb-px inline-flex cursor-pointer items-center gap-2 border-b-2 border-transparent bg-transparent px-5 py-3 text-sm font-medium transition-colors duration-150"
 						aria-selected="false"
 						aria-controls="panel-kelola"
 						tabindex="0"
@@ -424,7 +424,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 
 					<!-- Kirim expandables -->
 					<div
-						class="service-expand-group overflow-hidden has-[:checked]:hidden"
+						class="service-expand-group overflow-hidden has-checked:hidden"
 						id="kirim-expand"
 						hidden
 					>
@@ -516,7 +516,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 
 					<!-- Kelola expandables -->
 					<div
-						class="service-expand-group overflow-hidden has-[:checked]:hidden"
+						class="service-expand-group overflow-hidden has-checked:hidden"
 						id="kelola-expand"
 						hidden
 					>
@@ -603,7 +603,7 @@ import ServiceCard from "../components/ServiceCard.astro";
 					</div>
 					<a
 						href="#kontak"
-						class="service-cta-btn bg-navy font-body hover:bg-navy-light focus:outline-teal inline-flex flex-shrink-0 items-center gap-2 rounded-md px-5 py-3.5 text-sm font-semibold whitespace-nowrap text-white no-underline transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(15,39,66,0.2)] focus:outline-2 focus:outline-offset-3 active:translate-y-0 active:scale-[.99]"
+						class="service-cta-btn bg-navy font-body hover:bg-navy-light focus:outline-teal inline-flex shrink-0 items-center gap-2 rounded-md px-5 py-3.5 text-sm font-semibold whitespace-nowrap text-white no-underline transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(15,39,66,0.2)] focus:outline-2 focus:outline-offset-3 active:translate-y-0 active:scale-[.99]"
 					>
 						Jadwalkan Konsultasi Operasional
 						<svg
