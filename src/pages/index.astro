@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
 >
 	<a href="#layanan" class="skip-to-content">Langsung ke konten</a>
 	<header
-		class="fixed top-0 right-0 left-0 z-100 h-(--nav-height) bg-mist/95 backdrop-blur-md shadow-[0_1px_0_rgba(15,39,66,0.08)] transition-[background,box-shadow] duration-300"
+		class="bg-mist/95 fixed top-0 right-0 left-0 z-100 h-(--nav-height) shadow-[0_1px_0_rgba(15,39,66,0.08)] backdrop-blur-md transition-[background,box-shadow] duration-300"
 		id="site-nav"
 	>
 		<div class="mx-auto flex h-full max-w-7xl items-center gap-8 px-8">
@@ -120,7 +120,7 @@ import Layout from "../layouts/Layout.astro";
 		<div
 			class="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-12 px-8 py-16 lg:grid-cols-[1fr_380px] lg:gap-20"
 		>
-			<div class="hero-reveal" style="--i: 0">
+			<div class="hero-reveal">
 				<h1
 					class="font-display text-navy mb-8 leading-[1.05] font-black tracking-tight"
 					style="font-size: clamp(3rem, 7vw, 5.5rem);"
@@ -155,7 +155,7 @@ import Layout from "../layouts/Layout.astro";
 				</p>
 			</div>
 
-			<div class="hero-reveal flex flex-col gap-8" style="--i: 1">
+			<div class="hero-reveal flex flex-col gap-8">
 				<div class="flex flex-col gap-5">
 					<p class="font-body text-charcoal-mid text-sm leading-relaxed">
 						Diskusikan kebutuhan distribusi Anda dengan tim kami.
@@ -220,7 +220,6 @@ import Layout from "../layouts/Layout.astro";
 
 		<div
 			class="hero-reveal absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-			style="--i: 2"
 			aria-hidden="true"
 		>
 			<span
@@ -388,52 +387,16 @@ import Layout from "../layouts/Layout.astro";
 		height: 40px;
 		background: linear-gradient(to bottom, var(--color-charcoal-mid), transparent);
 		opacity: 0.25;
-		animation: scroll-pulse 2s ease-in-out infinite;
-	}
-
-	@keyframes scroll-pulse {
-		0%,
-		100% {
-			opacity: 0.25;
-			transform: scaleY(1);
-		}
-		50% {
-			opacity: 0.5;
-			transform: scaleY(1.1);
-		}
-	}
-
-	.hero-reveal {
-		animation: hero-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-		animation-delay: calc(var(--i, 0) * 100ms);
-	}
-
-	@keyframes hero-reveal {
-		from {
-			opacity: 0;
-			transform: translateY(24px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
+		transform-origin: top center;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.hero-reveal {
-			animation: none;
-			opacity: 1;
-			transform: none;
-		}
 		.cta-primary,
 		.cta-secondary,
 		.nav-link,
 		.nav-cta,
 		.scroll-line {
 			transition: none;
-		}
-		.scroll-line {
-			animation: none;
 		}
 	}
 
@@ -545,6 +508,10 @@ import Layout from "../layouts/Layout.astro";
 </style>
 
 <script>
+	import { initHomeAnimations } from "../scripts/home-animations";
+
+	initHomeAnimations();
+
 	const nav = document.getElementById("site-nav");
 	const mobileMenu = document.getElementById("mobile-menu");
 	const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");

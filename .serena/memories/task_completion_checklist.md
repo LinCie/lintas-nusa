@@ -1,0 +1,1 @@
+Before finishing a task, run the required verification commands when relevant: bun run lint, bun run format:check, and bun build. There is no dedicated automated test suite yet. Do not revert unrelated user changes in the worktree.

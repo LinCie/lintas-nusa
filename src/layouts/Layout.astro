@@ -1,25 +1,25 @@
 ---
 import { SEO } from "astro-seo";
-import { Font } from "astro:assets";
 import "../styles/global.css";
 
-export interface Props {
-	title?: string;
-	description?: string;
-	ogImage?: string;
-	ogType?: "website" | "article";
-	noindex?: boolean;
-	canonical?: string;
-}
+/**
+ * @typedef {object} Props
+ * @property {string} [title]
+ * @property {string} [description]
+ * @property {string} [ogImage]
+ * @property {"website" | "article"} [ogType]
+ * @property {boolean} [noindex]
+ * @property {string} [canonical]
+ */
 
 const {
 	title = "LintasNusa Logistics",
 	description = "Sistem logistik digital untuk brand, UMKM, dan enterprise yang membutuhkan visibilitas real-time dan kontrol operasional end-to-end.",
-	ogImage = "/og-image.png",
+	ogImage = "/og-image.jpg",
 	ogType = "website",
 	noindex = false,
 	canonical = Astro.url.href,
-} = Astro.props;
+} = /** @type {Props} */ (Astro.props);
 
 const siteUrl = Astro.site ? Astro.site.href : "https://lintasnusa.com";
 ---
@@ -31,9 +31,6 @@ const siteUrl = Astro.site ? Astro.site.href : "https://lintasnusa.com";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<Font cssVariable="--font-display" />
-		<Font cssVariable="--font-body" />
-		<Font cssVariable="--font-mono" />
 
 		<SEO
 			title={title}

@@ -1,0 +1,1 @@
+Lintas Nusa is a small Astro marketing site for LintasNusa Logistics. Primary route content currently lives in src/pages/index.astro, shared shells live in src/layouts/, global styling in src/styles/global.css, and static assets in public/. Keep new pages in src/pages/, reusable UI in src/components/ if added, and align copy/design with docs/context.md and .impeccable.md.
