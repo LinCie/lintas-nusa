@@ -125,9 +125,9 @@ import Layout from "../layouts/Layout.astro";
 					class="font-display text-navy mb-8 leading-[1.05] font-black tracking-tight"
 					style="font-size: clamp(3rem, 7vw, 5.5rem);"
 				>
-					Setiap Kiriman.<br />
-					Terlacak.<br />
-					Terkendali.
+					Pengiriman bisnis,<br />
+					lebih jelas dari<br />
+					awal sampai tiba.
 				</h1>
 
 				<div class="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-12">
@@ -142,7 +142,7 @@ import Layout from "../layouts/Layout.astro";
 						>
 					</div>
 					<p class="text-charcoal-mid pb-1 font-mono text-xs font-medium tracking-widest uppercase">
-						Scan Compliance<br />2025
+						Kepatuhan Scan<br />2025
 					</p>
 				</div>
 
@@ -150,19 +150,20 @@ import Layout from "../layouts/Layout.astro";
 					class="font-body text-charcoal-mid max-w-[52ch] leading-relaxed"
 					style="font-size: clamp(1rem, 1.5vw, 1.125rem);"
 				>
-					Dari first mile hingga return — semua dalam satu dashboard. Dengan visibility real-time,
-					SLA yang terukur, dan service recovery yang jelas.
+					Dari pickup sampai retur, semuanya terpantau dalam satu sistem. Tim Anda bisa cek status
+					kiriman secara real-time, memantau SLA, dan menangani kendala lebih cepat tanpa
+					pindah-pindah tools.
 				</p>
 			</div>
 
 			<div class="hero-reveal flex flex-col gap-8">
 				<div class="flex flex-col gap-5">
 					<p class="font-body text-charcoal-mid text-sm leading-relaxed">
-						Diskusikan kebutuhan distribusi Anda dengan tim kami.
+						Ceritakan kebutuhan pengiriman bisnis Anda, kami bantu cari alur yang paling pas.
 					</p>
-					<a href="#layanan" class="cta-primary"> Jadwalkan Konsultasi Operasional </a>
+					<a href="#layanan" class="cta-primary"> Jadwalkan diskusi dengan tim kami </a>
 					<a href="#platform" class="cta-secondary">
-						Lihat Demo Dashboard
+						Lihat cara dashboard kami bekerja
 						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
 							<path
 								d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
@@ -178,7 +179,7 @@ import Layout from "../layouts/Layout.astro";
 					<p
 						class="text-charcoal-mid mb-4 font-mono text-[10px] font-medium tracking-widest uppercase"
 					>
-						Jaringan nasional, terukur
+						Operasional yang kami jalankan di lapangan
 					</p>
 					<div class="grid grid-cols-3 gap-6">
 						<div class="flex flex-col gap-0.5">
@@ -188,7 +189,7 @@ import Layout from "../layouts/Layout.astro";
 							>
 							<span
 								class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
-								>Kota &amp; Kabupaten</span
+								>Wilayah Jangkauan</span
 							>
 						</div>
 						<div class="flex flex-col gap-0.5">
@@ -199,7 +200,7 @@ import Layout from "../layouts/Layout.astro";
 							>
 							<span
 								class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
-								>Paket 2025</span
+								>Paket Ditangani 2025</span
 							>
 						</div>
 						<div class="flex flex-col gap-0.5">
@@ -210,7 +211,7 @@ import Layout from "../layouts/Layout.astro";
 							>
 							<span
 								class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
-								>Akun Aktif</span
+								>Bisnis Aktif</span
 							>
 						</div>
 					</div>
@@ -230,12 +231,418 @@ import Layout from "../layouts/Layout.astro";
 		</div>
 	</section>
 
-	<section
-		id="layanan"
-		class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
-	>
-		<div class="text-center">
-			<h2 class="font-display text-navy text-xl font-semibold">Layanan</h2>
+	<section id="layanan" class="border-mist-dark border-t bg-white" aria-label="Layanan LintasNusa">
+		<header class="mx-auto max-w-7xl px-8 py-16 lg:py-24">
+			<div class="mb-4">
+				<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+					>Portofolio Layanan</span
+				>
+			</div>
+			<div class="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px] lg:gap-12">
+				<h2
+					class="font-display text-navy max-w-[18ch] leading-[1.05] font-bold tracking-tight"
+					style="font-size: clamp(2rem, 4vw, 3rem);"
+				>
+					Setiap layanan, dalam satu sistem.
+				</h2>
+				<p class="font-body text-charcoal-mid max-w-[42ch] leading-relaxed lg:self-end">
+					Dari pengiriman reguler hingga rantai dingin, semua terhubung dalam satu dasbor dengan
+					pelacakan menyeluruh dan standar layanan yang jelas.
+				</p>
+			</div>
+		</header>
+
+		<!-- Tabbed service browser -->
+		<div class="service-tabs-wrapper" role="region" aria-label="Pilih kategori layanan">
+			<div class="mx-auto max-w-7xl px-8">
+				<div class="service-tab-list" role="tablist" aria-label="Kategori layanan">
+					<button
+						id="tab-kirim"
+						role="tab"
+						class="service-tab active"
+						aria-selected="true"
+						aria-controls="panel-kirim"
+						tabindex="0"
+					>
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 14 14"
+							fill="none"
+							aria-hidden="true"
+							class="tab-icon"
+						>
+							<path
+								d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+						Kirim
+					</button>
+					<button
+						id="tab-kelola"
+						role="tab"
+						class="service-tab"
+						aria-selected="false"
+						aria-controls="panel-kelola"
+						tabindex="0"
+					>
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 14 14"
+							fill="none"
+							aria-hidden="true"
+							class="tab-icon"
+						>
+							<rect x="2" y="3" width="10" height="1.5" rx="0.75" fill="currentColor"></rect>
+							<rect x="2" y="6.25" width="10" height="1.5" rx="0.75" fill="currentColor"></rect>
+							<rect x="2" y="9.5" width="6" height="1.5" rx="0.75" fill="currentColor"></rect>
+						</svg>
+						Kelola
+					</button>
+				</div>
+			</div>
+
+			<!-- Kirim panel -->
+			<div
+				id="panel-kirim"
+				role="tabpanel"
+				aria-labelledby="tab-kirim"
+				class="service-panel"
+				tabindex="0"
+			>
+				<div class="mx-auto max-w-7xl px-8">
+					<div class="service-hero-grid">
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">01</span>
+									<span class="service-tag font-mono">Paket</span>
+								</div>
+								<h3 class="service-name">LN Regular</h3>
+								<p class="service-desc">
+									Kami melayani 247 kota dan kabupaten. Setiap perpindahan paket dipindai, jadi Anda
+									selalu tahu posisinya.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">97,9%</span>
+									<span class="proof-label">Kepatuhan Pemindaian 2025</span>
+								</div>
+							</div>
+						</article>
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">02</span>
+									<span class="service-tag font-mono">Hari Ini</span>
+								</div>
+								<h3 class="service-name">LN SameDay Metro</h3>
+								<p class="service-desc">
+									Pesan sebelum batas waktu, paket Anda berangkat di hari yang sama. Tersedia di
+									klaster metro utama.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">98,3%</span>
+									<span class="proof-label">Keberangkatan Tepat Waktu</span>
+								</div>
+							</div>
+						</article>
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">03</span>
+									<span class="service-tag font-mono">COD</span>
+								</div>
+								<h3 class="service-name">LN COD Clear</h3>
+								<p class="service-desc">
+									Penerima membayar saat paket diterima, lalu pencairannya tercatat di dasbor pada
+									hari kerja berikutnya.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">H+1 Kerja</span>
+									<span class="proof-label">Pencairan COD</span>
+								</div>
+							</div>
+						</article>
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">04</span>
+									<span class="service-tag font-mono">Besok</span>
+								</div>
+								<h3 class="service-name">LN NextDay</h3>
+								<p class="service-desc">
+									Untuk tujuan di jalur utama Jawa dan Sumatra, paket tiba pada hari kerja
+									berikutnya.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">95,8%</span>
+									<span class="proof-label">Terkirim di Percobaan Pertama</span>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<!-- Kirim expandables -->
+					<div class="service-expand-group" id="kirim-expand" hidden>
+						<div class="service-expand-grid">
+							<article class="service-card" tabindex="0">
+								<div class="service-card-inner">
+									<div class="service-card-top">
+										<span class="service-number font-mono">05</span>
+										<span class="service-tag font-mono">Multi Tujuan</span>
+									</div>
+									<h3 class="service-name">LN BulkDrop</h3>
+									<p class="service-desc">
+										Pengiriman ke banyak titik untuk toko, reseller, atau kebutuhan proyek. Rute
+										kami susun agar lebih hemat dan rapi.
+									</p>
+									<div class="service-proof">
+										<span class="proof-value">Banyak Titik</span>
+										<span class="proof-label">Rute Dioptimalkan</span>
+									</div>
+								</div>
+							</article>
+							<article class="service-card" tabindex="0">
+								<div class="service-card-inner">
+									<div class="service-card-top">
+										<span class="service-number font-mono">06</span>
+										<span class="service-tag font-mono">Tukar Barang</span>
+									</div>
+									<h3 class="service-name">LN Exchange</h3>
+									<p class="service-desc">
+										Jika penerima perlu menukar ukuran, warna, atau produk, kami tangani prosesnya
+										tanpa membuat pesanan baru.
+									</p>
+									<div class="service-proof">
+										<span class="proof-value">Alur Tukar</span>
+										<span class="proof-label">Tanpa Pesanan Baru</span>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+
+					<button
+						class="service-expand-toggle"
+						aria-expanded="false"
+						aria-controls="kirim-expand"
+						data-label-default="Lihat semua layanan Kirim"
+						data-label-expanded="Sembunyikan"
+					>
+						<span class="toggle-label">Lihat semua layanan Kirim</span>
+						<svg
+							class="toggle-chevron"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M2 4L6 8L10 4"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<!-- Kelola panel -->
+			<div
+				id="panel-kelola"
+				role="tabpanel"
+				aria-labelledby="tab-kelola"
+				class="service-panel"
+				tabindex="0"
+				hidden
+			>
+				<div class="mx-auto max-w-7xl px-8">
+					<div class="service-hero-grid">
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">01</span>
+									<span class="service-tag font-mono">Pemenuhan</span>
+								</div>
+								<h3 class="service-name">LN Fulfill</h3>
+								<p class="service-desc">
+									Penerimaan barang, penyimpanan, pengemasan, sampai pengiriman dipantau dalam satu
+									dasbor. Semua proses gudang tercatat di satu tempat.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">Satu Sistem</span>
+									<span class="proof-label">Operasional Gudang</span>
+								</div>
+							</div>
+						</article>
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">02</span>
+									<span class="service-tag font-mono">Rantai Dingin</span>
+								</div>
+								<h3 class="service-name">LN Cold</h3>
+								<p class="service-desc">
+									Untuk bisnis makanan beku, paket makanan, atau produk dingin lainnya. Suhu
+									tercatat di setiap titik pemindaian, jadi kondisinya bisa dipantau.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">Tercatat</span>
+									<span class="proof-label">Suhu di Setiap Pindai</span>
+								</div>
+							</div>
+						</article>
+						<article class="service-card" tabindex="0">
+							<div class="service-card-inner">
+								<div class="service-card-top">
+									<span class="service-number font-mono">03</span>
+									<span class="service-tag font-mono">Retur</span>
+								</div>
+								<h3 class="service-name">LN Return</h3>
+								<p class="service-desc">
+									Kami jemput retur sesuai jadwal, lalu alasan pengembaliannya dicatat dengan jelas
+									agar tim Anda tahu apa yang perlu diperbaiki.
+								</p>
+								<div class="service-proof">
+									<span class="proof-value">Jejak Bukti</span>
+									<span class="proof-label">Alur Retur</span>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<!-- Kelola expandables -->
+					<div class="service-expand-group" id="kelola-expand" hidden>
+						<div class="service-expand-grid">
+							<article class="service-card" tabindex="0">
+								<div class="service-card-inner">
+									<div class="service-card-top">
+										<span class="service-number font-mono">04</span>
+										<span class="service-tag font-mono">Klaim</span>
+									</div>
+									<h3 class="service-name">LN ClaimCenter</h3>
+									<p class="service-desc">
+										Semua klaim masuk ke satu tempat dan ditangani oleh tim kami. Statusnya bisa
+										Anda pantau langsung di dasbor.
+									</p>
+									<div class="service-proof">
+										<span class="proof-value">2x24 Jam</span>
+										<span class="proof-label">Target Respons Klaim</span>
+									</div>
+								</div>
+							</article>
+							<article class="service-card" tabindex="0">
+								<div class="service-card-inner">
+									<div class="service-card-top">
+										<span class="service-number font-mono">05</span>
+										<span class="service-tag font-mono">Aman</span>
+									</div>
+									<h3 class="service-name">LN Secure</h3>
+									<p class="service-desc">
+										Untuk paket bernilai tinggi, penerima diverifikasi dengan OTP dan bukti foto
+										saat serah terima. Anda mendapat bukti yang lengkap.
+									</p>
+									<div class="service-proof">
+										<span class="proof-value">Foto + OTP</span>
+										<span class="proof-label">Verifikasi Serah Terima</span>
+									</div>
+								</div>
+							</article>
+							<article class="service-card" tabindex="0">
+								<div class="service-card-inner">
+									<div class="service-card-top">
+										<span class="service-number font-mono">06</span>
+										<span class="service-tag font-mono">Cepat</span>
+									</div>
+									<h3 class="service-name">LN FlashPick</h3>
+									<p class="service-desc">
+										Untuk produk yang cepat habis, pesanan tetap bisa berangkat di hari yang sama
+										meski batas waktunya lebih malam.
+									</p>
+									<div class="service-proof">
+										<span class="proof-value">Batas Akhir Lebih Malam</span>
+										<span class="proof-label">Jendela Kirim Hari Ini</span>
+									</div>
+								</div>
+							</article>
+							<article class="service-card" tabindex="0">
+								<div class="service-card-inner">
+									<div class="service-card-top">
+										<span class="service-number font-mono">07</span>
+										<span class="service-tag font-mono">Stok</span>
+									</div>
+									<h3 class="service-name">LN Inventory View</h3>
+									<p class="service-desc">
+										Stok per gudang, per jenis produk, dan riwayat pergerakannya terlihat langsung.
+										Jadi tim Anda bisa isi ulang sebelum kehabisan.
+									</p>
+									<div class="service-proof">
+										<span class="proof-value">Selalu Terbarui</span>
+										<span class="proof-label">Pantauan Stok</span>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+
+					<button
+						class="service-expand-toggle"
+						aria-expanded="false"
+						aria-controls="kelola-expand"
+						data-label-default="Lihat semua layanan Kelola"
+						data-label-expanded="Sembunyikan"
+					>
+						<span class="toggle-label">Lihat semua layanan Kelola</span>
+						<svg
+							class="toggle-chevron"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M2 4L6 8L10 4"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Section CTA -->
+		<div class="mx-auto max-w-7xl px-8 pb-16 lg:pb-24">
+			<div class="service-cta-block">
+				<div class="service-cta-inner">
+					<div class="service-cta-content">
+						<h3 class="service-cta-heading">Butuh layanan yang sesuai dengan operasional Anda?</h3>
+						<p class="service-cta-desc">
+							Kami bantu pilih layanan yang paling pas berdasarkan volume, jangkauan, dan standar
+							layanan yang Anda butuhkan.
+						</p>
+					</div>
+					<a href="#kontak" class="service-cta-btn">
+						Jadwalkan Konsultasi Operasional
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+							<path
+								d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
 		</div>
 	</section>
 	<section
@@ -505,6 +912,360 @@ import Layout from "../layouts/Layout.astro";
 			--nav-height: 64px;
 		}
 	}
+
+	/* Layanan section */
+	.service-card-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 0.625rem;
+		height: 100%;
+		padding: 1.375rem 1.5rem;
+		background: var(--color-mist);
+		border-radius: 6px;
+		position: relative;
+		overflow: hidden;
+		transition:
+			transform 200ms var(--ease-out-quart),
+			box-shadow 200ms var(--ease-out-quart);
+	}
+
+	.service-card-inner::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 3px;
+		background: var(--color-teal);
+		transform: scaleY(0);
+		transform-origin: bottom;
+		transition: transform 200ms var(--ease-out-quart);
+	}
+
+	.service-card:hover .service-card-inner {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(15, 39, 66, 0.08);
+	}
+
+	.service-card:hover .service-card-inner::before {
+		transform: scaleY(1);
+	}
+
+	.service-card:focus-within .service-card-inner::before {
+		transform: scaleY(1);
+	}
+
+	.service-card:focus-visible {
+		outline: none;
+	}
+
+	.service-card:focus-visible .service-card-inner {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 2px;
+		box-shadow: 0 6px 20px rgba(15, 39, 66, 0.08);
+	}
+
+	.service-card-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.service-number {
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		font-weight: 500;
+		color: var(--color-charcoal-mid);
+		opacity: 0.6;
+	}
+
+	.service-tag {
+		font-family: var(--font-mono);
+		font-size: 0.5625rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-teal);
+		background: var(--color-teal-dim);
+		padding: 0.2rem 0.5rem;
+		border-radius: 3px;
+	}
+
+	.service-name {
+		font-family: var(--font-display);
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--color-navy);
+		letter-spacing: -0.01em;
+		line-height: 1.2;
+	}
+
+	.service-desc {
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		line-height: 1.65;
+		color: var(--color-charcoal-mid);
+		flex: 1;
+	}
+
+	.service-proof {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		margin-top: auto;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--color-mist-dark);
+	}
+
+	.proof-value {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--color-teal);
+		letter-spacing: 0.02em;
+	}
+
+	.proof-label {
+		font-family: var(--font-mono);
+		font-size: 0.5625rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-charcoal-mid);
+		opacity: 0.7;
+	}
+
+	/* CTA block */
+	.service-cta-block {
+		border: 1px solid var(--color-mist-dark);
+		border-radius: 8px;
+		padding: 2rem;
+		background: var(--color-mist);
+	}
+
+	.service-cta-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.service-cta-content {
+		flex: 1;
+		min-width: 240px;
+	}
+
+	.service-cta-heading {
+		font-family: var(--font-display);
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--color-navy);
+		margin-bottom: 0.375rem;
+		letter-spacing: -0.01em;
+	}
+
+	.service-cta-desc {
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		color: var(--color-charcoal-mid);
+		line-height: 1.5;
+	}
+
+	.service-cta-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: var(--color-navy);
+		color: white;
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+		padding: 0.875rem 1.25rem;
+		border-radius: 6px;
+		transition:
+			background 150ms var(--ease-out-quart),
+			transform 150ms var(--ease-out-quart),
+			box-shadow 150ms var(--ease-out-quart);
+		box-shadow: 0 2px 8px rgba(15, 39, 66, 0.15);
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	.service-cta-btn svg {
+		transition: transform 150ms var(--ease-out-quart);
+	}
+
+	.service-cta-btn:hover {
+		background: var(--color-navy-light);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(15, 39, 66, 0.2);
+	}
+
+	.service-cta-btn:hover svg {
+		transform: translateX(3px);
+	}
+
+	.service-cta-btn:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 3px;
+	}
+
+	.service-cta-btn:active {
+		transform: translateY(0) scale(0.99);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.service-card-inner,
+		.service-cta-btn,
+		.service-tab,
+		.service-expand-toggle,
+		.toggle-chevron {
+			transition: none;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.service-cta-inner {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		.service-cta-btn {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+
+	/* Layanan section — tabbed browser */
+	.service-tabs-wrapper {
+		border-top: 1px solid var(--color-mist-dark);
+	}
+
+	.service-tab-list {
+		display: flex;
+		gap: 0;
+		padding-top: 1.5rem;
+		border-bottom: 1px solid var(--color-mist-dark);
+	}
+
+	.service-tab {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.25rem;
+		font-family: var(--font-body);
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-charcoal-mid);
+		background: transparent;
+		border: none;
+		border-bottom: 2px solid transparent;
+		cursor: pointer;
+		margin-bottom: -1px;
+		transition:
+			color 150ms var(--ease-out-quart),
+			border-color 150ms var(--ease-out-quart);
+	}
+
+	.tab-icon {
+		opacity: 0.6;
+		transition: opacity 150ms var(--ease-out-quart);
+	}
+
+	.service-tab:hover {
+		color: var(--color-navy);
+	}
+
+	.service-tab:hover .tab-icon {
+		opacity: 1;
+	}
+
+	.service-tab.active {
+		color: var(--color-navy);
+		border-bottom-color: var(--color-teal);
+		font-weight: 600;
+	}
+
+	.service-tab.active .tab-icon {
+		opacity: 1;
+		color: var(--color-teal);
+	}
+
+	.service-tab:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+
+	.service-panel {
+		padding-top: 2.5rem;
+		padding-bottom: 1rem;
+		outline: none;
+	}
+
+	.service-panel:focus-visible {
+		outline: none;
+	}
+
+	.service-hero-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.service-expand-group {
+		overflow: hidden;
+	}
+
+	.service-expand-group[hidden] {
+		display: block;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+	}
+
+	.service-expand-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 1rem;
+		padding-top: 1rem;
+	}
+
+	.service-expand-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		margin-top: 1.5rem;
+		padding: 0.5rem 0;
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-teal);
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		transition: color 150ms var(--ease-out-quart);
+	}
+
+	.service-expand-toggle:hover {
+		color: var(--color-navy);
+	}
+
+	.service-expand-toggle:focus-visible {
+		outline: 2px solid var(--color-teal);
+		outline-offset: 3px;
+		border-radius: 3px;
+	}
+
+	.toggle-chevron {
+		transition: transform 300ms var(--ease-out-quart);
+	}
+
+	.service-expand-toggle[aria-expanded="true"] .toggle-chevron {
+		transform: rotate(180deg);
+	}
 </style>
 
 <script>
@@ -550,4 +1311,80 @@ import Layout from "../layouts/Layout.astro";
 	window.addEventListener("scroll", updateNav, { passive: true });
 	window.addEventListener("resize", closeMobileMenu);
 	updateNav();
+
+	/* Service tab switching */
+	const tabs = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+	const panels = document.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+	function activateTab(target: HTMLButtonElement) {
+		tabs.forEach((tab) => {
+			const isActive = tab === target;
+			tab.classList.toggle("active", isActive);
+			tab.setAttribute("aria-selected", String(isActive));
+			tab.setAttribute("tabindex", isActive ? "0" : "-1");
+		});
+		panels.forEach((panel) => {
+			const isTarget = panel.getAttribute("aria-labelledby") === target.id;
+			if (isTarget) {
+				panel.removeAttribute("hidden");
+				panel.focus();
+			} else {
+				panel.setAttribute("hidden", "");
+			}
+		});
+		const toggle = (target as Element)
+			.closest(".service-tabs-wrapper")
+			?.querySelector<HTMLButtonElement>(".service-expand-toggle");
+		if (toggle) {
+			const expandId = toggle.getAttribute("aria-controls");
+			if (!expandId) return;
+			const expandGroup = document.getElementById(expandId);
+			if (expandGroup) {
+				const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+				if (isExpanded) {
+					expandGroup.hidden = true;
+					toggle.setAttribute("aria-expanded", "false");
+					const label = toggle.querySelector(".toggle-label");
+					if (label) label.textContent = toggle.dataset.labelDefault ?? "";
+					const chevron = toggle.querySelector<HTMLElement>(".toggle-chevron");
+					if (chevron) chevron.style.transform = "";
+				}
+			}
+		}
+	}
+
+	tabs.forEach((tab) => {
+		tab.addEventListener("click", () => activateTab(tab));
+		tab.addEventListener("keydown", (e: KeyboardEvent) => {
+			if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+				e.preventDefault();
+				const current = Array.from(tabs).indexOf(tab);
+				const next =
+					e.key === "ArrowRight"
+						? (current + 1) % tabs.length
+						: (current - 1 + tabs.length) % tabs.length;
+				tabs[next].focus();
+				activateTab(tabs[next]);
+			}
+		});
+	});
+
+	/* Service expand/collapse */
+	document.querySelectorAll<HTMLButtonElement>(".service-expand-toggle").forEach((toggle) => {
+		toggle.addEventListener("click", () => {
+			const expandId = toggle.getAttribute("aria-controls");
+			if (!expandId) return;
+			const expandGroup = document.getElementById(expandId);
+			if (!expandGroup) return;
+			const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+			toggle.setAttribute("aria-expanded", String(!isExpanded));
+			expandGroup.hidden = isExpanded;
+			const label = toggle.querySelector(".toggle-label");
+			if (label) {
+				label.textContent = isExpanded
+					? (toggle.dataset.labelDefault ?? "")
+					: (toggle.dataset.labelExpanded ?? "");
+			}
+		});
+	});
 </script>
