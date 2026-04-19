@@ -1,0 +1,43 @@
+---
+interface Props {
+	number: string;
+	tag: string;
+	name: string;
+	description: string;
+	proofValue: string;
+	proofLabel: string;
+}
+
+const { number, tag, name, description, proofValue, proofLabel } = Astro.props;
+---
+
+<article class="group outline-none" tabindex="0">
+	<div
+		class="bg-mist ease-out-quart has-[:focus-visible]:outline-teal relative flex h-full flex-col gap-[0.625rem] overflow-hidden rounded-md p-[1.375rem_1.5rem] transition-shadow transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-[:focus-visible]:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2"
+	>
+		<div
+			class="bg-teal ease-out-quart absolute top-0 bottom-0 left-0 w-[3px] origin-bottom scale-y-0 transition-transform duration-200 group-focus-within:scale-y-100 group-hover:scale-y-100"
+		>
+		</div>
+		<div class="flex items-center justify-between">
+			<span class="text-charcoal-mid/60 font-mono text-[0.6875rem] font-medium">{number}</span>
+			<span
+				class="bg-teal-dim text-teal rounded-sm px-2 py-0.5 font-mono text-[0.5625rem] font-semibold tracking-[0.12em] uppercase"
+				>{tag}</span
+			>
+		</div>
+		<h3 class="font-display text-navy text-[1.125rem] leading-tight font-bold tracking-tight">
+			{name}
+		</h3>
+		<p class="font-body text-charcoal-mid flex-1 text-[0.8125rem] leading-[1.65]">{description}</p>
+		<div class="border-mist-dark mt-auto flex flex-col gap-[0.1rem] border-t pt-3">
+			<span class="text-teal font-mono text-[0.75rem] font-semibold tracking-[0.02em]"
+				>{proofValue}</span
+			>
+			<span
+				class="text-charcoal-mid/70 font-mono text-[0.5625rem] font-medium tracking-[0.1em] uppercase"
+				>{proofLabel}</span
+			>
+		</div>
+	</div>
+</article>
