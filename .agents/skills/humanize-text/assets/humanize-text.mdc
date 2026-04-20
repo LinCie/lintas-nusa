@@ -1,0 +1,25 @@
+---
+description: humanize prose, remove ai slop, and rewrite copy in files without changing code behavior
+globs:
+  - "**/*.{md,mdx,txt,html,tsx,jsx}"
+alwaysApply: false
+---
+
+When asked to humanize text, reduce AI slop, or make prose sound less robotic:
+
+1. Read the full target text or enough file context to understand purpose and audience.
+2. Diagnose generic, padded, repetitive, or under-specified prose.
+3. Rewrite in balanced mode:
+   - preserve meaning
+   - improve clarity and specificity
+   - remove filler
+   - smooth repetitive cadence
+   - avoid fake personality, fake typos, or invented details
+4. Edit prose only. Do not change code behavior, identifiers, placeholders, or formatting unless asked.
+5. After editing, return a short summary with:
+   - changes made
+   - why
+   - notes (only if needed)
+
+Default priorities:
+clarity -> specificity -> natural rhythm -> concision
