@@ -12,10 +12,10 @@
 @theme {
 	--color-navy: #0F2742;
 	--color-navy-light: #1a3a5c;
-	--color-teal: #18B7A0;
-	--color-teal-dim: rgba(24, 183, 160, 0.12);
-	--color-orange: #FF6B3D;
-	--color-orange-hover: #ff5525;
+	--color-teal: #0D7872;
+	--color-teal-dim: rgba(13, 120, 114, 0.12);
+	--color-orange: #C94B24;
+	--color-orange-hover: #B8421D;
 	--color-mist: #EEF3F7;
 	--color-mist-dark: #e0e8ef;
 	--color-charcoal: #1F2A37;

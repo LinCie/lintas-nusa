@@ -3,8 +3,8 @@
 ---
 
 <section
-	class="bg-mist relative flex min-h-screen flex-col overflow-hidden pt-(--nav-height)"
-	aria-label="Hero LintasNusa"
+	class="bg-mist relative flex min-h-[calc(100svh-var(--nav-height))] flex-col overflow-hidden pt-(--nav-height)"
+	aria-labelledby="hero-heading"
 >
 	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
 		<svg
@@ -43,60 +43,62 @@
 	</div>
 
 	<div
-		class="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-12 px-8 py-16 lg:grid-cols-[1fr_380px] lg:gap-20"
+		class="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-start gap-12 px-6 py-12 sm:px-8 sm:py-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,420px)] lg:items-center lg:gap-16"
 	>
-		<div class="hero-reveal">
+		<div class="hero-reveal flex max-w-3xl flex-col gap-8 lg:gap-10">
+			<p class="font-body text-navy/68 text-sm font-semibold tracking-[0.16em] uppercase">
+				Logistik digital untuk tim pemilik bisnis, operasional, keuangan, dan layanan pelanggan
+			</p>
 			<h1
-				class="font-display text-navy mb-8 leading-[1.05] font-black tracking-tight"
-				style="font-size: clamp(3rem, 7vw, 5.5rem);"
+				id="hero-heading"
+				class="font-display text-navy max-w-[10ch] leading-[1.02] font-black tracking-tight"
+				style="font-size: clamp(2.85rem, 7vw, 5.4rem);"
 			>
 				Pengiriman bisnis,<br />
 				lebih jelas dari<br />
 				awal sampai tiba.
 			</h1>
 
-			<div class="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-12">
-				<div class="flex items-baseline gap-2">
-					<span
-						class="font-display text-navy tracking-tightest leading-none font-black"
-						style="font-size: clamp(3.5rem, 8vw, 6rem);">97,9</span
-					>
-					<span
-						class="font-display text-teal leading-none font-bold tracking-tight"
-						style="font-size: clamp(1.5rem, 3vw, 2.25rem);">%</span
-					>
+			<p class="font-body text-charcoal-mid max-w-[62ch] text-base leading-8 sm:text-[1.0625rem]">
+				LintasNusa membantu tim Anda merapikan pickup, pelacakan, SLA, retur, dan klaim dalam satu
+				alur kerja yang terukur. Kami memulai dari pemetaan kebutuhan operasional, lalu menyusun
+				alur yang paling masuk akal untuk lane, bukti serah-terima, dan tindak lanjut saat ada
+				kendala.
+			</p>
+
+			<div class="border-navy/10 grid gap-4 border-t pt-6 sm:grid-cols-3 sm:gap-6">
+				<div class="grid gap-1.5">
+					<p class="font-body text-navy text-sm font-semibold">Pemetaan lane dan pickup</p>
+					<p class="font-body text-charcoal-mid text-sm leading-6">
+						Kami mulai dari volume, wilayah prioritas, dan pola penjemputan tim Anda.
+					</p>
 				</div>
-				<p class="text-charcoal-mid pb-1 font-mono text-xs font-medium tracking-widest uppercase">
-					Kepatuhan Scan<br />2025
-				</p>
+				<div class="grid gap-1.5">
+					<p class="font-body text-navy text-sm font-semibold">Aturan respons saat ada kendala</p>
+					<p class="font-body text-charcoal-mid text-sm leading-6">
+						SLA, eskalasi, dan alur retur disusun supaya tim tidak bekerja dengan asumsi.
+					</p>
+				</div>
+				<div class="grid gap-1.5">
+					<p class="font-body text-navy text-sm font-semibold">Bukti operasional yang dibutuhkan</p>
+					<p class="font-body text-charcoal-mid text-sm leading-6">
+						Scan, foto POD, dan histori klaim dipilih sesuai kebutuhan audit dan layanan pelanggan.
+					</p>
+				</div>
 			</div>
 
-			<p
-				class="font-body text-charcoal-mid max-w-[52ch] leading-relaxed"
-				style="font-size: clamp(1rem, 1.5vw, 1.125rem);"
-			>
-				Dari pickup sampai retur, semuanya terpantau dalam satu sistem. Tim Anda bisa cek status
-				kiriman secara real-time, memantau SLA, dan menangani kendala lebih cepat tanpa
-				pindah-pindah tools.
-			</p>
-		</div>
-
-		<div class="hero-reveal flex flex-col gap-8">
-			<div class="flex flex-col gap-5">
-				<p class="font-body text-charcoal-mid text-sm leading-relaxed">
-					Ceritakan kebutuhan pengiriman bisnis Anda, kami bantu cari alur yang paling pas.
-				</p>
+			<div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
 				<a
 					href="#layanan"
-					class="cta-primary bg-orange font-body hover:bg-orange-hover focus:outline-teal block rounded-md px-6 py-4 text-center text-[15px] font-semibold text-white no-underline transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(255,107,61,0.35)] focus:outline-2 focus:outline-offset-3 active:translate-y-0 active:scale-[.99] active:shadow-[0_1px_4px_rgba(255,107,61,0.2)]"
+					class="cta-primary bg-orange font-body focus:outline-teal hover:bg-orange-hover block min-h-11 rounded-md px-6 py-4 text-center text-[15px] font-semibold text-white no-underline transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(169,60,25,0.18)] focus:outline-2 focus:outline-offset-3 active:translate-y-0 active:scale-[.99] active:shadow-none sm:min-w-[17rem]"
 				>
-					Jadwalkan diskusi dengan tim kami
+					Bahas alur pengiriman dengan tim kami
 				</a>
 				<a
 					href="#platform"
-					class="cta-secondary text-teal font-body hover:text-navy focus:outline-teal flex items-center justify-center gap-2 py-2 text-sm font-medium no-underline transition-colors duration-150 focus:rounded-sm focus:outline-2 focus:outline-offset-4"
+					class="cta-secondary group text-teal font-body hover:text-navy focus:outline-teal inline-flex min-h-11 items-center gap-2 py-2 text-sm font-semibold no-underline transition-colors duration-150 focus:rounded-sm focus:outline-2 focus:outline-offset-4"
 				>
-					Lihat cara dashboard kami bekerja
+					Tinjau pendekatan operasional kami
 					<svg
 						width="14"
 						height="14"
@@ -115,57 +117,107 @@
 				</a>
 			</div>
 
-			<div class="border-navy/10 border-t pt-4">
-				<p
-					class="text-charcoal-mid mb-4 font-mono text-[10px] font-medium tracking-widest uppercase"
-				>
-					Operasional yang kami jalankan di lapangan
-				</p>
-				<div class="grid grid-cols-3 gap-6">
-					<div class="flex flex-col gap-0.5">
-						<span
-							class="font-display text-navy leading-none font-bold tracking-tight"
-							style="font-size: clamp(1.5rem, 3vw, 2rem);">247</span
-						>
-						<span
-							class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
-							>Wilayah Jangkauan</span
-						>
-					</div>
-					<div class="flex flex-col gap-0.5">
-						<span
-							class="font-display text-navy leading-none font-bold tracking-tight"
-							style="font-size: clamp(1.5rem, 3vw, 2rem);"
-							>12,4<span class="text-charcoal-mid text-xs font-normal">jt</span></span
-						>
-						<span
-							class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
-							>Paket Ditangani 2025</span
-						>
-					</div>
-					<div class="flex flex-col gap-0.5">
-						<span
-							class="font-display text-navy leading-none font-bold tracking-tight"
-							style="font-size: clamp(1.5rem, 3vw, 2rem);"
-							>18,5<span class="text-charcoal-mid text-xs font-normal">rb</span></span
-						>
-						<span
-							class="text-charcoal-mid font-mono text-[10px] leading-tight font-medium tracking-widest uppercase"
-							>Bisnis Aktif</span
-						>
-					</div>
-				</div>
-			</div>
+			<p class="font-body text-charcoal-mid max-w-[48ch] text-sm leading-6">
+				Pendekatan kami tetap konsultatif: sesi awal dipakai untuk membaca kebutuhan lane, risiko
+				operasional, dan standar bukti yang harus dijaga sebelum implementasi dibahas lebih jauh.
+			</p>
 		</div>
-	</div>
 
-	<div
-		class="hero-reveal absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-		aria-hidden="true"
-	>
-		<span class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
-			>Lihat studi kasus</span
+		<aside
+			class="hero-reveal border-navy/12 relative w-full overflow-hidden rounded-[1.5rem] border bg-white p-6 shadow-[0_18px_42px_rgba(15,39,66,0.07)] sm:p-8"
+			aria-label="Pendekatan konsultasi operasional LintasNusa"
 		>
-		<div class="scroll-line from-charcoal-mid/25 h-10 w-px bg-linear-to-b to-transparent"></div>
+			<div class="bg-mist absolute inset-x-0 top-0 h-20"></div>
+			<div
+				class="border-navy/10 relative inline-flex items-center rounded-full border bg-white px-3 py-1"
+			>
+				<span class="font-body text-navy text-xs font-semibold tracking-[0.14em] uppercase">
+					Sesi awal yang kami jalankan
+				</span>
+			</div>
+			<p
+				class="font-display text-navy relative mt-5 max-w-[17ch] text-[clamp(1.7rem,3.6vw,2.4rem)] leading-[1.08] font-bold tracking-tight"
+			>
+				Kami merapikan alur kirim lebih dulu, baru membicarakan sistem yang paling pas.
+			</p>
+			<p class="font-body text-charcoal-mid relative mt-4 max-w-[34ch] text-sm leading-7">
+				Pembahasan awal difokuskan pada titik rawan operasional, siapa yang perlu melihat apa, dan
+				bukti lapangan apa yang harus selalu tersedia saat ada pertanyaan dari pelanggan.
+			</p>
+
+			<ol class="relative mt-8 grid gap-4">
+				<li class="border-navy/10 grid grid-cols-[auto_1fr] gap-4 border-b pb-4">
+					<span
+						class="bg-navy text-mist font-display inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold"
+						>01</span
+					>
+					<div class="grid gap-1">
+						<p class="font-body text-navy text-sm font-semibold">
+							Membaca lane, pickup, dan beban tim
+						</p>
+						<p class="font-body text-charcoal-mid text-sm leading-6">
+							Kami identifikasi wilayah prioritas, ritme pickup, dan titik serah yang paling sering
+							menimbulkan antrean atau keterlambatan.
+						</p>
+					</div>
+				</li>
+				<li class="border-navy/10 grid grid-cols-[auto_1fr] gap-4 border-b pb-4">
+					<span
+						class="bg-navy text-mist font-display inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold"
+						>02</span
+					>
+					<div class="grid gap-1">
+						<p class="font-body text-navy text-sm font-semibold">
+							Menentukan siapa yang butuh visibilitas dan kapan harus bergerak
+						</p>
+						<p class="font-body text-charcoal-mid text-sm leading-6">
+							Pemilik bisnis, operasional, keuangan, dan layanan pelanggan hanya melihat informasi
+							yang relevan untuk keputusan mereka.
+						</p>
+					</div>
+				</li>
+				<li class="grid grid-cols-[auto_1fr] gap-4">
+					<span
+						class="bg-orange text-mist font-display inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold"
+						>03</span
+					>
+					<div class="grid gap-1">
+						<p class="font-body text-navy text-sm font-semibold">
+							Menyepakati bukti serah-terima, retur, dan alur klaim
+						</p>
+						<p class="font-body text-charcoal-mid text-sm leading-6">
+							Scan, foto POD, histori retur, dan target tanggapan disusun supaya kendala tidak
+							berputar lama di customer service.
+						</p>
+					</div>
+				</li>
+			</ol>
+
+			<dl
+				class="border-navy/10 mt-8 grid grid-cols-1 gap-4 border-t pt-6 sm:grid-cols-3 sm:gap-x-5"
+			>
+				<div class="flex flex-col gap-1">
+					<dt class="font-body text-charcoal-mid text-xs leading-5">Kepatuhan scan</dt>
+					<dd class="font-display text-navy text-[1.45rem] leading-none font-bold tracking-tight">
+						97,9%
+					</dd>
+					<dd class="font-body text-charcoal-mid text-xs leading-5">Data 2025</dd>
+				</div>
+				<div class="flex flex-col gap-1">
+					<dt class="font-body text-charcoal-mid text-xs leading-5">Klaim standar selesai</dt>
+					<dd class="font-display text-navy text-[1.45rem] leading-none font-bold tracking-tight">
+						91%
+					</dd>
+					<dd class="font-body text-charcoal-mid text-xs leading-5">Dalam 2 x 24 jam</dd>
+				</div>
+				<div class="flex flex-col gap-1">
+					<dt class="font-body text-charcoal-mid text-xs leading-5">Wilayah jangkauan</dt>
+					<dd class="font-display text-navy text-[1.45rem] leading-none font-bold tracking-tight">
+						247
+					</dd>
+					<dd class="font-body text-charcoal-mid text-xs leading-5">Kota dan kabupaten</dd>
+				</div>
+			</dl>
+		</aside>
 	</div>
 </section>
