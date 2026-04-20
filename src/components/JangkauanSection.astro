@@ -574,7 +574,7 @@ const commandPills = [
 			</div>
 
 			<div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
-				<dl class="border-mist-dark rounded-4xl border bg-white p-6 sm:p-8">
+				<div class="border-mist-dark rounded-4xl border bg-white p-6 sm:p-8">
 					<div class="space-y-2">
 						<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
 							Jejak Operasional
@@ -595,14 +595,14 @@ const commandPills = [
 						{
 							networkStats.map((stat) => (
 								<div class="jangkauan-network-row border-mist-dark flex items-start justify-between gap-5 border-t py-4 first:border-t-0 first:pt-0 last:pb-0">
-									<div class="max-w-[24rem] space-y-1">
+									<dl class="max-w-[24rem] space-y-1">
 										<dt class="font-body text-navy text-sm font-semibold sm:text-base">
 											{stat.label}
 										</dt>
 										<dd class="font-body text-charcoal-mid text-sm leading-6">
 											{stat.description}
 										</dd>
-									</div>
+									</dl>
 									<div
 										class="jangkauan-number font-display text-navy shrink-0 text-[clamp(2rem,4vw,3rem)] leading-none font-bold tracking-tight"
 										data-target={stat.target}
@@ -614,7 +614,7 @@ const commandPills = [
 							))
 						}
 					</div>
-				</dl>
+				</div>
 
 				<div class="border-mist-dark bg-mist/60 rounded-4xl border p-6 sm:p-8">
 					<div class="space-y-2">
