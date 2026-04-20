@@ -144,7 +144,7 @@ For each issue, tag with **P0-P3 severity** (consult [heuristics-scoring](refere
 - **[P?] What**: Name the problem clearly
 - **Why it matters**: How this hurts users or undermines goals
 - **Fix**: What to do about it (be concrete)
-- **Suggested command**: Which command could address this (from: /animate, /quieter, /shape, /optimize, /adapt, /clarify, /layout, /distill, /delight, /audit, /harden, /polish, /bolder, /typeset, /critique, /colorize, /overdrive)
+- **Suggested command**: Which command could address this (from: /polish, /typeset, /colorize, /quieter, /critique, /overdrive, /clarify, /bolder, /audit, /distill, /harden, /layout, /shape, /animate, /optimize, /adapt, /delight)
 
 #### Persona Red Flags
 > *Consult [personas](reference/personas.md)*
@@ -209,7 +209,7 @@ List recommended commands in priority order, based on the user's answers:
 ...
 
 **Rules for recommendations**:
-- Only recommend commands from: /animate, /quieter, /shape, /optimize, /adapt, /clarify, /layout, /distill, /delight, /audit, /harden, /polish, /bolder, /typeset, /critique, /colorize, /overdrive
+- Only recommend commands from: /polish, /typeset, /colorize, /quieter, /critique, /overdrive, /clarify, /bolder, /audit, /distill, /harden, /layout, /shape, /animate, /optimize, /adapt, /delight
 - Order by the user's stated priorities first, then by impact
 - Each item's description should carry enough context that the command knows what to focus on
 - Map each Priority Issue to the appropriate command

@@ -23,6 +23,7 @@ Run comprehensive checks across 5 dimensions. Score each dimension 0-4 using the
 ### 1. Accessibility (A11y)
 
 **Check for**:
+
 - **Contrast issues**: Text contrast ratios < 4.5:1 (or 7:1 for AAA)
 - **Missing ARIA**: Interactive elements without proper roles, labels, or states
 - **Keyboard navigation**: Missing focus indicators, illogical tab order, keyboard traps
@@ -35,6 +36,7 @@ Run comprehensive checks across 5 dimensions. Score each dimension 0-4 using the
 ### 2. Performance
 
 **Check for**:
+
 - **Layout thrashing**: Reading/writing layout properties in loops
 - **Expensive animations**: Animating layout properties (width, height, top, left) instead of transform/opacity
 - **Missing optimization**: Images without lazy loading, unoptimized assets, missing will-change
@@ -46,6 +48,7 @@ Run comprehensive checks across 5 dimensions. Score each dimension 0-4 using the
 ### 3. Theming
 
 **Check for**:
+
 - **Hard-coded colors**: Colors not using design tokens
 - **Broken dark mode**: Missing dark mode variants, poor contrast in dark theme
 - **Inconsistent tokens**: Using wrong tokens, mixing token types
@@ -56,6 +59,7 @@ Run comprehensive checks across 5 dimensions. Score each dimension 0-4 using the
 ### 4. Responsive Design
 
 **Check for**:
+
 - **Fixed widths**: Hard-coded widths that break on mobile
 - **Touch targets**: Interactive elements < 44x44px
 - **Horizontal scroll**: Content overflow on narrow viewports
@@ -74,21 +78,23 @@ Check against ALL the **DON'T** guidelines in the impeccable skill. Look for AI 
 
 ### Audit Health Score
 
-| # | Dimension | Score | Key Finding |
-|---|-----------|-------|-------------|
-| 1 | Accessibility | ? | [most critical a11y issue or "--"] |
-| 2 | Performance | ? | |
-| 3 | Responsive Design | ? | |
-| 4 | Theming | ? | |
-| 5 | Anti-Patterns | ? | |
-| **Total** | | **??/20** | **[Rating band]** |
+| #         | Dimension         | Score     | Key Finding                        |
+| --------- | ----------------- | --------- | ---------------------------------- |
+| 1         | Accessibility     | ?         | [most critical a11y issue or "--"] |
+| 2         | Performance       | ?         |                                    |
+| 3         | Responsive Design | ?         |                                    |
+| 4         | Theming           | ?         |                                    |
+| 5         | Anti-Patterns     | ?         |                                    |
+| **Total** |                   | **??/20** | **[Rating band]**                  |
 
 **Rating bands**: 18-20 Excellent (minor polish), 14-17 Good (address weak dimensions), 10-13 Acceptable (significant work needed), 6-9 Poor (major overhaul), 0-5 Critical (fundamental issues)
 
 ### Anti-Patterns Verdict
+
 **Start here.** Pass/fail: Does this look AI-generated? List specific tells. Be brutally honest.
 
 ### Executive Summary
+
 - Audit Health Score: **??/20** ([rating band])
 - Total issues found (count by severity: P0/P1/P2/P3)
 - Top 3-5 critical issues
@@ -97,23 +103,26 @@ Check against ALL the **DON'T** guidelines in the impeccable skill. Look for AI 
 ### Detailed Findings by Severity
 
 Tag every issue with **P0-P3 severity**:
+
 - **P0 Blocking**: Prevents task completion — fix immediately
 - **P1 Major**: Significant difficulty or WCAG AA violation — fix before release
 - **P2 Minor**: Annoyance, workaround exists — fix in next pass
 - **P3 Polish**: Nice-to-fix, no real user impact — fix if time permits
 
 For each issue, document:
+
 - **[P?] Issue name**
 - **Location**: Component, file, line
 - **Category**: Accessibility / Performance / Theming / Responsive / Anti-Pattern
 - **Impact**: How it affects users
 - **WCAG/Standard**: Which standard it violates (if applicable)
 - **Recommendation**: How to fix it
-- **Suggested command**: Which command to use (prefer: /animate, /quieter, /shape, /optimize, /adapt, /clarify, /layout, /distill, /delight, /audit, /harden, /polish, /bolder, /typeset, /critique, /colorize, /overdrive)
+- **Suggested command**: Which command to use (prefer: /polish, /typeset, /colorize, /quieter, /critique, /overdrive, /clarify, /bolder, /audit, /distill, /harden, /layout, /shape, /animate, /optimize, /adapt, /delight)
 
 ### Patterns & Systemic Issues
 
 Identify recurring problems that indicate systemic gaps rather than one-off mistakes:
+
 - "Hard-coded colors appear in 15+ components, should use design tokens"
 - "Touch targets consistently too small (<44px) throughout mobile experience"
 
@@ -128,7 +137,7 @@ List recommended commands in priority order (P0 first, then P1, then P2):
 1. **[P?] `/command-name`** — Brief description (specific context from audit findings)
 2. **[P?] `/command-name`** — Brief description (specific context)
 
-**Rules**: Only recommend commands from: /animate, /quieter, /shape, /optimize, /adapt, /clarify, /layout, /distill, /delight, /audit, /harden, /polish, /bolder, /typeset, /critique, /colorize, /overdrive. Map findings to the most appropriate command. End with `/polish` as the final step if any fixes were recommended.
+**Rules**: Only recommend commands from: /polish, /typeset, /colorize, /quieter, /critique, /overdrive, /clarify, /bolder, /audit, /distill, /harden, /layout, /shape, /animate, /optimize, /adapt, /delight. Map findings to the most appropriate command. End with `/polish` as the final step if any fixes were recommended.
 
 After presenting the summary, tell the user:
 
@@ -139,6 +148,7 @@ After presenting the summary, tell the user:
 **IMPORTANT**: Be thorough but actionable. Too many P3 issues creates noise. Focus on what actually matters.
 
 **NEVER**:
+
 - Report issues without explaining impact (why does this matter?)
 - Provide generic recommendations (be specific and actionable)
 - Skip positive findings (celebrate what works)
