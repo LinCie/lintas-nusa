@@ -1,12 +1,642 @@
 ---
+const networkStats = [
+	{
+		target: "9",
+		value: "9",
+		label: "Node jaringan utama",
+		description: "8 gateway regional dan 1 control tower nasional",
+	},
+	{
+		target: "38",
+		value: "38",
+		label: "Satellite hub",
+		description: "untuk konsolidasi antarkota dan feeder",
+	},
+	{
+		target: "286",
+		value: "286",
+		label: "Service point",
+		description: "pickup, handoff, dan support operasional",
+	},
+	{
+		target: "1120",
+		value: "1.120",
+		label: "Armada aktif",
+		description: "line-haul dan last-mile di jalur primer serta metro",
+	},
+];
 
+const gatewayNodes = [
+	{ city: "Medan", x: 65, y: 140, labelX: 65, labelY: 130, labelAnchor: "middle" },
+	{ city: "Palembang", x: 133, y: 220, labelX: 133, labelY: 210, labelAnchor: "middle" },
+	{ city: "Bandung", x: 180, y: 275, labelX: 180, labelY: 285, labelAnchor: "middle" },
+	{ city: "Semarang", x: 220, y: 270, labelX: 220, labelY: 260, labelAnchor: "middle" },
+	{ city: "Surabaya", x: 250, y: 280, labelX: 250, labelY: 270, labelAnchor: "middle" },
+	{ city: "Denpasar", x: 285, y: 295, labelX: 285, labelY: 285, labelAnchor: "middle" },
+	{ city: "Balikpapan", x: 290, y: 200, labelX: 290, labelY: 190, labelAnchor: "middle" },
+	{ city: "Makassar", x: 350, y: 250, labelX: 350, labelY: 240, labelAnchor: "middle" },
+];
+
+const controlTower = {
+	x: 175,
+	y: 265,
+	titleX: 175,
+	titleY: 250,
+	subtitleX: 175,
+	subtitleY: 255,
+};
+
+const primaryRoutes = [
+	"M 65 140 Q 98 171 133 220",
+	"M 133 220 Q 154 242 175 265",
+	"M 175 265 Q 176 272 180 275",
+	"M 180 275 Q 201 271 220 270",
+	"M 220 270 Q 236 273 250 280",
+	"M 250 280 Q 270 289 285 295",
+	"M 175 265 Q 224 230 290 200",
+	"M 290 200 Q 324 218 350 250",
+];
+
+const supportingRoutes = [
+	"M 290 200 Q 347 194 398 198 Q 442 202 470 214",
+	"M 350 250 Q 404 251 456 258 Q 506 277 552 304",
+	"M 350 250 Q 414 239 475 210 Q 534 188 586 168",
+	"M 290 200 Q 361 186 425 171 Q 465 160 486 138",
+];
+
+const coverageLenses = [
+	{
+		eyebrow: "Koridor primer",
+		title: "Gateway ke gateway untuk volume nasional",
+		description:
+			"Jalur utama dibangun untuk replenishment reguler, distribusi B2B, dan perpindahan volume antarpulau yang perlu ritme stabil.",
+		details: [
+			"Setiap koridor dibuka melalui node Medan, Palembang, Bandung, Semarang, Surabaya, Denpasar, Balikpapan, dan Makassar.",
+			"Dispatch dan handoff dipantau dari Cikarang supaya alur antarnode tidak putus saat volume naik.",
+		],
+	},
+	{
+		eyebrow: "Metro prioritas",
+		title: "Lane cepat untuk ETA yang lebih ketat",
+		description:
+			"Same-day dan next-day diprioritaskan di area dengan densitas order tinggi, cut-off lebih agresif, dan kebutuhan ETA yang lebih presisi.",
+		details: [
+			"Fokus utama berada di Jabodetabek, Bandung Raya, Surabaya Raya, dan Denpasar.",
+			"Service level mengikuti lane, cut-off, dan tipe penanganan yang dipilih, bukan dipukul rata untuk semua tujuan.",
+		],
+	},
+	{
+		eyebrow: "Penanganan khusus",
+		title: "Coverage yang dikunci lewat validasi operasional",
+		description:
+			"LN Cold, LN Secure, dan LN BulkDrop hanya aktif pada lane yang lolos validasi volume, temperatur, dan prosedur serah-terima.",
+		details: [
+			"Cocok untuk frozen food, barang bernilai tinggi, dan multi-drop distribusi toko.",
+			"Coverage detail dikonfirmasi saat review lane dan SLA agar komitmen operasionalnya tetap realistis.",
+		],
+	},
+];
+
+const roleViews = [
+	{
+		label: "Ops",
+		description: "melihat dispatch, handoff, dan exception tanpa pindah ke permukaan lain",
+	},
+	{
+		label: "Customer service",
+		description: "menindaklanjuti kendala dari status yang sama dengan tim lapangan",
+	},
+	{
+		label: "Finance",
+		description: "mencocokkan payout COD, invoice, dan bukti layanan dari satu sumber",
+	},
+	{
+		label: "Recipient",
+		description: "menerima ETA, reschedule, dan safe-drop instruction yang tetap sinkron",
+	},
+];
+
+const proofMetrics = [
+	{
+		value: "12,4 jt",
+		target: "12.4",
+		suffix: " jt",
+		decimal: true,
+		label: "Parcel ditangani sepanjang 2025",
+	},
+	{
+		value: "91%",
+		target: "91",
+		suffix: "%",
+		decimal: false,
+		label: "Klaim standar selesai <= 2 x 24 jam",
+	},
+	{
+		value: "31%",
+		target: "31",
+		suffix: "%",
+		decimal: false,
+		label: "Volume berulang datang dari dashboard/API",
+	},
+];
 ---
 
 <section
 	id="jangkauan"
-	class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
+	aria-labelledby="jangkauan-heading"
+	class="border-mist-dark relative overflow-hidden border-t bg-white py-20 lg:py-28"
 >
-	<div class="text-center">
-		<h2 class="font-display text-navy text-xl font-semibold">Jangkauan</h2>
+	<div
+		class="from-mist/80 pointer-events-none absolute inset-x-0 top-0 h-64 bg-linear-to-b via-white to-white"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="mx-auto max-w-7xl px-6 sm:px-8">
+		<div
+			class="relative grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:gap-16"
+		>
+			<header class="max-w-3xl space-y-5">
+				<p class="text-navy-light font-body text-sm font-semibold tracking-[0.18em] uppercase">
+					Jangkauan Nasional
+				</p>
+				<div class="space-y-4">
+					<h2
+						id="jangkauan-heading"
+						class="font-display text-navy text-[clamp(2.25rem,5vw,4.25rem)] leading-[0.98] font-bold tracking-tight"
+					>
+						Cakupan dibuka per lane, bukan disamaratakan untuk semua layanan.
+					</h2>
+					<p class="font-body text-charcoal max-w-[56ch] text-base leading-7 sm:text-lg">
+						LintasNusa menunjukkan coverage sebagai sistem operasional: node yang aktif, jalur yang
+						dijaga, dan layanan yang hanya dibuka saat SLA-nya benar-benar bisa dipertahankan.
+					</p>
+				</div>
+			</header>
+
+			<div class="jangkauan-map-shell border-mist-dark bg-mist/70 rounded-4xl border p-6 sm:p-8">
+				<div class="flex items-start justify-between gap-4">
+					<div class="space-y-2">
+						<p class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase">
+							Cakupan Aktif
+						</p>
+						<p class="font-body text-charcoal max-w-[30ch] text-sm leading-6 sm:text-base">
+							247 kota dan kabupaten aktif di jaringan, lalu setiap layanan dibedakan lagi menurut
+							lane, cut-off, dan penanganannya.
+						</p>
+					</div>
+					<div class="text-right">
+						<span
+							class="jangkauan-number font-display text-navy block text-[clamp(3.5rem,9vw,6.25rem)] leading-none font-bold tracking-tight"
+							data-target="247"
+							data-suffix=""
+						>
+							247
+						</span>
+						<span class="text-charcoal-mid font-body text-sm leading-6">kota & kabupaten aktif</span
+						>
+					</div>
+				</div>
+
+				<div class="border-mist-dark mt-6 border-t pt-5">
+					<ul class="grid gap-3 text-sm leading-6 sm:grid-cols-3">
+						<li class="font-body text-charcoal">
+							8 gateway regional menopang perpindahan volume utama.
+						</li>
+						<li class="font-body text-charcoal">
+							Cikarang menjaga dispatch, handoff, dan exception tetap sinkron.
+						</li>
+						<li class="font-body text-charcoal">
+							Lane cepat dan lane khusus hanya dibuka saat mekanismenya siap.
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-14 space-y-10">
+			<div
+				class="jangkauan-map-shell bg-navy relative overflow-hidden rounded-4xl px-5 py-6 text-white sm:px-8 sm:py-8"
+			>
+				<div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+					<div class="absolute inset-x-6 top-8 h-px bg-white/30"></div>
+					<div class="absolute inset-x-6 bottom-8 h-px bg-white/20"></div>
+					<div class="absolute right-10 bottom-6 h-36 w-36 rounded-full border border-white/10">
+					</div>
+				</div>
+
+				<div class="relative z-10 space-y-3">
+					<div class="space-y-2">
+						<p class="font-body text-sm font-semibold tracking-[0.16em] text-white/70 uppercase">
+							Jejak Jaringan
+						</p>
+						<h3
+							class="font-display text-[clamp(1.5rem,3vw,2.35rem)] leading-tight font-bold tracking-tight"
+						>
+							Gateway regional bekerja sebagai node. Cikarang menjaga satu ritme jaringan.
+						</h3>
+					</div>
+					<p class="font-body max-w-[60ch] text-sm leading-6 text-white/78 sm:text-base">
+						Diagram ini sengaja skematis. Tujuannya bukan meniru peta, tetapi menunjukkan bagaimana
+						volume nasional dibaca sebagai sistem yang terkoordinasi.
+					</p>
+				</div>
+
+				<div class="relative z-10 mt-7 overflow-hidden rounded-[1.6rem] bg-white/6 p-3 sm:p-5">
+					<div
+						class="pointer-events-none absolute inset-3 flex items-center justify-center opacity-20 mix-blend-screen sm:inset-5"
+						aria-hidden="true"
+					>
+						<img
+							src="/indonesia-blankmap.svg"
+							alt=""
+							class="h-full w-full scale-[1.02] object-contain brightness-0 invert"
+							loading="lazy"
+							decoding="async"
+						/>
+					</div>
+					<svg
+						viewBox="0 0 640 420"
+						class="relative z-10 w-full"
+						role="img"
+						aria-label="Diagram jaringan gateway regional dan control tower Cikarang"
+					>
+						{
+							primaryRoutes.map((route) => (
+								<path
+									d={route}
+									class="jangkauan-network-line text-white/22"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+								/>
+							))
+						}
+						{
+							supportingRoutes.map((route) => (
+								<path
+									d={route}
+									class="jangkauan-network-line text-teal/28"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+								/>
+							))
+						}
+						<circle
+							cx={controlTower.x}
+							cy={controlTower.y}
+							r="4"
+							class="fill-teal/16 stroke-teal/35"
+							stroke-width="1.5"></circle>
+						<circle
+							cx={controlTower.x}
+							cy={controlTower.y}
+							r="2.5"
+							class="fill-teal stroke-white/20"
+							stroke-width="3"></circle>
+						<text
+							x={controlTower.titleX}
+							y={controlTower.titleY}
+							text-anchor="middle"
+							class="jangkauan-network-label font-body fill-white text-[6px] font-semibold tracking-[0.02em]"
+						>
+							Cikarang
+						</text>
+						<text
+							x={controlTower.subtitleX}
+							y={controlTower.subtitleY}
+							text-anchor="middle"
+							class="jangkauan-network-label font-body fill-white/62 text-[4px] font-medium tracking-[0.08em] uppercase"
+						>
+							control tower nasional
+						</text>
+
+						{
+							gatewayNodes.map((node) => (
+								<>
+									<circle
+										cx={node.x}
+										cy={node.y}
+										r="2.5"
+										class="jangkauan-network-node fill-teal stroke-white/10"
+										stroke-width="2.5"
+									/>
+									<text
+										x={node.labelX}
+										y={node.labelY}
+										text-anchor={node.labelAnchor}
+										class="jangkauan-network-label font-body fill-white/76 text-[6px] font-semibold"
+									>
+										{node.city}
+									</text>
+								</>
+							))
+						}
+					</svg>
+				</div>
+
+				<ul class="relative z-10 mt-5 grid gap-3 text-sm leading-6 sm:grid-cols-3">
+					<li class="font-body rounded-2xl bg-white/7 px-4 py-3 text-white/85">
+						Koridor primer dibaca sebagai perpindahan antarnode yang harus stabil.
+					</li>
+					<li class="font-body rounded-2xl bg-white/7 px-4 py-3 text-white/85">
+						Klaster metro memakai ritme berbeda karena target ETA dan cut-off lebih ketat.
+					</li>
+					<li class="font-body rounded-2xl bg-white/7 px-4 py-3 text-white/85">
+						Lane khusus hanya aktif jika validasi suhu, volume, dan serah-terima sudah lolos.
+					</li>
+				</ul>
+			</div>
+
+			<div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
+				<dl class="border-mist-dark rounded-4xl border bg-white p-6 sm:p-8">
+					<div class="space-y-2">
+						<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+							Jejak Operasional
+						</p>
+						<h3
+							class="font-display text-navy text-[clamp(1.5rem,3vw,2.25rem)] leading-tight font-bold"
+						>
+							Angka jaringan ini menjelaskan kapasitas baca, bukan sekadar skala.
+						</h3>
+					</div>
+					<p class="font-body text-charcoal mt-3 max-w-[48ch] text-base leading-7">
+						Yang ingin ditunjukkan di sini adalah struktur kerja coverage: node utama untuk arus
+						antarwilayah, titik satelit untuk konsolidasi, service point untuk pickup dan handoff,
+						lalu armada aktif yang mengunci ritme pengiriman.
+					</p>
+
+					<div class="mt-6">
+						{
+							networkStats.map((stat) => (
+								<div class="jangkauan-network-row border-mist-dark flex items-start justify-between gap-5 border-t py-4 first:border-t-0 first:pt-0 last:pb-0">
+									<div class="max-w-[24rem] space-y-1">
+										<dt class="font-body text-navy text-sm font-semibold sm:text-base">
+											{stat.label}
+										</dt>
+										<dd class="font-body text-charcoal-mid text-sm leading-6">
+											{stat.description}
+										</dd>
+									</div>
+									<div
+										class="jangkauan-number font-display text-navy shrink-0 text-[clamp(2rem,4vw,3rem)] leading-none font-bold tracking-tight"
+										data-target={stat.target}
+										data-suffix=""
+									>
+										{stat.value}
+									</div>
+								</div>
+							))
+						}
+					</div>
+				</dl>
+
+				<div class="border-mist-dark bg-mist/60 rounded-4xl border p-6 sm:p-8">
+					<div class="space-y-2">
+						<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+							Satu Status, Banyak Peran
+						</p>
+						<h3
+							class="font-display text-navy text-[clamp(1.35rem,3vw,2rem)] leading-tight font-bold"
+						>
+							Coverage yang baik harus bisa dibaca serempak oleh tim ops, finance, CS, dan
+							recipient.
+						</h3>
+					</div>
+					<div class="mt-5 grid gap-3 sm:grid-cols-2">
+						{
+							roleViews.map((view) => (
+								<div class="jangkauan-role-item rounded-2xl bg-white px-4 py-4">
+									<p class="font-body text-navy text-sm font-semibold">{view.label}</p>
+									<p class="font-body text-charcoal-mid mt-1 text-sm leading-6">
+										{view.description}
+									</p>
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border-mist-dark mt-14 border-t pt-10">
+			<div
+				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-12"
+			>
+				<div class="max-w-xl space-y-5">
+					<div class="space-y-2">
+						<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+							Cara Membaca Jangkauan
+						</p>
+						<h3
+							class="font-display text-navy text-[clamp(1.5rem,3vw,2.25rem)] leading-tight font-bold"
+						>
+							Coverage explorer dimulai dari keputusan operasional yang perlu Anda buat.
+						</h3>
+					</div>
+					<p class="font-body text-charcoal text-base leading-7">
+						Alih-alih menampilkan daftar kota yang panjang, section ini memecah coverage ke tiga
+						lensa yang lebih berguna: perpindahan volume utama, lane cepat untuk klaster metro, dan
+						rute yang perlu validasi khusus sebelum dibuka.
+					</p>
+					<a
+						href="#platform"
+						class="font-body bg-navy hover:bg-navy-light focus:outline-teal inline-flex min-h-11 items-center rounded-full px-5 py-3 text-sm font-semibold text-white no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-3"
+					>
+						Lihat cara dashboard membaca lane
+					</a>
+				</div>
+
+				<ol class="space-y-4">
+					{
+						coverageLenses.map((lens, index) => (
+							<li class="jangkauan-lane-item border-mist-dark bg-mist/50 rounded-[1.75rem] border p-5 sm:p-6">
+								<div class="flex flex-col gap-5">
+									<div class="flex items-start gap-4">
+										<span class="font-display text-navy inline-flex size-10 items-center justify-center rounded-full bg-white text-lg font-bold">
+											0{index + 1}
+										</span>
+										<div class="space-y-2">
+											<p class="font-body text-navy-light text-xs font-semibold tracking-[0.14em] uppercase">
+												{lens.eyebrow}
+											</p>
+											<h4 class="font-display text-navy text-[clamp(1.2rem,2.2vw,1.6rem)] leading-tight font-bold">
+												{lens.title}
+											</h4>
+										</div>
+									</div>
+
+									<div class="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+										<p class="font-body text-charcoal text-base leading-7">{lens.description}</p>
+										<ul
+											class="max-w-xl space-y-2"
+											aria-label={`Detail ${lens.title.toLowerCase()}`}
+										>
+											{lens.details.map((detail) => (
+												<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
+													<span
+														class="bg-teal mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
+														aria-hidden="true"
+													/>
+													<span>{detail}</span>
+												</li>
+											))}
+										</ul>
+									</div>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</div>
+
+		<div class="border-mist-dark mt-14 border-t pt-10">
+			<div
+				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,1.1fr)] lg:items-end lg:gap-12"
+			>
+				<div class="max-w-2xl space-y-4">
+					<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+						Kontrol Tower
+					</p>
+					<h3
+						class="font-display text-navy text-[clamp(1.5rem,3vw,2.25rem)] leading-tight font-bold"
+					>
+						Cikarang menjaga agar visibility, recovery, dan ritme operasional dibaca dari sumber
+						yang sama.
+					</h3>
+					<p class="font-body text-charcoal text-base leading-7">
+						Bagian ini sengaja menutup section dengan bukti sistemik, bukan slogan: volume yang
+						sudah lewat jaringan, kecepatan recovery klaim, dan seberapa besar aktivitas berulang
+						yang datang lewat dashboard serta API.
+					</p>
+				</div>
+
+				<dl class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+					{
+						proofMetrics.map((metric) => (
+							<div class="jangkauan-proof-item border-mist-dark rounded-2xl border bg-white p-5 text-center sm:text-left">
+								<dt class="font-body text-navy-light text-sm font-semibold">{metric.label}</dt>
+								<dd class="mt-3">
+									<span
+										class="jangkauan-number font-display text-navy block text-[clamp(1.9rem,4vw,2.8rem)] leading-none font-bold tracking-tight"
+										data-target={metric.target}
+										data-decimal={metric.decimal ? "true" : undefined}
+										data-suffix={metric.suffix}
+									>
+										{metric.value}
+									</span>
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</div>
 	</div>
 </section>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function formatMetric(value: number, isDecimal: boolean, suffix: string) {
+		const formatted = isDecimal
+			? value.toFixed(1).replace(".", ",")
+			: Math.round(value).toLocaleString("id-ID");
+
+		return `${formatted}${suffix}`;
+	}
+
+	function initJangkauanAnimations() {
+		const mm = gsap.matchMedia();
+
+		mm.add("(prefers-reduced-motion: no-preference)", () => {
+			const numbers = gsap.utils.toArray<HTMLElement>(".jangkauan-number");
+
+			numbers.forEach((el) => {
+				const target = parseFloat(el.dataset.target || "0");
+				const suffix = el.dataset.suffix || "";
+				const isDecimal = el.dataset.decimal === "true";
+				const counter = { value: 0 };
+
+				gsap.fromTo(
+					counter,
+					{ value: 0 },
+					{
+						value: target,
+						duration: 1.4,
+						ease: "power2.out",
+						scrollTrigger: {
+							trigger: el,
+							start: "top 85%",
+							once: true,
+						},
+						onStart: () => {
+							el.textContent = formatMetric(0, isDecimal, suffix);
+						},
+						onUpdate: () => {
+							el.textContent = formatMetric(counter.value, isDecimal, suffix);
+						},
+						onComplete: () => {
+							el.textContent = formatMetric(target, isDecimal, suffix);
+						},
+					},
+				);
+			});
+
+			const revealGroups = [
+				".jangkauan-map-shell",
+				".jangkauan-network-row",
+				".jangkauan-role-item",
+				".jangkauan-lane-item",
+				".jangkauan-proof-item",
+			];
+
+			revealGroups.forEach((selector) => {
+				const items = gsap.utils.toArray<HTMLElement>(selector);
+
+				if (!items.length) return;
+
+				gsap.from(items, {
+					opacity: 0,
+					y: 18,
+					duration: 0.45,
+					ease: "power2.out",
+					stagger: 0.08,
+					scrollTrigger: {
+						trigger: items[0],
+						start: "top 82%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			});
+
+			const networkElements = gsap.utils.toArray<SVGElement>(
+				".jangkauan-network-line, .jangkauan-network-node, .jangkauan-network-label",
+			);
+
+			if (networkElements.length) {
+				gsap.from(networkElements, {
+					opacity: 0,
+					duration: 0.35,
+					ease: "power2.out",
+					stagger: 0.03,
+					scrollTrigger: {
+						trigger: networkElements[0],
+						start: "top 84%",
+						once: true,
+					},
+				});
+			}
+		});
+	}
+
+	initJangkauanAnimations();
+</script>

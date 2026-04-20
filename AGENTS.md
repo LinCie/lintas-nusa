@@ -23,6 +23,12 @@ Use Bun for package management and scripts.
 - `bun run format`: format `src/**/*.{js,astro}` with Prettier.
 - `bun run format:check`: verify formatting without rewriting files.
 
+## Mandatory Styling & Animation Rules
+
+**Tailwind is non-negotiable.** Use Tailwind CSS for all styling under any circumstances. Only deviate from Tailwind when a problem cannot be solved with Tailwind alone.
+
+**GSAP is required for all animations.** Use GSAP for any animation needs, even if it feels like overkill. Do not use CSS animations, Web Animations API, or other animation libraries.
+
 ## Coding Style & Naming Conventions
 Use tabs in `.astro` files, matching the existing codebase. Prefer clear, minimal components and keep copy aligned with `docs/context.md`.
 
