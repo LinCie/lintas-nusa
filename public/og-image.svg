@@ -1,0 +1,57 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<linearGradient id="bg" x1="84" y1="54" x2="1116" y2="576" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#0F2742" />
+			<stop offset="1" stop-color="#163A5D" />
+		</linearGradient>
+		<linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+			<stop stop-color="#18B7A0" />
+			<stop offset="1" stop-color="#FF6B3D" />
+		</linearGradient>
+	</defs>
+	<rect width="1200" height="630" rx="32" fill="url(#bg)" />
+	<g opacity="0.12" stroke="#EEF3F7" stroke-width="2">
+		<path d="M82 124H1118" />
+		<path d="M82 506H1118" />
+		<path d="M182 54V576" />
+		<path d="M936 54V576" />
+		<path d="M112 186C188 140 284 132 372 156C486 188 558 258 666 278C782 300 882 258 1088 140" />
+		<path d="M96 422C208 366 334 350 430 370C532 392 618 452 742 456C872 462 972 398 1094 314" />
+	</g>
+	<rect x="84" y="72" width="188" height="48" rx="24" fill="#EEF3F7" fill-opacity="0.1" stroke="#EEF3F7" stroke-opacity="0.16" />
+	<circle cx="114" cy="96" r="8" fill="#18B7A0" />
+	<text x="136" y="102" fill="#EEF3F7" font-family="'IBM Plex Mono', monospace" font-size="20" letter-spacing="1.6">DIGITAL LOGISTICS</text>
+	<text x="84" y="220" fill="#FFFFFF" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="68" font-weight="700">LintasNusa</text>
+	<text x="84" y="290" fill="#FFFFFF" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="68" font-weight="700">Logistics</text>
+	<text x="84" y="352" fill="#18B7A0" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="32" font-weight="600">Satu Sistem. Seluruh Nusantara.</text>
+	<text x="84" y="412" fill="#D6E2EC" font-family="'Inter', sans-serif" font-size="28">Fulfillment, delivery, returns, and reporting in one operating system</text>
+	<g>
+		<rect x="84" y="474" width="224" height="76" rx="18" fill="#EEF3F7" fill-opacity="0.08" stroke="#EEF3F7" stroke-opacity="0.18" />
+		<text x="114" y="508" fill="#18B7A0" font-family="'IBM Plex Mono', monospace" font-size="18" letter-spacing="1.2">COVERAGE</text>
+		<text x="114" y="536" fill="#FFFFFF" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="28" font-weight="700">247 cities / regencies</text>
+	</g>
+	<g>
+		<rect x="330" y="474" width="224" height="76" rx="18" fill="#EEF3F7" fill-opacity="0.08" stroke="#EEF3F7" stroke-opacity="0.18" />
+		<text x="360" y="508" fill="#18B7A0" font-family="'IBM Plex Mono', monospace" font-size="18" letter-spacing="1.2">NETWORK</text>
+		<text x="360" y="536" fill="#FFFFFF" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="28" font-weight="700">9 gateway hubs</text>
+	</g>
+	<g>
+		<rect x="576" y="474" width="252" height="76" rx="18" fill="#EEF3F7" fill-opacity="0.08" stroke="#EEF3F7" stroke-opacity="0.18" />
+		<text x="606" y="508" fill="#18B7A0" font-family="'IBM Plex Mono', monospace" font-size="18" letter-spacing="1.2">FOCUS</text>
+		<text x="606" y="536" fill="#FFFFFF" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="28" font-weight="700">Brand, UMKM, enterprise</text>
+	</g>
+	<g>
+		<rect x="888" y="88" width="228" height="228" rx="32" fill="#EEF3F7" fill-opacity="0.08" stroke="#EEF3F7" stroke-opacity="0.14" />
+		<path d="M946 160L1006 124L1076 160V236L1012 270L946 236V160Z" fill="url(#accent)" fill-opacity="0.95" />
+		<path d="M1006 124V194L1076 160" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" />
+		<path d="M1006 194L946 160" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" />
+		<path d="M1006 194V270" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" />
+		<circle cx="918" cy="346" r="8" fill="#18B7A0" />
+		<circle cx="992" cy="388" r="8" fill="#18B7A0" />
+		<circle cx="1088" cy="350" r="8" fill="#FF6B3D" />
+		<path d="M918 346C944 346 968 388 992 388C1030 388 1040 350 1088 350" stroke="#EEF3F7" stroke-width="3" stroke-linecap="round" />
+		<text x="888" y="434" fill="#FFFFFF" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="30" font-weight="700">Operational clarity</text>
+		<text x="888" y="470" fill="#D6E2EC" font-family="'Inter', sans-serif" font-size="24">Real-time tracking, SLA proof,</text>
+		<text x="888" y="502" fill="#D6E2EC" font-family="'Inter', sans-serif" font-size="24">claims, and return visibility.</text>
+	</g>
+</svg>

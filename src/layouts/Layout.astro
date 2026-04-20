@@ -3,25 +3,140 @@ import { SEO } from "astro-seo";
 import "../styles/global.css";
 
 /**
+ * @typedef {Record<string, any>} JsonLd
+ *
  * @typedef {object} Props
  * @property {string} [title]
  * @property {string} [description]
+ * @property {string[]} [keywords]
  * @property {string} [ogImage]
+ * @property {string} [ogImageAlt]
  * @property {"website" | "article"} [ogType]
  * @property {boolean} [noindex]
+ * @property {boolean} [nofollow]
+ * @property {boolean} [noarchive]
+ * @property {boolean} [nocache]
  * @property {string} [canonical]
+ * @property {string} [publishedTime]
+ * @property {string} [modifiedTime]
+ * @property {string[]} [articleAuthors]
+ * @property {string} [articleSection]
+ * @property {string[]} [articleTags]
+ * @property {JsonLd | JsonLd[]} [structuredData]
  */
 
+const siteName = "LintasNusa Logistics";
+const legalName = "PT Lintas Nusa Terpadu";
+const tagline = "Satu Sistem. Seluruh Nusantara.";
+const companyDescription =
+	"Perusahaan logistik digital Indonesia yang menyatukan fulfillment, delivery, return, dan pelaporan dalam satu operating system untuk brand, UMKM, dan enterprise.";
+const defaultKeywords = [
+	"LintasNusa Logistics",
+	"logistik digital Indonesia",
+	"jasa pengiriman Indonesia",
+	"fulfillment Indonesia",
+	"last-mile delivery",
+	"same day delivery",
+	"next day delivery",
+	"cold chain logistics",
+	"reverse logistics",
+	"COD reconciliation",
+	"merchant dashboard logistik",
+	"tracking paket real-time",
+	"logistik untuk UMKM",
+	"logistik untuk brand",
+	"logistik enterprise Indonesia",
+];
+
 const {
-	title = "LintasNusa Logistics",
-	description = "Sistem logistik digital untuk brand, UMKM, dan enterprise yang membutuhkan visibilitas real-time dan kontrol operasional end-to-end.",
-	ogImage = "/og-image.jpg",
+	title,
+	description = companyDescription,
+	keywords = defaultKeywords,
+	ogImage = "/og-image.svg",
+	ogImageAlt = "LintasNusa Logistics logistics network illustration with the tagline Satu Sistem. Seluruh Nusantara.",
 	ogType = "website",
 	noindex = false,
+	nofollow = false,
+	noarchive = false,
+	nocache = false,
 	canonical = Astro.url.href,
+	publishedTime,
+	modifiedTime,
+	articleAuthors = [],
+	articleSection,
+	articleTags = [],
+	structuredData = [],
 } = /** @type {Props} */ (Astro.props);
 
-const siteUrl = Astro.site ? Astro.site.href : "https://lintasnusa.com";
+const siteUrl = Astro.site ? new URL("/", Astro.site).href : "https://lintasnusa.lincie.me/";
+const canonicalUrl = new URL(canonical, siteUrl).href;
+const titlePrefix = title?.trim();
+const seoTitle = titlePrefix
+	? titlePrefix.includes(siteName)
+		? titlePrefix
+		: `${titlePrefix} | ${siteName}`
+	: siteName;
+const socialTitle = titlePrefix ? `${seoTitle} - ${tagline}` : `${siteName} - ${tagline}`;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
+const logoUrl = new URL("/favicon.svg", siteUrl).href;
+const normalizedStructuredData = Array.isArray(structuredData)
+	? structuredData
+	: structuredData
+		? [structuredData]
+		: [];
+const organizationId = `${siteUrl}#organization`;
+const websiteId = `${siteUrl}#website`;
+const webpageId = `${canonicalUrl}#webpage`;
+const jsonLdEntries = [
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"@id": organizationId,
+		name: siteName,
+		legalName,
+		url: siteUrl,
+		logo: logoUrl,
+		image: ogImageUrl,
+		description: companyDescription,
+		slogan: tagline,
+		foundingDate: "2021",
+		address: {
+			"@type": "PostalAddress",
+			addressLocality: "Jakarta Selatan",
+			addressCountry: "ID",
+		},
+		areaServed: "Indonesia",
+		knowsAbout: keywords,
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"@id": websiteId,
+		url: siteUrl,
+		name: siteName,
+		description: companyDescription,
+		inLanguage: "id-ID",
+		publisher: {
+			"@id": organizationId,
+		},
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"@id": webpageId,
+		url: canonicalUrl,
+		name: seoTitle,
+		description,
+		inLanguage: "id-ID",
+		isPartOf: {
+			"@id": websiteId,
+		},
+		about: {
+			"@id": organizationId,
+		},
+	},
+	...normalizedStructuredData,
+];
 ---
 
 <!doctype html>
@@ -33,30 +148,70 @@ const siteUrl = Astro.site ? Astro.site.href : "https://lintasnusa.com";
 		<meta name="generator" content={Astro.generator} />
 
 		<SEO
-			title={title}
+			title={seoTitle}
 			description={description}
-			canonical={canonical}
+			canonical={canonicalUrl}
 			noindex={noindex}
+			nofollow={nofollow}
+			noarchive={noarchive}
+			nocache={nocache}
+			robotsExtras="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+			languageAlternates={[{ href: canonicalUrl, hrefLang: "id-ID" }]}
 			openGraph={{
 				basic: {
-					title: title,
-					image: new URL(ogImage, siteUrl).href,
-					url: canonical,
+					title: socialTitle,
+					image: ogImageUrl,
+					url: canonicalUrl,
 					type: ogType,
 				},
 				optional: {
+					description: description,
 					locale: "id_ID",
-					siteName: "LintasNusa Logistics",
+					siteName,
 				},
+				image: {
+					type: "image/svg+xml",
+					width: 1200,
+					height: 630,
+					alt: ogImageAlt,
+				},
+				article:
+					ogType === "article"
+						? {
+								publishedTime,
+								modifiedTime,
+								authors: articleAuthors,
+								section: articleSection,
+								tags: articleTags,
+							}
+						: undefined,
 			}}
 			twitter={{
 				card: "summary_large_image",
-				title: title,
+				title: socialTitle,
 				description: description,
-				image: new URL(ogImage, siteUrl).href,
-				imageAlt: title,
+				image: ogImageUrl,
+				imageAlt: ogImageAlt,
+			}}
+			extend={{
+				link: [{ rel: "alternate", href: canonicalUrl, hreflang: "x-default" }],
+				meta: [
+					{ name: "keywords", content: keywords.join(", ") },
+					{ name: "author", content: legalName },
+					{ name: "publisher", content: legalName },
+					{ name: "application-name", content: siteName },
+					{ name: "apple-mobile-web-app-title", content: siteName },
+					{ name: "theme-color", content: "#0F2742" },
+					{ name: "geo.region", content: "ID-JK" },
+					{ name: "geo.placename", content: "Jakarta Selatan" },
+				],
 			}}
 		/>
+		{
+			jsonLdEntries.map((entry) => (
+				<script type="application/ld+json" set:html={JSON.stringify(entry)} />
+			))
+		}
 	</head>
 	<body>
 		<a

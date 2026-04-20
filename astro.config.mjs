@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://lintasnusa.lincie.me",
 	server: {
 		host: true,
 		port: 4321,
