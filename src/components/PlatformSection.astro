@@ -1,12 +1,459 @@
 ---
+const customerFeatures = [
+	{ label: "Lacak tanpa login", detail: "Paket bisa dilacak lewat nomor atau tautan langsung." },
+	{ label: "Booking pickup", detail: "Jadwal ambil paket tanpa harus hubungi call center." },
+	{ label: "Kalkulator tarif", detail: "Hitung estimasi biaya sebelum kirim." },
+	{ label: "Coverage explorer", detail: "Lihat lane aktif, bukan sekadar daftar kota." },
+	{ label: "ETA plus alerts", detail: "Notifikasi akurat di setiap perubahan status." },
+	{
+		label: "Reschedule & safe-drop",
+		detail: "Penerima atur waktu terima atau instruksikan kurir.",
+	},
+];
 
+const merchantFeatures = [
+	{
+		label: "Satu login, banyak peran",
+		detail: "Owner, ops, finance, dan CS mengakses data yang sama.",
+	},
+	{ label: "Sync pesanan", detail: "Marketplace, website, atau CSV masuk ke dashboard yang sama." },
+	{
+		label: "Monitoring multi-AWB",
+		detail: "Lacak puluhan hingga ratusan AWB (Air Waybill) secara bersamaan.",
+	},
+	{ label: "SLA performance dashboard", detail: "Lihat on-time rate per lane dan per layanan." },
+	{
+		label: "Analisis NDR",
+		detail: "Pahami alasan kegagalan kirim (Non-Delivery Rate) dan mulai recovery lebih cepat.",
+	},
+	{ label: "COD settlement", detail: "Rekonsiliasi payout dan tagihan tanpa laporan terpisah." },
+	{ label: "Return analytics", detail: "Retur dibaca per alasan, bukan sekadar jumlah." },
+];
+
+const enterpriseFeatures = [
+	{
+		label: "API & webhook access",
+		detail: "Kirim data otomatis ke sistem Anda saat ada update lacak, tanpa middleware.",
+	},
+	{
+		label: "ERP/WMS integration",
+		detail: "Koneksi ke sistem manajemen gudang (WMS) dan keuangan (ERP) yang sudah berjalan.",
+	},
+	{
+		label: "Dedicated account view",
+		detail: "Struktur akun terpisah untuk klien dengan banyak cabang.",
+	},
+	{
+		label: "Approval workflows",
+		detail: "Tetapkan jenjang persetujuan untuk kiriman dan laporan.",
+	},
+	{
+		label: "Incident reporting",
+		detail: "Komunikasi gangguan terstruktur dengan service status page.",
+	},
+];
+
+const trustFeatures = [
+	{ label: "Photo POD gallery", detail: "Bukti foto serah terima yang bisa diakses langsung." },
+	{ label: "Geo-stamped scans", detail: "Titik lokasi tiap pemindaian terekam otomatis." },
+	{ label: "Live exception alerts", detail: "Notifikasi real-time saat ada hambatan di lapangan." },
+	{ label: "Claims clock", detail: "Timer klaim dengan target respons 2 x 24 jam." },
+	{ label: "Delivery confidence score", detail: "Skor keandalan per route dan tipe layanan." },
+];
+
+const proofNumbers = [
+	{ value: "18.500", label: "Bisnis aktif", suffix: "" },
+	{ value: "31", label: "Volume berulang dari dashboard & API", suffix: "%" },
+	{ value: "97,9", label: "Kepatuhan pemindaian", suffix: "%" },
+];
 ---
 
 <section
 	id="platform"
-	class="border-mist-dark flex min-h-[50vh] items-center justify-center border-t"
+	aria-labelledby="platform-heading"
+	class="platform-section border-mist-dark relative overflow-hidden border-t bg-white py-20 [--pillar-transition:240ms_cubic-bezier(0.25,1,0.5,1)] lg:py-28"
+	data-proof={JSON.stringify(proofNumbers)}
 >
-	<div class="text-center">
-		<h2 class="font-display text-navy text-xl font-semibold">Platform</h2>
+	<div class="mx-auto max-w-7xl px-6 sm:px-8">
+		<header class="platform-header mb-16 lg:mb-24">
+			<div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
+				<div class="max-w-2xl space-y-5">
+					<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+						Platform Digital
+					</span>
+					<h2
+						id="platform-heading"
+						class="font-display text-navy text-[clamp(2.25rem,5vw,4.25rem)] leading-[0.98] font-bold tracking-tight"
+					>
+						Satu ekosistem. Seluruh peran dalam sistem yang sama.
+					</h2>
+					<p class="font-body text-charcoal text-base leading-7 sm:text-lg">
+						LintasNusa bukan kumpulan fitur yang terpisah. Satu akun menghubungkan sender,
+						recipient, merchant, finance, dan enterprise ke visibilitas yang sama, sehingga setiap
+						peran bisa bertindak dari informasi yang sama.
+					</p>
+				</div>
+
+				<div class="platform-proof-strip self-end" aria-label="Bukti performa platform">
+					<p class="font-body text-charcoal-mid mb-5 text-sm font-medium tracking-wide uppercase">
+						Bukti dari sistem
+					</p>
+					<dl class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-5">
+						{
+							proofNumbers.map((proof) => (
+								<div class="platform-proof-item border-mist-dark bg-mist/50 min-w-0 rounded-2xl border px-4 py-4 text-center sm:text-left">
+									<dd class="font-display text-navy block text-[clamp(1.75rem,3.5vw,2.5rem)] leading-none font-bold tracking-tight">
+										{proof.value}
+										<span class="text-teal">{proof.suffix}</span>
+									</dd>
+									<dt class="font-body text-charcoal-mid mt-1.5 text-sm leading-5 wrap-break-word">
+										{proof.label}
+									</dt>
+								</div>
+							))
+						}
+					</dl>
+				</div>
+			</div>
+		</header>
+
+		<div
+			class="platform-pillars-grid grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-8"
+		>
+			<div
+				class="platform-pillar platform-pillar--customer border-mist-dark bg-mist focus-visible:ring-teal rounded-3xl border p-7 transition-(--pillar-transition) hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(15,39,66,0.09)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none sm:p-8"
+				role="region"
+				aria-label="Fitur untuk penerima paket"
+				tabindex="0"
+			>
+				<div class="mb-7 flex items-start justify-between gap-4">
+					<div class="space-y-1">
+						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+							Pelanggan
+						</span>
+						<h3 class="font-display text-navy text-xl font-bold tracking-tight sm:text-2xl">
+							Untuk Penerima
+						</h3>
+						<p class="font-body text-charcoal-mid mt-2 max-w-[36ch] text-sm leading-6">
+							Lacak, ubah jadwal, dan berikan instruksi safe-drop, tanpa harus login.
+						</p>
+					</div>
+					<div
+						class="platform-pillar-icon border-mist-dark bg-teal/8 flex size-12 shrink-0 items-center justify-center rounded-2xl border"
+						aria-hidden="true"
+					>
+						<svg width="22" height="22" viewBox="0 0 22 22" fill="none" class="text-teal">
+							<circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="1.5"></circle>
+							<path
+								d="M11 2v3M11 17v3M2 11h3M17 11h3"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"></path>
+						</svg>
+					</div>
+				</div>
+
+				<ul class="platform-feature-list space-y-4" role="list">
+					{
+						customerFeatures.map((feature) => (
+							<li class="platform-feature-item group flex items-start gap-4">
+								<span
+									class="bg-teal/12 group-hover:bg-teal mt-1.5 block size-1.5 shrink-0 rounded-full"
+									aria-hidden="true"
+								/>
+								<div>
+									<p class="font-body text-navy text-sm font-semibold">{feature.label}</p>
+									<p class="font-body text-charcoal-mid mt-0.5 text-sm leading-5">
+										{feature.detail}
+									</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="flex flex-col gap-5">
+				<div
+					class="platform-pillar platform-pillar--merchant border-mist-dark bg-teal/5 text-navy focus-visible:ring-teal rounded-3xl border p-7 transition-(--pillar-transition) hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(15,39,66,0.09)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none sm:p-8"
+					role="region"
+					aria-label="Dashboard operasi merchant"
+					tabindex="0"
+				>
+					<div class="mb-6 flex items-start justify-between gap-4">
+						<div class="space-y-1">
+							<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+								Merchant
+							</span>
+							<h3 class="font-display text-navy text-xl font-bold tracking-tight sm:text-2xl">
+								Dashboard Operasi
+							</h3>
+							<p class="font-body text-charcoal-mid mt-2 max-w-[34ch] text-sm leading-6">
+								Single login untuk owner, ops, finance, dan customer service.
+							</p>
+						</div>
+						<div
+							class="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-white/12 bg-white/8"
+							aria-hidden="true"
+						>
+							<svg width="22" height="22" viewBox="0 0 22 22" fill="none" class="text-teal">
+								<rect
+									x="2"
+									y="3"
+									width="18"
+									height="14"
+									rx="2"
+									stroke="currentColor"
+									stroke-width="1.5"></rect>
+								<path
+									d="M2 7h18M7 11h2M7 14h4"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"></path>
+							</svg>
+						</div>
+					</div>
+
+					<ul class="platform-feature-list space-y-4" role="list">
+						{
+							merchantFeatures.map((feature) => (
+								<li class="platform-feature-item group flex items-start gap-3">
+									<span
+										class="bg-teal/50 group-hover:bg-teal mt-1.5 block size-1.5 shrink-0 rounded-full"
+										aria-hidden="true"
+									/>
+									<div>
+										<p class="font-body text-navy text-sm font-semibold">{feature.label}</p>
+										<p class="font-body text-charcoal-mid mt-0.5 text-sm leading-5">
+											{feature.detail}
+										</p>
+									</div>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+
+				<div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+					<div
+						class="platform-pillar platform-pillar--enterprise border-mist-dark focus-visible:ring-teal rounded-3xl border bg-white p-6 transition-(--pillar-transition) hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(15,39,66,0.09)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none sm:p-7"
+						role="region"
+						aria-label="API dan integrasi enterprise"
+						tabindex="0"
+					>
+						<div class="mb-5 flex items-start justify-between gap-3">
+							<div class="space-y-1">
+								<span
+									class="text-orange font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+								>
+									Enterprise
+								</span>
+								<h3 class="font-display text-navy text-lg font-bold tracking-tight">
+									API & Integrasi
+								</h3>
+							</div>
+							<div
+								class="border-mist-dark bg-mist/70 flex size-10 shrink-0 items-center justify-center rounded-xl border"
+								aria-hidden="true"
+							>
+								<svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-orange">
+									<path
+										d="M5 9L2 12l3 3M13 9l3 3-3 3M9 3l-3 3-3-3M9 15l3-3 3 3"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"></path>
+								</svg>
+							</div>
+						</div>
+
+						<ul class="platform-feature-list space-y-4" role="list">
+							{
+								enterpriseFeatures.map((feature) => (
+									<li class="platform-feature-item group flex items-start gap-3">
+										<span
+											class="bg-orange/20 group-hover:bg-orange mt-1.5 block size-1.5 shrink-0 rounded-full"
+											aria-hidden="true"
+										/>
+										<div>
+											<p class="font-body text-navy text-sm font-semibold">{feature.label}</p>
+											<p class="font-body text-charcoal-mid mt-0.5 text-xs leading-4">
+												{feature.detail}
+											</p>
+										</div>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+
+					<div
+						class="platform-pillar platform-pillar--trust border-charcoal-mid/12 bg-charcoal border-t-teal focus-visible:ring-teal rounded-3xl border border-t-2 p-6 text-white transition-(--pillar-transition) hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(15,39,66,0.09)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none sm:p-7"
+						role="region"
+						aria-label="Bukti dan verifikasi pengiriman"
+						tabindex="0"
+					>
+						<div class="mb-5 flex items-start justify-between gap-3">
+							<div class="space-y-1">
+								<span
+									class="font-mono text-[10px] font-medium tracking-[0.2em] text-white/55 uppercase"
+								>
+									Trust
+								</span>
+								<h3 class="font-display text-lg font-bold tracking-tight text-white">
+									Bukti & Verifikasi
+								</h3>
+							</div>
+							<div
+								class="flex size-10 shrink-0 items-center justify-center rounded-xl border border-white/12 bg-white/8"
+								aria-hidden="true"
+							>
+								<svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-teal">
+									<path
+										d="M9 2L3 5v4c0 3.5 2.5 6.5 6 7 3.5-.5 6-3.5 6-7V5L9 2z"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linejoin="round"></path>
+									<path
+										d="M6.5 9l2 2 3-3"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"></path>
+								</svg>
+							</div>
+						</div>
+
+						<ul class="platform-feature-list space-y-4" role="list">
+							{
+								trustFeatures.map((feature) => (
+									<li class="platform-feature-item group flex items-start gap-3">
+										<span
+											class="bg-teal/50 group-hover:bg-teal mt-1.5 block size-1.5 shrink-0 rounded-full"
+											aria-hidden="true"
+										/>
+										<div>
+											<p class="font-body text-sm font-semibold text-white">{feature.label}</p>
+											<p class="font-body mt-0.5 text-xs leading-4 text-white/70">
+												{feature.detail}
+											</p>
+										</div>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function initPlatformAnimations() {
+		const mm = gsap.matchMedia();
+
+		mm.add("(prefers-reduced-motion: no-preference)", () => {
+			const header = document.querySelector<HTMLElement>(".platform-header");
+			const pillars = gsap.utils.toArray<HTMLElement>(".platform-pillar");
+			const proofItems = gsap.utils.toArray<HTMLElement>(".platform-proof-item");
+			const featureItems = gsap.utils.toArray<HTMLElement>(".platform-feature-item");
+
+			if (header) {
+				gsap.from(header.children, {
+					opacity: 0,
+					y: 20,
+					duration: 0.55,
+					ease: "power3.out",
+					stagger: 0.1,
+					clearProps: "opacity,transform",
+				});
+			}
+
+			if (pillars.length) {
+				gsap.from(pillars, {
+					opacity: 0,
+					y: 28,
+					duration: 0.6,
+					ease: "power3.out",
+					stagger: 0.12,
+					scrollTrigger: {
+						trigger: pillars[0],
+						start: "top 82%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			}
+
+			if (proofItems.length) {
+				const proofData = JSON.parse(
+					document.getElementById("platform")?.dataset.proof || "[]",
+				) as { value: string; label: string; suffix: string }[];
+
+				gsap.from(proofItems, {
+					opacity: 0,
+					y: 14,
+					duration: 0.4,
+					ease: "power2.out",
+					stagger: 0.07,
+					scrollTrigger: {
+						trigger: proofItems[0],
+						start: "top 84%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+
+				proofItems.forEach((item, i) => {
+					const rawValue = parseFloat(proofData[i].value.replace(/\./g, "").replace(",", "."));
+					const dd = item.querySelector("dd");
+					if (!dd) return;
+
+					const counter = { value: 0 };
+					gsap.to(counter, {
+						value: rawValue,
+						duration: 1.4,
+						ease: "power2.out",
+						delay: 0.1 + i * 0.07,
+						onUpdate() {
+							const v = counter.value;
+							const formatted = Number.isInteger(rawValue)
+								? Math.round(v).toLocaleString("id-ID")
+								: v.toFixed(1).replace(".", ",");
+							dd.childNodes[0].textContent = formatted;
+						},
+						scrollTrigger: {
+							trigger: item,
+							start: "top 84%",
+							once: true,
+						},
+					});
+				});
+			}
+
+			if (featureItems.length) {
+				gsap.from(featureItems, {
+					opacity: 0,
+					y: 12,
+					duration: 0.32,
+					ease: "power2.out",
+					stagger: 0.04,
+					scrollTrigger: {
+						trigger: featureItems[0],
+						start: "top 86%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			}
+		});
+	}
+
+	initPlatformAnimations();
+</script>
