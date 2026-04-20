@@ -6,6 +6,12 @@
 	class="bg-mist/95 fixed top-0 right-0 left-0 z-100 h-(--nav-height) shadow-[0_1px_0_rgba(15,39,66,0.08)] backdrop-blur-md transition-[background,box-shadow] duration-300"
 	id="site-nav"
 >
+	<a
+		href="#mobile-menu"
+		class="focus:bg-teal sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[200] focus:rounded-md focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:ring-2 focus:ring-white focus:ring-offset-1 focus:outline-none"
+	>
+		Langsung ke konten utama
+	</a>
 	<div class="mx-auto flex h-full max-w-7xl items-center gap-8 px-8">
 		<a
 			href="/"
@@ -38,25 +44,25 @@
 			<span class="font-display text-navy text-lg font-bold tracking-tight">LintasNusa</span>
 		</a>
 
-		<nav class="ml-auto flex items-center gap-6" aria-label="Navigasi utama">
+		<nav class="hidden items-center gap-6 lg:ml-auto lg:flex" aria-label="Navigasi utama">
 			<a
 				href="#layanan"
-				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Layanan</a
 			>
 			<a
 				href="#jangkauan"
-				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Jangkauan</a
 			>
 			<a
 				href="#platform"
-				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Platform</a
 			>
 			<a
 				href="#tentang"
-				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Tentang</a
 			>
 		</nav>
@@ -68,7 +74,7 @@
 		>
 
 		<button
-			class="mobile-menu-toggle text-navy hover:bg-teal-dim focus:outline-teal flex size-11 cursor-pointer items-center justify-center rounded-md border-none bg-transparent transition-colors duration-150 focus:outline-2 focus:outline-offset-2 lg:hidden"
+			class="mobile-menu-toggle text-navy hover:bg-teal-dim focus:outline-teal ml-auto flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-md border-none bg-transparent transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2 lg:ml-0 lg:hidden"
 			aria-expanded="false"
 			aria-controls="mobile-menu"
 			aria-label="Buka menu navigasi"
@@ -89,27 +95,27 @@
 		<nav class="flex flex-col gap-1 p-4" aria-label="Menu navigasi mobile">
 			<a
 				href="#layanan"
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Layanan</a
 			>
 			<a
 				href="#jangkauan"
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Jangkauan</a
 			>
 			<a
 				href="#platform"
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Platform</a
 			>
 			<a
 				href="#tentang"
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Tentang</a
 			>
 			<a
 				href="#layanan"
-				class="mobile-nav-link mobile-nav-cta font-body text-teal mt-2 block min-h-11 border-b-0 px-2 py-3.5 text-base font-semibold no-underline transition-colors duration-150"
+				class="mobile-nav-link mobile-nav-cta font-body text-teal focus:outline-teal mt-2 block min-h-11 border-b-0 px-2 py-3.5 text-base font-semibold no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Jadwalkan Demo</a
 			>
 		</nav>
@@ -138,6 +144,12 @@
 			transition: none;
 		}
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.mobile-menu {
+			transition: none;
+		}
+	}
 </style>
 
 <script>
@@ -162,6 +174,9 @@
 		mobileMenu?.classList.toggle("open");
 		mobileMenuToggle?.setAttribute("aria-expanded", String(!isOpen));
 		mobileMenu?.setAttribute("aria-hidden", String(isOpen));
+		if (!isOpen) {
+			mobileMenu?.querySelector("a")?.focus();
+		}
 	}
 
 	function closeMobileMenu() {
