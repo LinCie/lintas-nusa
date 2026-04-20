@@ -6,36 +6,83 @@ interface Props {
 	description: string;
 	proofValue: string;
 	proofLabel: string;
+	bestFor?: string;
+	highlights?: string[];
+	featured?: boolean;
+	class?: string;
 }
 
-const { number, tag, name, description, proofValue, proofLabel } = Astro.props;
+const {
+	number,
+	tag,
+	name,
+	description,
+	proofValue,
+	proofLabel,
+	bestFor,
+	highlights = [],
+	featured = false,
+	class: className = "",
+} = Astro.props;
 ---
 
-<article class="group outline-none" tabindex="0">
+<article
+	class={`service-card group ${featured ? "service-card-featured" : "service-card-standard"} ${className}`.trim()}
+>
 	<div
-		class="bg-mist ease-out-quart has-focus-visible:outline-teal relative flex h-full flex-col gap-2.5 overflow-hidden rounded-md p-[1.375rem_1.5rem] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-focus-visible:shadow-[0_6px_20px_rgba(15,39,66,0.08)] has-focus-visible:outline has-focus-visible:outline-offset-2"
+		class:list={[
+			"service-card-surface border-mist-dark relative flex h-full flex-col overflow-hidden rounded-md border",
+			featured
+				? "gap-4 bg-white p-5 sm:gap-5 sm:p-7 lg:p-8"
+				: "bg-mist gap-3 p-5 sm:p-[1.375rem_1.5rem]",
+		]}
 	>
-		<div
-			class="bg-teal ease-out-quart absolute top-0 bottom-0 left-0 w-0.75 origin-bottom scale-y-0 transition-transform duration-200 group-focus-within:scale-y-100 group-hover:scale-y-100"
-		>
-		</div>
 		<div class="flex items-center justify-between">
-			<span class="text-charcoal-mid/60 font-mono text-[0.6875rem] font-medium">{number}</span>
+			<span class="text-charcoal-mid/60 font-mono text-xs font-medium">{number}</span>
 			<span
-				class="bg-teal-dim text-teal rounded-sm px-2 py-0.5 font-mono text-[0.5625rem] font-semibold tracking-[0.12em] uppercase"
+				class="bg-teal-dim text-teal rounded-sm px-2 py-0.5 font-mono text-[0.625rem] font-semibold tracking-[0.12em] uppercase"
 				>{tag}</span
 			>
 		</div>
-		<h3 class="font-display text-navy text-[1.125rem] leading-tight font-bold tracking-tight">
-			{name}
-		</h3>
-		<p class="font-body text-charcoal-mid flex-1 text-[0.8125rem] leading-[1.65]">{description}</p>
+		<div class:list={["flex flex-1 flex-col", featured ? "gap-4" : "gap-3"]}>
+			<div class="space-y-3">
+				<h3
+					class:list={[
+						"font-display text-navy font-bold tracking-tight",
+						featured
+							? "text-[1.375rem] leading-[1.05] sm:text-[1.5rem]"
+							: "text-[1.125rem] leading-tight",
+					]}
+				>
+					{name}
+				</h3>
+				{
+					bestFor && (
+						<p class="font-body text-navy/75 text-sm leading-relaxed">Cocok untuk {bestFor}.</p>
+					)
+				}
+				<p class="font-body text-charcoal-mid text-sm leading-[1.65]">{description}</p>
+			</div>
+
+			{
+				highlights.length > 0 && (
+					<ul class="border-mist-dark grid gap-2 border-t pt-4">
+						{highlights.map((item) => (
+							<li class="flex items-start gap-2">
+								<span class="bg-teal mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full" />
+								<span class="font-body text-charcoal-mid text-sm leading-relaxed">{item}</span>
+							</li>
+						))}
+					</ul>
+				)
+			}
+		</div>
 		<div class="border-mist-dark mt-auto flex flex-col gap-[0.1rem] border-t pt-3">
-			<span class="text-teal font-mono text-[0.75rem] font-semibold tracking-[0.02em]"
+			<span class="text-teal font-mono text-[0.8125rem] font-semibold tracking-[0.02em]"
 				>{proofValue}</span
 			>
 			<span
-				class="text-charcoal-mid/70 font-mono text-[0.5625rem] font-medium tracking-widest uppercase"
+				class="text-charcoal-mid/70 font-mono text-[0.625rem] font-medium tracking-widest uppercase"
 				>{proofLabel}</span
 			>
 		</div>
