@@ -1,0 +1,182 @@
+---
+
+---
+
+<header
+	class="bg-mist/95 fixed top-0 right-0 left-0 z-100 h-(--nav-height) shadow-[0_1px_0_rgba(15,39,66,0.08)] backdrop-blur-md transition-[background,box-shadow] duration-300"
+	id="site-nav"
+>
+	<div class="mx-auto flex h-full max-w-7xl items-center gap-8 px-8">
+		<a
+			href="/"
+			class="flex shrink-0 items-center gap-3 no-underline"
+			aria-label="LintasNusa Beranda"
+		>
+			<svg
+				width="32"
+				height="32"
+				viewBox="0 0 32 32"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
+			>
+				<rect width="32" height="32" rx="6" fill="var(--color-navy)"></rect>
+				<path
+					d="M8 16L14 10L20 16L26 10"
+					stroke="var(--color-teal)"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"></path>
+				<path
+					d="M8 22L14 16L20 22L26 16"
+					stroke="var(--color-teal)"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					opacity="0.5"></path>
+			</svg>
+			<span class="font-display text-navy text-lg font-bold tracking-tight">LintasNusa</span>
+		</a>
+
+		<nav class="ml-auto flex items-center gap-6" aria-label="Navigasi utama">
+			<a
+				href="#layanan"
+				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				>Layanan</a
+			>
+			<a
+				href="#jangkauan"
+				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				>Jangkauan</a
+			>
+			<a
+				href="#platform"
+				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				>Platform</a
+			>
+			<a
+				href="#tentang"
+				class="nav-link font-body text-charcoal-mid hover:text-navy relative block py-2 text-sm font-medium no-underline transition-colors duration-150"
+				>Tentang</a
+			>
+		</nav>
+
+		<a
+			href="#layanan"
+			class="font-body text-teal border-teal hover:bg-teal focus:outline-teal hidden shrink-0 rounded-md border-2 px-4 py-2 text-[13px] font-semibold no-underline transition-colors duration-150 hover:text-white focus:outline-2 focus:outline-offset-3 lg:inline-flex"
+			>Jadwalkan Demo</a
+		>
+
+		<button
+			class="mobile-menu-toggle text-navy hover:bg-teal-dim focus:outline-teal flex size-11 cursor-pointer items-center justify-center rounded-md border-none bg-transparent transition-colors duration-150 focus:outline-2 focus:outline-offset-2 lg:hidden"
+			aria-expanded="false"
+			aria-controls="mobile-menu"
+			aria-label="Buka menu navigasi"
+		>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+				<rect x="4" y="6" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+				<rect x="4" y="11" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+				<rect x="4" y="16" width="16" height="1.5" rx="0.75" fill="currentColor"></rect>
+			</svg>
+		</button>
+	</div>
+
+	<div
+		id="mobile-menu"
+		class="mobile-menu bg-mist border-mist-dark invisible absolute top-full right-0 left-0 -translate-y-2 border-b opacity-0 shadow-[0_4px_16px_rgba(15,39,66,0.08)] transition-transform duration-200 lg:hidden [&.open]:visible [&.open]:translate-y-0 [&.open]:opacity-100"
+		aria-hidden="true"
+	>
+		<nav class="flex flex-col gap-1 p-4" aria-label="Menu navigasi mobile">
+			<a
+				href="#layanan"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				>Layanan</a
+			>
+			<a
+				href="#jangkauan"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				>Jangkauan</a
+			>
+			<a
+				href="#platform"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				>Platform</a
+			>
+			<a
+				href="#tentang"
+				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-2 focus:-outline-offset-2"
+				>Tentang</a
+			>
+			<a
+				href="#layanan"
+				class="mobile-nav-link mobile-nav-cta font-body text-teal mt-2 block min-h-11 border-b-0 px-2 py-3.5 text-base font-semibold no-underline transition-colors duration-150"
+				>Jadwalkan Demo</a
+			>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.nav-link::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1.5px;
+		background: var(--color-teal);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 200ms var(--ease-out-quart);
+	}
+	.nav-link:hover::after {
+		transform: scaleX(1);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.nav-link::after {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	const nav = document.getElementById("site-nav");
+	const mobileMenu = document.getElementById("mobile-menu");
+	const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+
+	function updateNav() {
+		if (window.scrollY > 20) {
+			nav?.classList.add("bg-mist/95", "backdrop-blur-md", "shadow-[0_1px_0_rgba(15,39,66,0.08)]");
+		} else {
+			nav?.classList.remove(
+				"bg-mist/95",
+				"backdrop-blur-md",
+				"shadow-[0_1px_0_rgba(15,39,66,0.08)]",
+			);
+		}
+	}
+
+	function toggleMobileMenu() {
+		const isOpen = mobileMenu?.classList.contains("open");
+		mobileMenu?.classList.toggle("open");
+		mobileMenuToggle?.setAttribute("aria-expanded", String(!isOpen));
+		mobileMenu?.setAttribute("aria-hidden", String(isOpen));
+	}
+
+	function closeMobileMenu() {
+		mobileMenu?.classList.remove("open");
+		mobileMenuToggle?.setAttribute("aria-expanded", "false");
+		mobileMenu?.setAttribute("aria-hidden", "true");
+	}
+
+	mobileMenuToggle?.addEventListener("click", toggleMobileMenu);
+
+	mobileMenu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", closeMobileMenu);
+	});
+
+	window.addEventListener("scroll", updateNav, { passive: true });
+	window.addEventListener("resize", closeMobileMenu);
+	updateNav();
+</script>
