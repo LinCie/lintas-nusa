@@ -3,6 +3,7 @@ import { initFooter } from "./footer";
 import { initHeader } from "./header";
 import { initHomeAnimations } from "./home-animations";
 import { initJangkauanAnimations } from "./jangkauan-animations";
+import { initLayananAnimations } from "./layanan-animations";
 import { initPlatformAnimations } from "./platform-animations";
 import { setupSwupRuntime } from "./swup-runtime";
 import { initTentangPageAnimations } from "./tentang-page";
@@ -34,6 +35,10 @@ function runInitializers() {
 
 	if (page === "tentang") {
 		cleanups.push(initTentangPageAnimations());
+	}
+
+	if (page === "layanan") {
+		cleanups.push(initLayananAnimations());
 	}
 
 	cleanup = () => {

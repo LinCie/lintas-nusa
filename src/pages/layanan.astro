@@ -1,0 +1,891 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+---
+
+<Layout
+	title="Layanan"
+	description="Portofolio lengkap layanan LintasNusa: pengiriman parcel, fulfillment warehousing, cold chain, secure delivery, dan reverse logistics dalam satu sistem terintegrasi."
+	pageName="layanan"
+>
+	<a
+		href="#main-content"
+		class="skip-to-content bg-navy font-body focus:outline-teal absolute -top-full left-4 z-50 rounded-md px-5 py-3 text-sm font-semibold text-white no-underline transition-[top] duration-150 focus:top-4 focus:outline-2 focus:outline-offset-2"
+		>Langsung ke konten</a
+	>
+	<Header />
+
+	<div class="route-stage" data-page-view="layanan">
+		<!-- Hero Section -->
+		<section
+			id="hero"
+			class="bg-navy relative flex min-h-[100dvh] flex-col justify-center overflow-hidden"
+			aria-labelledby="layanan-hero-heading"
+		>
+			<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+				<svg
+					class="h-full w-full"
+					viewBox="0 0 1440 900"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					preserveAspectRatio="xMidYMid slice"
+				>
+					<path
+						d="M-60 700 Q180 580 400 600 T900 520 T1400 480 T1540 460"
+						stroke="var(--color-teal)"
+						stroke-width="1"
+						opacity="0.12"></path>
+					<path
+						d="M-60 640 Q200 520 440 540 T940 460 T1440 420 T1540 400"
+						stroke="var(--color-teal)"
+						stroke-width="0.5"
+						opacity="0.08"></path>
+					<path
+						d="M-60 360 Q180 440 420 400 T920 340 T1420 300 T1540 280"
+						stroke="var(--color-teal)"
+						stroke-width="1"
+						opacity="0.10"></path>
+					<path
+						d="M-60 300 Q240 380 480 340 T980 280 T1480 240 T1540 220"
+						stroke="var(--color-teal)"
+						stroke-width="0.5"
+						opacity="0.06"></path>
+					<line
+						x1="720"
+						y1="0"
+						x2="720"
+						y2="900"
+						stroke="var(--color-teal)"
+						stroke-width="0.4"
+						opacity="0.05"
+						stroke-dasharray="6 12"></line>
+					<circle cx="720" cy="450" r="2" fill="var(--color-teal)" opacity="0.15"></circle>
+					<circle cx="400" cy="600" r="1.5" fill="var(--color-teal)" opacity="0.12"></circle>
+					<circle cx="900" cy="520" r="1.5" fill="var(--color-teal)" opacity="0.10"></circle>
+					<circle cx="420" cy="400" r="1.5" fill="var(--color-teal)" opacity="0.12"></circle>
+					<circle cx="920" cy="340" r="1.5" fill="var(--color-teal)" opacity="0.10"></circle>
+					<circle cx="200" cy="680" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+					<circle cx="1100" cy="420" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+					<circle cx="600" cy="320" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+					<circle cx="1000" cy="280" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+				</svg>
+			</div>
+
+			<div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 sm:px-8 lg:py-32">
+				<div class="layanan-hero-block max-w-3xl">
+					<p
+						class="hero-tagline-label text-teal mb-6 font-mono text-[10px] font-medium tracking-[0.25em] uppercase"
+					>
+						Portofolio Layanan
+					</p>
+					<h1
+						id="layanan-hero-heading"
+						class="hero-tagline font-display leading-[1.02] font-black tracking-tight text-white"
+						style="font-size: clamp(3rem, 8vw, 5.5rem);"
+					>
+						Satu sistem.<br />Seluruh layanan.
+					</h1>
+					<p
+						class="layanan-hero-copy font-body text-mist/70 mt-8 max-w-[50ch] text-base leading-relaxed sm:text-lg"
+					>
+						Pengiriman, fulfillment, cold chain, secure delivery, retur, dan klaim — semuanya dalam
+						satu sistem yang sama. Tanpa portal terpisah, tanpa laporan yang terpecah.
+					</p>
+				</div>
+
+				<div
+					class="layanan-stats mx-auto mt-12 grid max-w-xl grid-cols-2 gap-x-8 gap-y-6 sm:mx-0 sm:max-w-none sm:grid-cols-4 sm:gap-4"
+				>
+					<div class="layanan-stat">
+						<span
+							class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-none font-bold text-white"
+							>12,4<span class="text-teal">jt</span></span
+						>
+						<p
+							class="mt-2 font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+						>
+							Parsel 2025
+						</p>
+					</div>
+					<div class="layanan-stat">
+						<span
+							class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-none font-bold text-white"
+							>97,9<span class="text-teal">%</span></span
+						>
+						<p
+							class="mt-2 font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+						>
+							Kepatuhan Pemindaian
+						</p>
+					</div>
+					<div class="layanan-stat">
+						<span
+							class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-none font-bold text-white"
+							>95,8<span class="text-teal">%</span></span
+						>
+						<p
+							class="mt-2 font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+						>
+							Keberhasilan Pertama
+						</p>
+					</div>
+					<div class="layanan-stat">
+						<span
+							class="font-display text-[clamp(1.5rem,3vw,2rem)] leading-none font-bold text-white"
+							>247<span class="text-teal"> Kota</span></span
+						>
+						<p
+							class="mt-2 font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+						>
+							Jangkauan Nasional
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="hero-scroll-indicator absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3"
+				aria-hidden="true"
+			>
+				<span class="font-mono text-[9px] font-medium tracking-[0.2em] text-white/30 uppercase">
+					Scroll
+				</span>
+				<div class="scroll-line h-12 w-0.5 bg-linear-to-b from-white/40 to-transparent"></div>
+			</div>
+		</section>
+
+		<!-- Ecosystem Narrative -->
+		<section id="ekosistem" aria-labelledby="ekosistem-heading" class="bg-white py-20 lg:py-28">
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div
+					class="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.55fr)] lg:gap-20"
+				>
+					<div class="ekosistem-prose space-y-6">
+						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+							Ekosistem Terintegrasi
+						</span>
+						<h2
+							id="ekosistem-heading"
+							class="font-display text-navy leading-[1.05] font-bold tracking-tight"
+							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
+						>
+							Sebelum membandingkan layanan, pahami dulu mengapa satu sistem lebih baik dari banyak
+							portal.
+						</h2>
+						<div class="space-y-4">
+							<p class="font-body text-charcoal-mid text-base leading-[1.7]">
+								Sebagian besar perusahaan logistik menawarkan layanan secara terpisah — satu tool
+								untuk kirim, tool lain untuk gudang, platform berbeda lagi untuk retur.
+								Masing-masing dengan login, laporan, dan tanggung jawab yang berbeda. Hasilnya: tim
+								operations mengelola banyak sistem, finance menarik data dari tiga tempat, dan
+								customer service menjelaskan status dari dua dashboard.
+							</p>
+							<p class="font-body text-charcoal-mid text-base leading-[1.7]">
+								LintasNusa dirancang berbeda. Satu akun, satu login, satu cara membaca status — dari
+								saat paket dijemput sampai settlement selesai. Setiap layanan berdiri sendiri,
+								tetapi semuanya tersambung ke sistem yang sama.
+							</p>
+						</div>
+					</div>
+
+					<aside class="ekosistem-sidebar self-start lg:sticky lg:top-32 lg:pt-2">
+						<div class="bg-mist rounded-2xl p-6 sm:p-8">
+							<p
+								class="text-navy/50 mb-5 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+							>
+								Benefit satu sistem
+							</p>
+							<ul class="space-y-4">
+								<li class="flex items-start gap-3">
+									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
+									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
+										>Sender, recipient, merchant, finance, dan operations melihat data yang sama</span
+									>
+								</li>
+								<li class="flex items-start gap-3">
+									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
+									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
+										>Status kirim, proof of delivery, dan settlement COD satu alur</span
+									>
+								</li>
+								<li class="flex items-start gap-3">
+									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
+									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
+										>Klaim dan retur langsung tercatat di dashboard yang sama</span
+									>
+								</li>
+								<li class="flex items-start gap-3">
+									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
+									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
+										>API dan webhook terhubung ke satu endpoint, bukan banyak subdomain</span
+									>
+								</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<!-- Service Tabs & Cards -->
+		<section
+			id="layanan-section"
+			class="layanan-section border-mist-dark border-t bg-white"
+			aria-label="Layanan LintasNusa"
+			data-service-section
+		>
+			<!-- Category Tabs -->
+			<div
+				class="service-tabs-wrapper border-mist-dark border-b"
+				role="region"
+				aria-label="Kategori layanan"
+			>
+				<div class="mx-auto max-w-7xl px-5 sm:px-8">
+					<nav
+						class="service-tab-list border-mist-dark flex flex-wrap gap-0 border-b pt-4 sm:pt-6"
+						aria-label="Loncat ke kategori layanan"
+					>
+						<button
+							id="tab-parcel"
+							type="button"
+							data-service-tab
+							data-default-active="true"
+							aria-selected="true"
+							role="tab"
+							class="service-tab font-body text-charcoal-mid focus-visible:outline-teal -mb-px inline-flex min-h-11 flex-1 items-center justify-center gap-2 border-b-2 border-transparent px-4 py-3 text-sm font-medium focus:outline-none focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 sm:flex-none sm:justify-start sm:px-5"
+						>
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 14 14"
+								fill="none"
+								aria-hidden="true"
+								class="tab-icon text-teal opacity-60"
+							>
+								<path
+									d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"></path>
+							</svg>
+							Parcel & Last-Mile
+						</button>
+						<button
+							id="tab-fulfillment"
+							type="button"
+							data-service-tab
+							aria-selected="false"
+							role="tab"
+							class="service-tab font-body text-charcoal-mid hover:text-navy focus-visible:outline-teal -mb-px inline-flex min-h-11 flex-1 items-center justify-center gap-2 border-b-2 border-transparent px-4 py-3 text-sm font-medium focus:outline-none focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 sm:flex-none sm:justify-start sm:px-5"
+						>
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 14 14"
+								fill="none"
+								aria-hidden="true"
+								class="tab-icon opacity-60"
+							>
+								<rect
+									x="2"
+									y="2"
+									width="10"
+									height="10"
+									rx="1.5"
+									stroke="currentColor"
+									stroke-width="1.5"></rect>
+								<path
+									d="M5 7H9M7 5V9"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"></path>
+							</svg>
+							Fulfillment & Warehousing
+						</button>
+						<button
+							id="tab-special"
+							type="button"
+							data-service-tab
+							aria-selected="false"
+							role="tab"
+							class="service-tab font-body text-charcoal-mid hover:text-navy focus-visible:outline-teal -mb-px inline-flex min-h-11 flex-1 items-center justify-center gap-2 border-b-2 border-transparent px-4 py-3 text-sm font-medium focus:outline-none focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 sm:flex-none sm:justify-start sm:px-5"
+						>
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 14 14"
+								fill="none"
+								aria-hidden="true"
+								class="tab-icon opacity-60"
+							>
+								<path
+									d="M7 1L8.5 5H13L9.5 7.5L11 12L7 9L3 12L4.5 7.5L1 5H5.5L7 1Z"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linejoin="round"></path>
+							</svg>
+							Special Handling
+						</button>
+						<button
+							id="tab-reverse"
+							type="button"
+							data-service-tab
+							aria-selected="false"
+							role="tab"
+							class="service-tab font-body text-charcoal-mid hover:text-navy focus-visible:outline-teal -mb-px inline-flex min-h-11 flex-1 items-center justify-center gap-2 border-b-2 border-transparent px-4 py-3 text-sm font-medium focus:outline-none focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-3 sm:flex-none sm:justify-start sm:px-5"
+						>
+							<svg
+								width="14"
+								height="14"
+								viewBox="0 0 14 14"
+								fill="none"
+								aria-hidden="true"
+								class="tab-icon opacity-60"
+							>
+								<path
+									d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									transform="matrix(-1 0 0 1 14 0)"></path>
+							</svg>
+							Reverse Logistics
+						</button>
+					</nav>
+				</div>
+			</div>
+
+			<!-- Parcel & Last-Mile Panel -->
+			<div
+				id="panel-parcel"
+				data-service-panel
+				aria-labelledby="tab-parcel"
+				class="service-category service-panel pt-10 pb-4 sm:pt-12 sm:pb-6"
+			>
+				<div class="mx-auto max-w-7xl px-5 sm:px-8">
+					<div
+						class="service-category-header mb-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:items-end lg:gap-12"
+					>
+						<div class="space-y-3">
+							<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+								>Parcel & Last-Mile</span
+							>
+							<h2
+								class="font-display text-navy max-w-[18ch] text-[1.75rem] leading-[1.08] font-bold tracking-tight"
+							>
+								Layanan kirim dari pickup sampai penerima — dengan status yang tetap terbaca.
+							</h2>
+						</div>
+						<p class="font-body text-charcoal-mid max-w-[44ch] text-sm leading-relaxed">
+							Mulai dari lane reguler sampai same-day dan COD. Setiap layanan menjelaskan kapan di
+							pakai dan bukti operasional yang Anda terima.
+						</p>
+					</div>
+
+					<div class="mb-5 space-y-2">
+						<span
+							class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+							>Layanan Inti</span
+						>
+						<p class="font-body text-charcoal-mid max-w-[46ch] text-sm leading-relaxed">
+							Arus kirim yang paling sering dipakai sebagai fondasi operasi harian.
+						</p>
+					</div>
+
+					<div class="service-feature-grid grid grid-cols-1 gap-4 lg:grid-cols-2">
+						<ServiceCard
+							number="01"
+							tag="Reguler"
+							name="LN Regular"
+							description="Layanan reguler untuk volume kirim harian dengan status yang tetap terbaca dari pickup sampai paket diterima."
+							proofValue="97,9%"
+							proofLabel="Kepatuhan Pemindaian 2025"
+							bestFor="volume harian lintas 247 kota dan kabupaten"
+							highlights={[
+								"Setiap perpindahan utama dipindai agar posisi paket tidak perlu ditebak.",
+								"Status yang dilihat tim ops, finance, dan customer service tetap sinkron.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+						<ServiceCard
+							number="02"
+							tag="COD"
+							name="LN COD Clear"
+							description="Pengiriman COD dengan alur pembayaran dan settlement yang terbaca di dashboard tanpa pindah sistem."
+							proofValue="H+1 kerja"
+							proofLabel="Target Settlement COD"
+							bestFor="penjualan yang dibayar saat paket diterima"
+							highlights={[
+								"Status kirim dan status payout mengikuti order yang sama.",
+								"Finance tidak perlu merekonsiliasi COD dari laporan yang terpisah.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+					</div>
+
+					<div
+						class="service-support-block border-mist-dark mt-8 space-y-4 border-t pt-6 sm:mt-10 sm:space-y-5 sm:pt-8"
+					>
+						<div class="flex flex-wrap items-end justify-between gap-4">
+							<div class="space-y-2">
+								<span
+									class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+									>Kecepatan Lane</span
+								>
+								<h3
+									class="font-display text-navy text-[1.25rem] leading-tight font-bold tracking-tight"
+								>
+									Pilihan kecepatan untuk area dan ritme kirim yang berbeda.
+								</h3>
+							</div>
+							<p class="font-body text-charcoal-mid max-w-[36ch] text-sm leading-relaxed">
+								Gunakan saat Anda sudah tahu pola rute dan batas waktu yang dibutuhkan.
+							</p>
+						</div>
+						<div class="service-support-grid grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+							<ServiceCard
+								number="03"
+								tag="Hari Ini"
+								name="LN SameDay Metro"
+								description="Pesan sebelum batas waktu dan paket berangkat di hari yang sama untuk klaster metro utama."
+								proofValue="98,3%"
+								proofLabel="Keberangkatan Tepat Waktu 2025"
+							/>
+							<ServiceCard
+								number="04"
+								tag="Besok"
+								name="LN NextDay"
+								description="Untuk jalur utama Jawa dan Sumatra, paket tiba pada hari kerja berikutnya dengan alur scan yang sama."
+								proofValue="95,8%"
+								proofLabel="Keberhasilan Kirim Pertama 2025"
+							/>
+						</div>
+					</div>
+
+					<button
+						class="service-expand-toggle font-body text-teal hover:text-navy focus:outline-teal mt-6 inline-flex min-h-11 items-center gap-1 border-none bg-transparent px-0 py-2 text-sm font-medium focus:rounded-sm focus:outline-2 focus:outline-offset-3"
+						aria-expanded="false"
+						aria-controls="parcel-expand"
+						data-label-default="Lihat layanan parcel tambahan"
+						data-label-expanded="Sembunyikan layanan parcel tambahan"
+						type="button"
+					>
+						<span class="toggle-label">Lihat layanan parcel tambahan</span>
+						<svg
+							class="toggle-chevron"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M2 4L6 8L10 4"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</button>
+
+					<div
+						class="service-expand-group border-mist-dark mt-5 space-y-4 border-t pt-5"
+						id="parcel-expand"
+					>
+						<div class="flex flex-wrap items-end justify-between gap-4">
+							<div class="space-y-2">
+								<span
+									class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+									>Skenario Tambahan</span
+								>
+								<h4
+									class="font-display text-navy text-[1.25rem] leading-tight font-bold tracking-tight"
+								>
+									Saat operasi butuh alur yang tidak masuk lane harian.
+								</h4>
+							</div>
+							<p class="font-body text-charcoal-mid max-w-[36ch] text-sm leading-relaxed">
+								Multi-drop dan tukar barang tetap memakai jejak status yang sama dengan kirim utama.
+							</p>
+						</div>
+						<div class="service-expand-grid grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+							<ServiceCard
+								number="05"
+								tag="Multi Tujuan"
+								name="LN BulkDrop"
+								description="Pengiriman ke banyak titik untuk toko, reseller, atau kebutuhan proyek dengan urutan rute yang dikonsolidasikan lebih dulu."
+								proofValue="Rute multi-drop"
+								proofLabel="Konsolidasi Banyak Titik"
+							/>
+							<ServiceCard
+								number="06"
+								tag="Tukar Barang"
+								name="LN Exchange"
+								description="Jika penerima perlu menukar ukuran, warna, atau produk, alurnya tetap berjalan tanpa membuat pesanan baru."
+								proofValue="Tanpa order baru"
+								proofLabel="Tukar Barang Satu Alur"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fulfillment & Warehousing Panel -->
+			<div
+				id="panel-fulfillment"
+				data-service-panel
+				aria-labelledby="tab-fulfillment"
+				class="service-category service-panel pt-10 pb-4 sm:pt-12 sm:pb-6"
+				hidden
+				aria-hidden="true"
+			>
+				<div class="mx-auto max-w-7xl px-5 sm:px-8">
+					<div
+						class="service-category-header mb-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:items-end lg:gap-12"
+					>
+						<div class="space-y-3">
+							<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+								>Fulfillment & Warehousing</span
+							>
+							<h2
+								class="font-display text-navy max-w-[18ch] text-[1.75rem] leading-[1.08] font-bold tracking-tight"
+							>
+								Gudang, pick-pack-ship, dan visibilitas stok — dalam satu alur yang sama.
+							</h2>
+						</div>
+						<p class="font-body text-charcoal-mid max-w-[44ch] text-sm leading-relaxed">
+							Dirancang untuk brand dengan dispatch harian dan tim yang butuh visibilitas stok
+							secara real-time.
+						</p>
+					</div>
+
+					<div class="mb-5 space-y-2">
+						<span
+							class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+							>Layanan Inti</span
+						>
+						<p class="font-body text-charcoal-mid max-w-[46ch] text-sm leading-relaxed">
+							Fokus pada alur yang paling sering dipakai untuk fulfillment dan pengelolaan stok.
+						</p>
+					</div>
+
+					<div class="service-feature-grid grid grid-cols-1 gap-4 lg:grid-cols-2">
+						<ServiceCard
+							number="01"
+							tag="Fulfillment"
+							name="LN Fulfill"
+							description="Inbound, penyimpanan, pick-pack-ship, sampai outbound tercatat di satu alur dashboard yang sama."
+							proofValue="Satu login lintas peran"
+							proofLabel="Ops, Finance, dan CS dalam Sistem yang Sama"
+							bestFor="brand dengan stok aktif dan dispatch harian"
+							highlights={[
+								"Inbound, pick-pack-ship, dan outbound tidak terpecah ke laporan yang berbeda.",
+								"Owner, ops, dan finance melihat progres gudang dari sistem yang sama.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+						<ServiceCard
+							number="02"
+							tag="Cepat"
+							name="LN FlashPick"
+							description="Untuk produk yang cepat habis, pesanan tetap bisa berangkat di hari yang sama meski cut-off lebih malam."
+							proofValue="Cut-off lebih malam"
+							proofLabel="Dispatch Hari yang Sama"
+							bestFor="produk high-velocity dengan rotation cepat"
+							highlights={[
+								"Pesanan masuk sebelum batas normal tapi still diproses same-day.",
+								"Cocok untuk flash sale atau SKU yang sering restock.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+					</div>
+
+					<button
+						class="service-expand-toggle font-body text-teal hover:text-navy focus:outline-teal mt-6 inline-flex min-h-11 items-center gap-1 border-none bg-transparent px-0 py-2 text-sm font-medium focus:rounded-sm focus:outline-2 focus:outline-offset-3"
+						aria-expanded="false"
+						aria-controls="fulfillment-expand"
+						data-label-default="Lihat layanan warehousing tambahan"
+						data-label-expanded="Sembunyikan layanan warehousing tambahan"
+						type="button"
+					>
+						<span class="toggle-label">Lihat layanan warehousing tambahan</span>
+						<svg
+							class="toggle-chevron"
+							width="12"
+							height="12"
+							viewBox="0 0 12 12"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M2 4L6 8L10 4"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</button>
+
+					<div
+						class="service-expand-group border-mist-dark mt-5 space-y-4 border-t pt-5"
+						id="fulfillment-expand"
+					>
+						<div class="flex flex-wrap items-end justify-between gap-4">
+							<div class="space-y-2">
+								<span
+									class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+									>Tambahan Warehousing</span
+								>
+								<h4
+									class="font-display text-navy text-[1.25rem] leading-tight font-bold tracking-tight"
+								>
+									Lapis visibilitas saat stok perlu diawasi lebih rapat.
+								</h4>
+							</div>
+							<p class="font-body text-charcoal-mid max-w-[36ch] text-sm leading-relaxed">
+								Pakai saat Gudang perlu tahu penyebab retur atau SKU mana yang perlu diisi ulang.
+							</p>
+						</div>
+						<div class="service-expand-grid grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+							<ServiceCard
+								number="03"
+								tag="Stok"
+								name="LN Inventory View"
+								description="Stok per gudang, per SKU, dan riwayat pergerakannya terlihat untuk membantu tim mengisi ulang lebih cepat."
+								proofValue="Per Gudang & Per SKU"
+								proofLabel="Riwayat Stok Terlihat"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Special Handling Panel -->
+			<div
+				id="panel-special"
+				data-service-panel
+				aria-labelledby="tab-special"
+				class="service-category service-panel pt-10 pb-4 sm:pt-12 sm:pb-6"
+				hidden
+				aria-hidden="true"
+			>
+				<div class="mx-auto max-w-7xl px-5 sm:px-8">
+					<div
+						class="service-category-header mb-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:items-end lg:gap-12"
+					>
+						<div class="space-y-3">
+							<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+								>Special Handling</span
+							>
+							<h2
+								class="font-display text-navy max-w-[18ch] text-[1.75rem] leading-[1.08] font-bold tracking-tight"
+							>
+								Untuk paket yang butuh kondisi khusus — dingin atau terverifikasi.
+							</h2>
+						</div>
+						<p class="font-body text-charcoal-mid max-w-[44ch] text-sm leading-relaxed">
+							Cold chain dengan log suhu dan secure delivery dengan OTP + foto POD. Kedua layanan
+							ini bekerja dengan jejak status yang sama.
+						</p>
+					</div>
+
+					<div class="mb-5 space-y-2">
+						<span
+							class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+							>Layanan Inti</span
+						>
+						<p class="font-body text-charcoal-mid max-w-[46ch] text-sm leading-relaxed">
+							Untuk barang yang butuh rantai dingin atau verifikasi khusus saat serah terima.
+						</p>
+					</div>
+
+					<div class="service-feature-grid grid grid-cols-1 gap-4 lg:grid-cols-2">
+						<ServiceCard
+							number="01"
+							tag="Cold Chain"
+							name="LN Cold"
+							description="Layanan chilled dan frozen dengan log suhu yang mengikuti titik pindai utama sepanjang perjalanan."
+							proofValue="Log Suhu Per Pindai"
+							proofLabel="Rantai Dingin Tercatat"
+							bestFor="makanan beku, meal kit, dan produk sensitif suhu"
+							highlights={[
+								"Tim dapat menelusuri kondisi paket tanpa minta bukti manual ke lapangan.",
+								"Jejak suhu menyatu dengan status kirim sehingga recovery lebih cepat dimulai.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+						<ServiceCard
+							number="02"
+							tag="Secure"
+							name="LN Secure"
+							description="Untuk paket bernilai tinggi, penerima diverifikasi dengan OTP dan foto saat serah terima."
+							proofValue="OTP + Foto POD"
+							proofLabel="Serah Terima Tervalidasi"
+							bestFor="barang elektronik, perhiasan, ataukiriman bernilai tinggi"
+							highlights={[
+								"Penerima tidak bisa diserahi ke orang lain tanpa verifikasi.",
+								"Foto POD menjadi bukti otentik yang bisa diakses kapan saja.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Reverse Logistics Panel -->
+			<div
+				id="panel-reverse"
+				data-service-panel
+				aria-labelledby="tab-reverse"
+				class="service-category service-panel pt-10 pb-4 sm:pt-12 sm:pb-6"
+				hidden
+				aria-hidden="true"
+			>
+				<div class="mx-auto max-w-7xl px-5 sm:px-8">
+					<div
+						class="service-category-header mb-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:items-end lg:gap-12"
+					>
+						<div class="space-y-3">
+							<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+								>Reverse Logistics</span
+							>
+							<h2
+								class="font-display text-navy max-w-[18ch] text-[1.75rem] leading-[1.08] font-bold tracking-tight"
+							>
+								Retur dan klaim yang tercatat, ditelusuri, dan diselesaikan dalam satu sistem.
+							</h2>
+						</div>
+						<p class="font-body text-charcoal-mid max-w-[44ch] text-sm leading-relaxed">
+							Bukan sekadar menerima barang kembali — tapi memahami penyebabnya dan memulai recovery
+							dari saat penjemputan.
+						</p>
+					</div>
+
+					<div class="mb-5 space-y-2">
+						<span
+							class="text-charcoal-mid/80 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+							>Layanan Inti</span
+						>
+						<p class="font-body text-charcoal-mid max-w-[46ch] text-sm leading-relaxed">
+							Alur retur dan klaim yang perlu terbaca tanpa tarik data manual.
+						</p>
+					</div>
+
+					<div class="service-feature-grid grid grid-cols-1 gap-4 lg:grid-cols-2">
+						<ServiceCard
+							number="01"
+							tag="Retur"
+							name="LN Return"
+							description="Retur dijemput sesuai jadwal dan alasan pengembaliannya dicatat agar tim Anda tahu apa yang perlu diperbaiki."
+							proofValue="Alasan Retur Terkode"
+							proofLabel="Jejak Penyebab Retur"
+							bestFor="brand yang butuh visibility ke pola retur"
+							highlights={[
+								"Setiap retur punya alasan coding yang membantu tim product dan ops.",
+								"Penjemputan dijadwalkan, bukan menunggu paket kembali sendiri.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+						<ServiceCard
+							number="02"
+							tag="Klaim"
+							name="LN ClaimCenter"
+							description="Semua klaim masuk ke satu tempat dengan status yang bisa dipantau langsung di dashboard oleh tim terkait."
+							proofValue="2 x 24 Jam"
+							proofLabel="Target Respons Awal Klaim"
+							bestFor="perusahaan yang butuh accountability pada handleclaim"
+							highlights={[
+								"Klaim tidak hilang ke email atau ticket tool yang terpisah.",
+								"Setiap klaim punya clock yang dimulai saat intake — bukan saat disetujui.",
+							]}
+							featured={true}
+							class="lg:col-span-2"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Strip -->
+		<section id="kontak" aria-labelledby="cta-layanan-heading" class="bg-navy py-20 lg:py-28">
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+					<div class="cta-content">
+						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+							Bandingkan Layanan
+						</span>
+						<h2
+							id="cta-layanan-heading"
+							class="font-display mt-4 leading-[1.05] font-bold tracking-tight text-white"
+							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
+						>
+							Butuh bantuan memilih layanan yang paling pas untuk operasional Anda?
+						</h2>
+						<p class="font-body text-mist/60 mt-5 max-w-[46ch] text-base leading-relaxed">
+							Tim kami membantu memetakan alur kirim, storage, dan recovery yang paling sesuai
+							dengan volume, jangkauan, dan standar layanan yang Anda butuhkan.
+						</p>
+					</div>
+
+					<div class="cta-actions flex flex-col justify-end gap-4 sm:flex-row lg:flex-col">
+						<a
+							href="mailto:partner@lintasnusa.co.id"
+							class="cta-primary bg-orange font-body focus:outline-teal hover:bg-orange-hover inline-flex min-h-13 items-center justify-center gap-2 rounded-md px-8 py-4 text-[15px] font-semibold text-white no-underline transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(169,60,25,0.25)] focus:outline-2 focus:outline-offset-3 active:translate-y-0 active:scale-[.99] active:shadow-none sm:w-auto"
+						>
+							Jadwalkan Konsultasi Operasional
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+								<path
+									d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"></path>
+							</svg>
+						</a>
+						<a
+							href="/platform"
+							class="cta-secondary font-body text-mist/80 border-mist/30 focus:outline-teal inline-flex min-h-13 items-center justify-center gap-2 rounded-md border px-8 py-4 text-[15px] font-semibold no-underline transition-all duration-150 hover:border-white/50 hover:text-white focus:outline-2 focus:outline-offset-3 sm:w-auto"
+						>
+							Lihat Demo Dashboard
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<Footer />
+	</div>
+</Layout>
+
+<style>
+	.service-tab {
+		border-bottom-color: transparent;
+	}
+
+	.service-tab.active {
+		border-bottom-color: var(--color-teal);
+		color: var(--color-navy);
+		font-weight: 600;
+	}
+
+	.service-tab.active .tab-icon {
+		opacity: 1;
+		color: var(--color-teal);
+	}
+
+	.service-tab:not(.active):hover .tab-icon,
+	.service-tab:focus-visible .tab-icon {
+		opacity: 1;
+	}
+</style>
