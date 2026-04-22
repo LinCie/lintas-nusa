@@ -1,0 +1,1267 @@
+---
+const pageNav = [
+	{ href: "#jangkauan", label: "Ringkasan" },
+	{ href: "#jangkauan-wilayah", label: "Wilayah" },
+	{ href: "#jangkauan-layanan", label: "Layanan" },
+	{ href: "#jangkauan-bukti", label: "Bukti" },
+];
+
+const heroStats = [
+	{
+		label: "Kota & kabupaten aktif",
+		display: "247",
+		target: "247",
+		suffix: "",
+		decimal: false,
+		note: "dibuka per lane, bukan disamaratakan",
+	},
+	{
+		label: "Node sinkron",
+		display: "9",
+		target: "9",
+		suffix: "",
+		decimal: false,
+		note: "8 gateway regional dan 1 control tower",
+	},
+	{
+		label: "Scan compliance",
+		display: "97,9%",
+		target: "97.9",
+		suffix: "%",
+		decimal: true,
+		note: "laporan 2025",
+	},
+	{
+		label: "Repeat digital volume",
+		display: "31%",
+		target: "31",
+		suffix: "%",
+		decimal: false,
+		note: "datang dari dashboard dan API",
+	},
+];
+
+const statusLegend = [
+	{
+		label: "Aktif",
+		note: "Siap dikutip sekarang",
+	},
+	{
+		label: "Terbatas",
+		note: "Hanya pada node tertentu",
+	},
+	{
+		label: "Review",
+		note: "Perlu review SLA dulu",
+	},
+];
+
+const coverageRegions = [
+	{
+		id: "jabodetabek",
+		name: "Jabodetabek",
+		keywords: "jakarta bogor depok tangerang bekasi cikarang",
+		cityCount: "42",
+		openLaneCount: "8",
+		reviewLaneCount: "2",
+		nodes: ["Jakarta Selatan", "Cikarang", "Bekasi", "Tangerang"],
+		summary: "Metro core dengan cut-off paling ketat dan proof stack paling lengkap.",
+		liveSummary:
+			"Jabodetabek dipilih. 8 lane aktif dan 2 lane review. Cocok untuk SameDay Metro, NextDay, COD Clear, dan Secure.",
+		focus: ["SameDay Metro", "NextDay", "COD Clear", "Secure"],
+		nextAction:
+			"Pilih wilayah ini jika pengiriman Anda perlu ETA yang ketat dan bukti ekstra pada penerima.",
+		lanes: [
+			{
+				scope: "Open lane",
+				service: "LN SameDay Metro",
+				status: "Aktif",
+				cutoff: "10:30",
+				handling: "Pickup pagi",
+				proof: "Photo POD",
+				note: "Paling cocok untuk volume harian yang menekan ETA.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN NextDay",
+				status: "Aktif",
+				cutoff: "16:00",
+				handling: "Standard parcel",
+				proof: "Geo scan",
+				note: "Stabil untuk D2C dan replenishment kota.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN COD Clear",
+				status: "Aktif",
+				cutoff: "15:30",
+				handling: "Settlement harian",
+				proof: "Payout dashboard",
+				note: "Settlement dan rekonsiliasi dibaca dari satu layar.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN Secure",
+				status: "Aktif",
+				cutoff: "Sebelum pickup",
+				handling: "OTP + photo POD",
+				proof: "Exception trail",
+				note: "Dipakai untuk barang bernilai tinggi dan rute sensitif.",
+			},
+			{
+				scope: "Review lane",
+				service: "LN Cold",
+				status: "Review",
+				cutoff: "Per tujuan",
+				handling: "Thermal log",
+				proof: "Temperature record",
+				note: "Dibuka hanya di rute yang sudah divalidasi.",
+			},
+		],
+	},
+	{
+		id: "jawa-barat",
+		name: "Jawa Barat",
+		keywords: "bandung cirebon karawang garut tasikmalaya sukabumi",
+		cityCount: "61",
+		openLaneCount: "7",
+		reviewLaneCount: "3",
+		nodes: ["Bandung", "Cirebon", "Karawang"],
+		summary:
+			"Koridor trans-Jawa Barat untuk replenishment, retail, dan drop yang butuh ritme stabil.",
+		liveSummary:
+			"Jawa Barat dipilih. 7 lane aktif dan 3 lane review. Fokus pada NextDay, Regular, COD, dan Secure.",
+		focus: ["Regular", "NextDay", "COD Clear", "Fulfill"],
+		nextAction:
+			"Wilayah ini cocok jika Anda perlu cakupan yang luas, tetapi tetap ingin status yang mudah dibaca.",
+		lanes: [
+			{
+				scope: "Open lane",
+				service: "LN Regular",
+				status: "Aktif",
+				cutoff: "17:00",
+				handling: "Standard parcel",
+				proof: "Geo scan",
+				note: "Jalur stabil untuk volume campuran antar-kota.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN NextDay",
+				status: "Aktif",
+				cutoff: "16:00",
+				handling: "Cut-off kota",
+				proof: "Delivery ETA",
+				note: "Diprioritaskan untuk seller yang mengejar siklus pengiriman harian.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN COD Clear",
+				status: "Aktif",
+				cutoff: "15:30",
+				handling: "Settlement harian",
+				proof: "Payout dashboard",
+				note: "Cocok untuk merchant dengan ritme pickup reguler.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN Secure",
+				status: "Aktif",
+				cutoff: "Sebelum pickup",
+				handling: "OTP + photo POD",
+				proof: "Exception trail",
+				note: "Dipakai pada barang bernilai tinggi dan lane sensitif.",
+			},
+			{
+				scope: "Review lane",
+				service: "LN Fulfill",
+				status: "Review",
+				cutoff: "Per gudang",
+				handling: "Pick-pack-ship",
+				proof: "Inventory view",
+				note: "Dibuka setelah integrasi gudang dan cut-off masuk akal.",
+			},
+		],
+	},
+	{
+		id: "jawa-tengah-timur",
+		name: "Jawa Tengah & Timur",
+		keywords: "semarang surabaya solo malang sidoarjo madiun",
+		cityCount: "74",
+		openLaneCount: "9",
+		reviewLaneCount: "3",
+		nodes: ["Semarang", "Surabaya", "Solo"],
+		summary: "Koridor volume nasional dengan perpindahan antarkota yang paling ritmis.",
+		liveSummary:
+			"Jawa Tengah dan Timur dipilih. 9 lane aktif dan 3 lane review. Kuat untuk Regular, NextDay, BulkDrop, dan Secure.",
+		focus: ["Regular", "NextDay", "BulkDrop", "Secure"],
+		nextAction:
+			"Pilih wilayah ini saat volume Anda berpindah antarkota dan membutuhkan konsolidasi yang stabil.",
+		lanes: [
+			{
+				scope: "Open lane",
+				service: "LN Regular",
+				status: "Aktif",
+				cutoff: "17:00",
+				handling: "Standard parcel",
+				proof: "Geo scan",
+				note: "Arus utama untuk pengiriman antarkota dan distribusi campuran.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN NextDay",
+				status: "Aktif",
+				cutoff: "16:00",
+				handling: "Cut-off kota",
+				proof: "Delivery ETA",
+				note: "Dipakai ketika kecepatan lebih penting dari jadwal pickup yang longgar.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN BulkDrop",
+				status: "Aktif",
+				cutoff: "Per rute",
+				handling: "Multi-drop",
+				proof: "Route manifest",
+				note: "Cocok untuk reseller, store network, dan distribusi project.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN Secure",
+				status: "Aktif",
+				cutoff: "Sebelum pickup",
+				handling: "OTP + photo POD",
+				proof: "Exception trail",
+				note: "Menjaga jalur high-value tetap terlihat dari awal sampai serah terima.",
+			},
+			{
+				scope: "Review lane",
+				service: "LN Cold",
+				status: "Review",
+				cutoff: "Per tujuan",
+				handling: "Thermal log",
+				proof: "Temperature record",
+				note: "Masuk setelah prosedur suhu dan handoff dikunci di lane tersebut.",
+			},
+		],
+	},
+	{
+		id: "sumatra",
+		name: "Sumatra",
+		keywords: "medan palembang lampung pekanbaru padang jambi",
+		cityCount: "38",
+		openLaneCount: "6",
+		reviewLaneCount: "3",
+		nodes: ["Medan", "Palembang", "Lampung"],
+		summary: "Koridor feeder dan gateway yang menjaga arus antarpulau tetap terbaca.",
+		liveSummary:
+			"Sumatra dipilih. 6 lane aktif dan 3 lane review. Fokus pada Regular, NextDay, COD Clear, dan Fulfill.",
+		focus: ["Regular", "NextDay", "COD Clear", "Fulfill"],
+		nextAction:
+			"Wilayah ini cocok jika Anda butuh distribusi yang luas, tetapi tetap menginginkan status yang jelas per titik.",
+		lanes: [
+			{
+				scope: "Open lane",
+				service: "LN Regular",
+				status: "Aktif",
+				cutoff: "17:00",
+				handling: "Standard parcel",
+				proof: "Geo scan",
+				note: "Fokus pada lane reguler dan perpindahan volume antarkota.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN NextDay",
+				status: "Aktif",
+				cutoff: "16:00",
+				handling: "Cut-off kota",
+				proof: "Delivery ETA",
+				note: "Diprioritaskan untuk titik dengan volume rutin yang sudah stabil.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN COD Clear",
+				status: "Aktif",
+				cutoff: "15:30",
+				handling: "Settlement harian",
+				proof: "Payout dashboard",
+				note: "Rekonsiliasi COD tetap dibaca dari satu sumber.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN Fulfill",
+				status: "Aktif",
+				cutoff: "Per gudang",
+				handling: "Pick-pack-ship",
+				proof: "Inventory view",
+				note: "Aktif saat gudang dan jalur pengiriman saling sinkron.",
+			},
+			{
+				scope: "Review lane",
+				service: "LN Secure",
+				status: "Review",
+				cutoff: "Per tujuan",
+				handling: "OTP + photo POD",
+				proof: "Exception trail",
+				note: "Dibuka hanya pada lane yang sudah mendapat validasi tambahan.",
+			},
+		],
+	},
+	{
+		id: "timur",
+		name: "Bali, Kalimantan, Sulawesi",
+		keywords: "denpasar balikpapan makassar pontianak banjarmasin manado",
+		cityCount: "32",
+		openLaneCount: "5",
+		reviewLaneCount: "4",
+		nodes: ["Denpasar", "Balikpapan", "Makassar"],
+		summary: "Lane prioritas untuk rute yang lebih selektif dan perlu validasi lebih rapat.",
+		liveSummary:
+			"Bali, Kalimantan, dan Sulawesi dipilih. 5 lane aktif dan 4 lane review. Paling kuat untuk Regular, NextDay, dan Secure.",
+		focus: ["Regular", "NextDay", "Secure", "BulkDrop"],
+		nextAction:
+			"Wilayah ini paling baik dipakai jika tujuan Anda sudah jelas dan tim perlu menimbang jalur mana yang benar-benar dibuka.",
+		lanes: [
+			{
+				scope: "Open lane",
+				service: "LN Regular",
+				status: "Aktif",
+				cutoff: "17:00",
+				handling: "Standard parcel",
+				proof: "Geo scan",
+				note: "Jalur reguler yang dijaga tetap stabil untuk volume dasar.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN NextDay",
+				status: "Aktif",
+				cutoff: "16:00",
+				handling: "Cut-off kota",
+				proof: "Delivery ETA",
+				note: "Dipakai pada cluster yang sudah punya ritme dispatch yang jelas.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN Secure",
+				status: "Aktif",
+				cutoff: "Sebelum pickup",
+				handling: "OTP + photo POD",
+				proof: "Exception trail",
+				note: "Memberi bukti tambahan saat jalur perlu kepastian lebih.",
+			},
+			{
+				scope: "Open lane",
+				service: "LN BulkDrop",
+				status: "Terbatas",
+				cutoff: "Per rute",
+				handling: "Multi-drop",
+				proof: "Route manifest",
+				note: "Hanya dibuka di titik yang sudah lolos review operasional.",
+			},
+			{
+				scope: "Review lane",
+				service: "LN Cold",
+				status: "Review",
+				cutoff: "Per tujuan",
+				handling: "Thermal log",
+				proof: "Temperature record",
+				note: "Perlu validasi lebih ketat pada suhu, handoff, dan waktu transit.",
+			},
+		],
+	},
+];
+
+const matrixColumns = [
+	{ id: "jabodetabek", label: "Jabodetabek" },
+	{ id: "jawa-barat", label: "Jawa Barat" },
+	{ id: "jawa-tengah-timur", label: "Jawa Tengah & Timur" },
+	{ id: "sumatra", label: "Sumatra" },
+	{ id: "timur", label: "Bali/Kalimantan/Sulawesi" },
+];
+
+const serviceMatrix = [
+	{
+		service: "LN Regular",
+		note: "Baseline coverage untuk paket standar dan volume campuran.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Aktif",
+		},
+	},
+	{
+		service: "LN NextDay",
+		note: "Dipakai saat ETA harus lebih ketat dari layanan reguler.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Terbatas",
+		},
+	},
+	{
+		service: "LN SameDay Metro",
+		note: "Muncul di cluster padat yang punya ritme pickup paling rapat.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Review",
+			timur: "Review",
+		},
+	},
+	{
+		service: "LN COD Clear",
+		note: "Settlement dan payout dibaca dari dashboard yang sama.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Terbatas",
+		},
+	},
+	{
+		service: "LN Fulfill",
+		note: "Bergantung pada integrasi gudang dan jadwal pickup yang konsisten.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Review",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Review",
+		},
+	},
+	{
+		service: "LN Cold",
+		note: "Hanya dibuka di lane dengan validasi suhu dan handoff yang ketat.",
+		cells: {
+			jabodetabek: "Review",
+			"jawa-barat": "Review",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Review",
+			timur: "Terbatas",
+		},
+	},
+	{
+		service: "LN Secure",
+		note: "Mengunci bukti tambahan pada barang bernilai tinggi.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Terbatas",
+		},
+	},
+	{
+		service: "LN BulkDrop",
+		note: "Multi-drop distribusi untuk store network dan project shipment.",
+		cells: {
+			jabodetabek: "Terbatas",
+			"jawa-barat": "Terbatas",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Review",
+		},
+	},
+	{
+		service: "LN Return",
+		note: "Return pickup disusun agar reason coding tetap konsisten.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Aktif",
+		},
+	},
+	{
+		service: "LN ClaimCenter",
+		note: "Alur klaim, bukti, dan clock recovery dibaca dari satu tempat.",
+		cells: {
+			jabodetabek: "Aktif",
+			"jawa-barat": "Aktif",
+			"jawa-tengah-timur": "Aktif",
+			sumatra: "Aktif",
+			timur: "Aktif",
+		},
+	},
+];
+
+const proofCards = [
+	{
+		eyebrow: "Geo scan",
+		title: "Lokasi, waktu, dan jalur recovery menempel di setiap scan.",
+		description:
+			"Geo scan membuat coverage bukan sekadar daftar kota. Setiap pergerakan terekam dengan lokasi, waktu, dan node yang bisa dirujuk saat exception muncul.",
+		bullets: [
+			"Scan compliance 97,9%",
+			"Dispatch dan handoff sinkron",
+			"Recovery path terbaca dari satu sumber",
+		],
+	},
+	{
+		eyebrow: "Photo POD",
+		title: "Bukti foto dipakai saat lane perlu kepastian tambahan.",
+		description:
+			"Untuk barang bernilai tinggi atau tujuan yang sensitif, photo POD membantu menutup celah di sisi penerima dan tim operasional.",
+		bullets: [
+			"Untuk Secure dan lane sensitif",
+			"Memperjelas dispute",
+			"Menjaga proof stack tetap rapat",
+		],
+	},
+	{
+		eyebrow: "Claims clock",
+		title: "Klaim tidak dibiarkan mengambang.",
+		description:
+			"Clock recovery memberi batas yang jelas untuk intake, review, dan penyelesaian klaim sehingga tim operasional dan finance membaca status yang sama.",
+		bullets: ["Target 2 x 24 jam", "Alur bukti terpusat", "Memotong bolak-balik antar tim"],
+	},
+];
+
+function getStatusTone(status: string) {
+	switch (status) {
+		case "Aktif":
+			return "border-teal/20 bg-teal/10 text-teal";
+		case "Terbatas":
+			return "border-navy/15 bg-navy/5 text-navy";
+		case "Review":
+			return "border-orange/20 bg-orange/10 text-orange";
+		default:
+			return "border-mist-dark bg-white text-charcoal-mid";
+	}
+}
+---
+
+<section
+	id="jangkauan"
+	data-coverage-explorer
+	aria-labelledby="jangkauan-heading"
+	class="relative overflow-hidden bg-white py-16 lg:py-24"
+>
+	<div
+		class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(238,243,247,0.7),rgba(255,255,255,0)_28%),radial-gradient(circle_at_82%_12%,rgba(13,120,114,0.08),transparent_30%),radial-gradient(circle_at_14%_4%,rgba(15,39,66,0.05),transparent_22%)]"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="mx-auto max-w-7xl px-6 sm:px-8">
+		<div
+			class="relative grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(19rem,0.92fr)] lg:items-end lg:gap-16"
+		>
+			<div class="max-w-3xl space-y-6">
+				<p class="text-navy-light font-body text-sm font-semibold tracking-[0.18em] uppercase">
+					Coverage Explorer
+				</p>
+				<div class="space-y-4">
+					<h1
+						id="jangkauan-heading"
+						class="font-display text-navy text-[clamp(2.6rem,5.4vw,5rem)] leading-[0.95] font-bold tracking-tight"
+					>
+						Dari ringkasan di beranda ke lane yang bisa Anda cek satu per satu.
+					</h1>
+					<p class="font-body text-charcoal max-w-[58ch] text-base leading-7 sm:text-lg">
+						Halaman ini mengubah coverage menjadi alat keputusan: pilih wilayah, baca node aktif,
+						bandingkan lane yang terbuka, lalu cek mana yang masih review sebelum dikutip.
+					</p>
+				</div>
+
+				<div class="flex flex-wrap gap-3">
+					<a
+						href="#jangkauan-wilayah"
+						class="bg-navy font-body focus:outline-teal inline-flex min-h-11 items-center rounded-md px-5 py-3 text-sm font-semibold text-white no-underline focus:outline-2 focus:outline-offset-3"
+					>
+						Pilih wilayah
+					</a>
+					<a
+						href="#jangkauan-layanan"
+						class="font-body text-teal border-teal focus:outline-teal inline-flex min-h-11 items-center rounded-md border px-5 py-3 text-sm font-semibold no-underline focus:outline-2 focus:outline-offset-3"
+					>
+						Bandingkan layanan
+					</a>
+					<a
+						href="#jangkauan-bukti"
+						class="font-body text-navy-light border-mist-dark hover:bg-mist focus:outline-teal inline-flex min-h-11 items-center rounded-md border px-5 py-3 text-sm font-semibold no-underline focus:outline-2 focus:outline-offset-3"
+					>
+						Baca proof layer
+					</a>
+				</div>
+			</div>
+
+			<aside class="jangkauan-map-shell border-mist-dark bg-mist/80 rounded-4xl border p-6 sm:p-8">
+				<div class="space-y-2">
+					<p class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase">
+						Snapshot coverage
+					</p>
+					<p class="font-body text-charcoal-mid max-w-[30ch] text-sm leading-6">
+						Beranda memberi ringkasan. Explorer ini membuka detail lane, status, dan proof yang
+						menempel di setiap keputusan.
+					</p>
+				</div>
+
+				<div class="mt-6 space-y-3">
+					<div class="border-mist-dark rounded-[1.45rem] border bg-white p-5 sm:p-6">
+						<div class="flex items-start justify-between gap-4">
+							<div class="space-y-2">
+								<p
+									class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+								>
+									{heroStats[0].label}
+								</p>
+								<span
+									class="jangkauan-number font-display text-navy block text-[clamp(3rem,7vw,4.8rem)] leading-none font-bold tracking-tight"
+									data-target={heroStats[0].target}
+									data-decimal={heroStats[0].decimal ? "true" : undefined}
+									data-suffix={heroStats[0].suffix}
+								>
+									{heroStats[0].display}
+								</span>
+							</div>
+							<p class="font-body text-charcoal-mid max-w-[18ch] text-sm leading-6">
+								{heroStats[0].note}
+							</p>
+						</div>
+					</div>
+
+					<div class="grid gap-3 sm:grid-cols-2">
+						{
+							heroStats.slice(1, 3).map((stat) => (
+								<div class="border-mist-dark rounded-[1.3rem] border bg-white p-4">
+									<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+										{stat.label}
+									</p>
+									<div class="mt-2 flex items-end justify-between gap-4">
+										<span
+											class="jangkauan-number font-display text-navy block text-[clamp(1.65rem,3vw,2.4rem)] leading-none font-bold tracking-tight"
+											data-target={stat.target}
+											data-decimal={stat.decimal ? "true" : undefined}
+											data-suffix={stat.suffix}
+										>
+											{stat.display}
+										</span>
+										<p class="font-body text-charcoal-mid max-w-[14ch] text-xs leading-5">
+											{stat.note}
+										</p>
+									</div>
+								</div>
+							))
+						}
+					</div>
+
+					<div class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+						<div class="border-mist-dark rounded-[1.3rem] border bg-white p-4">
+							<p
+								class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+							>
+								{heroStats[3].label}
+							</p>
+							<div class="mt-2 flex items-end justify-between gap-4">
+								<span
+									class="jangkauan-number font-display text-navy block text-[clamp(1.9rem,3.6vw,2.8rem)] leading-none font-bold tracking-tight"
+									data-target={heroStats[3].target}
+									data-decimal={heroStats[3].decimal ? "true" : undefined}
+									data-suffix={heroStats[3].suffix}
+								>
+									{heroStats[3].display}
+								</span>
+								<p class="font-body text-charcoal-mid max-w-[14ch] text-xs leading-5">
+									{heroStats[3].note}
+								</p>
+							</div>
+						</div>
+
+						<div class="border-mist-dark bg-mist/45 rounded-[1.3rem] border p-4">
+							<p
+								class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+							>
+								Legenda status
+							</p>
+							<ul class="mt-3 space-y-2">
+								{
+									statusLegend.map((item) => (
+										<li class="flex items-start gap-3">
+											<span
+												class={`font-body inline-flex min-h-7 shrink-0 items-center rounded-full border px-2.5 py-1 text-[0.65rem] font-semibold tracking-[0.14em] uppercase ${getStatusTone(
+													item.label,
+												)}`}
+											>
+												{item.label}
+											</span>
+											<p class="font-body text-charcoal-mid pt-0.5 text-xs leading-5">
+												{item.note}
+											</p>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+
+		<nav
+			class="border-mist-dark sticky top-[72px] z-40 mt-12 border-b bg-white/95 backdrop-blur-sm"
+			aria-label="Navigasi coverage explorer"
+		>
+			<div
+				class="flex items-center gap-2 overflow-x-auto py-3 text-[11px] font-medium tracking-wide"
+			>
+				{
+					pageNav.map((item) => (
+						<a
+							href={item.href}
+							class="font-body text-charcoal-mid hover:text-navy focus:outline-teal hover:bg-navy/5 shrink-0 rounded px-3 py-1.5 no-underline focus:outline-[3px] focus:outline-offset-2"
+						>
+							{item.label}
+						</a>
+					))
+				}
+			</div>
+		</nav>
+
+		<section
+			id="jangkauan-wilayah"
+			class="mt-16 scroll-mt-[calc(var(--nav-height)+1.5rem)]"
+			aria-labelledby="jangkauan-wilayah-heading"
+		>
+			<div
+				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(17rem,0.84fr)_minmax(0,1.16fr)] lg:gap-12"
+			>
+				<div class="self-start lg:sticky lg:top-[calc(var(--nav-height)+1.5rem)]">
+					<div
+						class="jangkauan-map-shell border-mist-dark bg-mist/70 rounded-4xl border p-6 sm:p-7"
+					>
+						<div class="space-y-3">
+							<p
+								class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase"
+							>
+								Pilih wilayah
+							</p>
+							<h2
+								id="jangkauan-wilayah-heading"
+								class="font-display text-navy text-[clamp(1.8rem,3.3vw,2.6rem)] leading-[1.02] font-bold tracking-tight"
+							>
+								Cari kota atau wilayah, lalu baca lane yang benar-benar dibuka.
+							</h2>
+							<p class="font-body text-charcoal-mid max-w-[32ch] text-sm leading-6">
+								Exploration dimulai dari wilayah, bukan dari daftar promo. Ketik nama kota atau
+								pilih wilayah untuk melihat status lane, node, dan proof layer.
+							</p>
+						</div>
+
+						<label class="mt-6 block">
+							<span class="sr-only">Cari kota atau wilayah</span>
+							<input
+								type="search"
+								data-coverage-search
+								placeholder="Cari Jakarta, Bandung, Medan..."
+								aria-describedby="coverage-search-help"
+								class="font-body border-mist-dark focus:border-teal focus:outline-teal text-charcoal placeholder:text-charcoal-mid/60 w-full rounded-2xl border bg-white px-4 py-3 text-sm focus:outline-2 focus:outline-offset-2"
+							/>
+						</label>
+						<p id="coverage-search-help" class="font-body text-charcoal-mid mt-2 text-xs leading-5">
+							Ketik nama kota untuk memfilter. Tanpa JavaScript, semua wilayah tetap terlihat di
+							bawah.
+						</p>
+
+						<nav
+							class="mt-6 space-y-3"
+							data-coverage-tablist
+							aria-orientation="vertical"
+							aria-label="Wilayah coverage"
+						>
+							{
+								coverageRegions.map((region, index) => (
+									<a
+										href={`#coverage-panel-${region.id}`}
+										id={`coverage-tab-${region.id}`}
+										data-coverage-region-tab
+										data-region-id={region.id}
+										data-keywords={region.keywords}
+										data-active={index === 0 ? "true" : "false"}
+										class="border-mist-dark text-charcoal-mid data-[active=true]:border-navy data-[active=true]:bg-navy focus:outline-teal block w-full rounded-[1.35rem] border bg-white px-4 py-4 text-left no-underline focus:outline-2 focus:outline-offset-2 data-[active=true]:text-white"
+									>
+										<div class="flex items-start justify-between gap-4">
+											<div class="space-y-1">
+												<p class="font-body text-[0.68rem] font-semibold tracking-[0.14em] uppercase opacity-70">
+													Wilayah
+												</p>
+												<h3 class="font-display text-lg leading-tight font-bold">{region.name}</h3>
+											</div>
+											<span class="font-display block text-[clamp(1.55rem,3vw,2.25rem)] leading-none font-bold tracking-tight text-current">
+												{region.cityCount}
+											</span>
+										</div>
+										<p class="font-body mt-3 text-sm leading-6 opacity-80">{region.summary}</p>
+										<div class="mt-4 flex flex-wrap gap-2">
+											<span class="font-body border-teal/20 bg-teal/10 text-teal inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+												{region.openLaneCount} aktif
+											</span>
+											<span class="font-body border-orange/20 bg-orange/10 text-orange inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+												{region.reviewLaneCount} review
+											</span>
+										</div>
+									</a>
+								))
+							}
+						</nav>
+
+						<div class="border-mist-dark mt-6 border-t pt-5">
+							<p
+								class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase"
+							>
+								Cara baca
+							</p>
+							<ul class="mt-3 space-y-2">
+								<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
+									<span
+										class="bg-teal mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
+										aria-hidden="true"></span>
+									<span>Aktif berarti lane siap dikutip sekarang.</span>
+								</li>
+								<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
+									<span
+										class="bg-navy mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
+										aria-hidden="true"></span>
+									<span>Terbatas berarti coverage ada, tetapi hanya pada node tertentu.</span>
+								</li>
+								<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
+									<span
+										class="bg-orange mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
+										aria-hidden="true"></span>
+									<span>Review berarti lane perlu review SLA sebelum dikutip.</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="space-y-8">
+					<p class="sr-only" aria-live="polite" data-coverage-live></p>
+					<div
+						data-coverage-empty
+						hidden
+						class="border-mist-dark bg-mist/45 rounded-4xl border p-6 sm:p-8"
+					>
+						<p class="font-body text-navy text-sm font-semibold tracking-[0.14em] uppercase">
+							Tidak ada wilayah yang cocok
+						</p>
+						<p class="font-body text-charcoal-mid mt-3 max-w-[46ch] text-base leading-7">
+							Coba hapus kata kunci atau ketik kota lain, misalnya Bandung, Medan, atau Makassar.
+							Explorer ini akan menampilkan wilayah yang paling dekat dengan hasil pencarian Anda.
+						</p>
+					</div>
+
+					{
+						coverageRegions.map((region) => (
+							<article
+								id={`coverage-panel-${region.id}`}
+								aria-labelledby={`coverage-tab-${region.id}`}
+								data-coverage-region-panel={region.id}
+								data-summary={region.liveSummary}
+								class="jangkauan-map-shell border-mist-dark scroll-mt-[calc(var(--nav-height)+4.5rem)] rounded-4xl border bg-white/95 p-6 sm:p-8"
+							>
+								<div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+									<div class="max-w-2xl space-y-3">
+										<p class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase">
+											Wilayah aktif
+										</p>
+										<h3 class="font-display text-navy text-[clamp(1.7rem,3.2vw,2.7rem)] leading-[1.02] font-bold tracking-tight">
+											{region.name}
+										</h3>
+										<p class="font-body text-charcoal-mid max-w-[58ch] text-base leading-7">
+											{region.summary}
+										</p>
+									</div>
+
+									<div class="border-mist-dark bg-mist/55 rounded-[1.35rem] border px-5 py-4">
+										<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+											Kota &amp; kabupaten aktif
+										</p>
+										<p class="font-display text-navy mt-2 text-[clamp(2.1rem,4vw,3.2rem)] leading-none font-bold tracking-tight">
+											{region.cityCount}
+										</p>
+										<p class="font-body text-charcoal-mid mt-2 text-sm leading-6">
+											coverage dibuka per lane, bukan disamaratakan.
+										</p>
+									</div>
+								</div>
+
+								<div class="border-mist-dark mt-6 border-t pt-5">
+									<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+										Route ribbon
+									</p>
+									<div class="mt-4 flex flex-wrap items-center gap-2">
+										{region.nodes.map((node, nodeIndex) => (
+											<>
+												<span class="font-body border-mist-dark text-charcoal rounded-full border bg-white px-3 py-2 text-sm font-medium">
+													{node}
+												</span>
+												{nodeIndex < region.nodes.length - 1 && (
+													<span class="bg-mist-dark hidden h-px w-8 sm:block" aria-hidden="true" />
+												)}
+											</>
+										))}
+									</div>
+								</div>
+
+								<div class="mt-6 grid gap-3 sm:grid-cols-3">
+									<div class="border-mist-dark rounded-[1.25rem] border bg-white p-4">
+										<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+											Lane aktif
+										</p>
+										<p class="font-display text-navy mt-2 text-[clamp(1.5rem,3vw,2.1rem)] leading-none font-bold tracking-tight">
+											{region.openLaneCount}
+										</p>
+									</div>
+									<div class="border-mist-dark rounded-[1.25rem] border bg-white p-4">
+										<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+											Lane review
+										</p>
+										<p class="font-display text-navy mt-2 text-[clamp(1.5rem,3vw,2.1rem)] leading-none font-bold tracking-tight">
+											{region.reviewLaneCount}
+										</p>
+									</div>
+									<div class="border-mist-dark rounded-[1.25rem] border bg-white p-4">
+										<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+											Fokus lane
+										</p>
+										<p class="font-body text-charcoal-mid mt-2 text-sm leading-6">
+											{region.focus.join(", ")}
+										</p>
+									</div>
+								</div>
+
+								<div class="mt-6 space-y-3">
+									{region.lanes.map((lane) => (
+										<div
+											class={`jangkauan-lane-item border-mist-dark rounded-[1.45rem] border p-5 sm:p-6 ${
+												lane.status === "Review" ? "bg-mist/50" : "bg-white"
+											}`}
+										>
+											<div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+												<div class="space-y-1">
+													<p class="font-body text-navy-light text-xs font-semibold tracking-[0.14em] uppercase">
+														{lane.scope}
+													</p>
+													<h4 class="font-display text-navy text-[clamp(1.15rem,2.2vw,1.55rem)] leading-tight font-bold">
+														{lane.service}
+													</h4>
+												</div>
+												<span
+													class={`font-body inline-flex min-h-8 items-center self-start rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase ${getStatusTone(
+														lane.status,
+													)}`}
+												>
+													{lane.status}
+												</span>
+											</div>
+
+											<div class="mt-5 grid gap-3 sm:grid-cols-3">
+												<div>
+													<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+														Cut-off
+													</p>
+													<p class="font-body text-charcoal mt-1 text-sm leading-6">
+														{lane.cutoff}
+													</p>
+												</div>
+												<div>
+													<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+														Handling
+													</p>
+													<p class="font-body text-charcoal mt-1 text-sm leading-6">
+														{lane.handling}
+													</p>
+												</div>
+												<div>
+													<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+														Proof layer
+													</p>
+													<p class="font-body text-charcoal mt-1 text-sm leading-6">{lane.proof}</p>
+												</div>
+											</div>
+
+											<p class="font-body text-charcoal-mid mt-4 max-w-[60ch] text-sm leading-6">
+												{lane.note}
+											</p>
+										</div>
+									))}
+								</div>
+
+								<div class="border-mist-dark mt-6 border-t pt-5">
+									<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+										<p class="font-body text-charcoal-mid max-w-[52ch] text-sm leading-6">
+											{region.nextAction}
+										</p>
+										<a
+											href="/layanan"
+											class="bg-navy font-body focus:outline-teal inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold text-white no-underline focus:outline-2 focus:outline-offset-3"
+										>
+											Bandingkan layanan
+										</a>
+									</div>
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="jangkauan-layanan"
+			class="border-mist-dark mt-16 scroll-mt-[calc(var(--nav-height)+1.5rem)] border-t pt-12"
+			aria-labelledby="jangkauan-layanan-heading"
+		>
+			<div
+				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-12"
+			>
+				<div class="max-w-2xl space-y-4">
+					<p class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase">
+						Bandingkan layanan
+					</p>
+					<h2
+						id="jangkauan-layanan-heading"
+						class="font-display text-navy text-[clamp(1.8rem,3.3vw,2.7rem)] leading-[1.02] font-bold tracking-tight"
+					>
+						Coverage bukan cuma soal di mana, tapi juga layanan mana yang benar-benar dibuka.
+					</h2>
+					<p class="font-body text-charcoal-mid max-w-[55ch] text-base leading-7">
+						Tabel ini membantu Anda membandingkan layanan antar wilayah tanpa harus menebak-nebak
+						statusnya. Aktif berarti bisa dikutip sekarang, terbatas berarti ada tetapi node-nya
+						spesifik, dan review berarti perlu cek SLA lebih dulu.
+					</p>
+				</div>
+
+				<div class="border-mist-dark bg-mist/55 rounded-4xl border p-6 sm:p-8">
+					<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+						Legenda matriks
+					</p>
+					<div class="mt-4 flex flex-wrap gap-2">
+						<span
+							class="font-body border-teal/20 bg-teal/10 text-teal inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+						>
+							Aktif
+						</span>
+						<span
+							class="font-body border-navy/15 bg-navy/5 text-navy inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+						>
+							Terbatas
+						</span>
+						<span
+							class="font-body border-orange/20 bg-orange/10 text-orange inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+						>
+							Review
+						</span>
+					</div>
+					<p class="font-body text-charcoal-mid mt-4 text-sm leading-6">
+						Jika satu lane ditandai review, itu berarti tim akan mengecek node, cut-off, dan
+						handling sebelum komitmen diberikan.
+					</p>
+				</div>
+			</div>
+
+			<div class="border-mist-dark mt-8 overflow-hidden rounded-4xl border bg-white">
+				<div class="grid gap-4 p-4 sm:p-6 lg:hidden">
+					{
+						serviceMatrix.map((row) => (
+							<article class="border-mist-dark rounded-[1.5rem] border bg-white p-5 sm:p-6">
+								<div class="space-y-1">
+									<p class="font-display text-navy text-lg leading-tight font-bold">
+										{row.service}
+									</p>
+									<p class="font-body text-charcoal-mid max-w-[34ch] text-sm leading-6">
+										{row.note}
+									</p>
+								</div>
+
+								<dl class="mt-5 grid gap-3 sm:grid-cols-2">
+									{matrixColumns.map((column) => (
+										<div class="border-mist-dark bg-mist/45 rounded-[1.1rem] border p-4">
+											<dt class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+												{column.label}
+											</dt>
+											<dd class="mt-2">
+												<span
+													class={`font-body inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase ${getStatusTone(
+														row.cells[column.id] || "Review",
+													)}`}
+												>
+													{row.cells[column.id] || "Review"}
+												</span>
+											</dd>
+										</div>
+									))}
+								</dl>
+							</article>
+						))
+					}
+				</div>
+
+				<div class="hidden overflow-x-auto lg:block">
+					<table class="w-full min-w-[64rem] border-collapse">
+						<caption class="sr-only">
+							Perbandingan status layanan LintasNusa per wilayah coverage
+						</caption>
+						<thead class="bg-mist/55">
+							<tr>
+								<th
+									class="font-body text-navy-light border-mist-dark bg-mist/95 sticky left-0 z-10 px-6 py-4 text-left text-[0.68rem] font-semibold tracking-[0.14em] uppercase"
+								>
+									Layanan
+								</th>
+								{
+									matrixColumns.map((column) => (
+										<th class="font-body text-navy-light px-4 py-4 text-left text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
+											{column.label}
+										</th>
+									))
+								}
+							</tr>
+						</thead>
+						<tbody>
+							{
+								serviceMatrix.map((row) => (
+									<tr class="border-mist-dark border-t">
+										<th
+											scope="row"
+											class="border-mist-dark sticky left-0 z-10 bg-white px-6 py-5 text-left align-top"
+										>
+											<div class="space-y-1">
+												<p class="font-display text-navy text-lg leading-tight font-bold">
+													{row.service}
+												</p>
+												<p class="font-body text-charcoal-mid max-w-[34ch] text-sm leading-6">
+													{row.note}
+												</p>
+											</div>
+										</th>
+										{matrixColumns.map((column) => (
+											<td class="px-4 py-5 align-top">
+												<span
+													class={`font-body inline-flex min-h-8 items-center rounded-full border px-3 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase ${getStatusTone(
+														row.cells[column.id] || "Review",
+													)}`}
+												>
+													{row.cells[column.id] || "Review"}
+												</span>
+											</td>
+										))}
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="jangkauan-bukti"
+			class="border-mist-dark mt-16 scroll-mt-[calc(var(--nav-height)+1.5rem)] border-t pt-12"
+			aria-labelledby="jangkauan-bukti-heading"
+		>
+			<div
+				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12"
+			>
+				<div class="max-w-2xl space-y-4">
+					<p class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase">
+						Bukti dan recovery
+					</p>
+					<h2
+						id="jangkauan-bukti-heading"
+						class="font-display text-navy text-[clamp(1.8rem,3.3vw,2.7rem)] leading-[1.02] font-bold tracking-tight"
+					>
+						Kalau lane belum terbuka, kami jelaskan apakah batasnya ada di jaringan, cut-off, atau
+						handling.
+					</h2>
+					<p class="font-body text-charcoal-mid max-w-[58ch] text-base leading-7">
+						Bukti yang kuat membuat coverage terasa aman dipakai. Geo scan, photo POD, dan claims
+						clock menjaga agar tim ops, finance, dan customer service membaca status yang sama.
+					</p>
+				</div>
+			</div>
+
+			<div class="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+				<article
+					class="jangkauan-proof-item border-mist-dark rounded-[2rem] border bg-white p-6 sm:p-8"
+				>
+					<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+						{proofCards[0].eyebrow}
+					</p>
+					<h3
+						class="font-display text-navy mt-3 text-[clamp(1.5rem,3vw,2.3rem)] leading-[1.02] font-bold tracking-tight"
+					>
+						{proofCards[0].title}
+					</h3>
+					<p class="font-body text-charcoal-mid mt-4 max-w-[56ch] text-base leading-7">
+						{proofCards[0].description}
+					</p>
+					<ul class="mt-6 space-y-2">
+						{
+							proofCards[0].bullets.map((bullet) => (
+								<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
+									<span
+										class="bg-teal mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
+										aria-hidden="true"
+									/>
+									<span>{bullet}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+					{
+						proofCards.slice(1).map((card) => (
+							<article class="jangkauan-proof-item border-mist-dark bg-mist/55 rounded-[1.75rem] border p-6">
+								<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
+									{card.eyebrow}
+								</p>
+								<h3 class="font-display text-navy mt-3 text-[clamp(1.35rem,2.4vw,1.9rem)] leading-tight font-bold">
+									{card.title}
+								</h3>
+								<p class="font-body text-charcoal-mid mt-4 max-w-[42ch] text-sm leading-6">
+									{card.description}
+								</p>
+								<ul class="mt-5 space-y-2">
+									{card.bullets.map((bullet) => (
+										<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
+											<span
+												class="bg-teal mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
+												aria-hidden="true"
+											/>
+											<span>{bullet}</span>
+										</li>
+									))}
+								</ul>
+							</article>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+				<a
+					href="/layanan"
+					class="bg-orange font-body focus:outline-teal inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-sm font-semibold text-white no-underline focus:outline-2 focus:outline-offset-3"
+				>
+					Bandingkan layanan
+				</a>
+				<a
+					href="/tentang"
+					class="font-body text-teal border-teal focus:outline-teal inline-flex min-h-11 items-center justify-center rounded-md border px-5 py-3 text-sm font-semibold no-underline focus:outline-2 focus:outline-offset-3"
+				>
+					Pelajari perusahaan
+				</a>
+			</div>
+		</section>
+	</div>
+</section>

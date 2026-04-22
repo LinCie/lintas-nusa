@@ -163,6 +163,8 @@ const commandPills = [
 	"97,9% scan compliance",
 	"SLA dibuka hanya pada lane tervalidasi",
 ];
+
+const platformHref = Astro.url.pathname === "/" ? "#platform" : "/#platform";
 ---
 
 <section
@@ -238,7 +240,10 @@ const commandPills = [
 			</div>
 		</div>
 
-		<div class="mt-14 space-y-10">
+		<div
+			id="jangkauan-jaringan"
+			class="mt-14 scroll-mt-[calc(var(--nav-height)+1.5rem)] space-y-10"
+		>
 			<div
 				class="jangkauan-map-shell jangkauan-command-shell bg-navy relative overflow-hidden rounded-4xl px-5 py-6 text-white sm:px-8 sm:py-8"
 			>
@@ -644,7 +649,10 @@ const commandPills = [
 			</div>
 		</div>
 
-		<div class="border-mist-dark mt-14 border-t pt-10">
+		<div
+			id="jangkauan-lens"
+			class="border-mist-dark mt-14 scroll-mt-[calc(var(--nav-height)+1.5rem)] border-t pt-10"
+		>
 			<div
 				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-12"
 			>
@@ -665,7 +673,7 @@ const commandPills = [
 						rute yang perlu validasi khusus sebelum dibuka.
 					</p>
 					<a
-						href="#platform"
+						href={platformHref}
 						class="font-body bg-navy hover:bg-navy-light focus:outline-teal inline-flex min-h-11 items-center rounded-full px-5 py-3 text-sm font-semibold text-white no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-3"
 					>
 						Lihat cara dashboard membaca lane
@@ -716,7 +724,10 @@ const commandPills = [
 			</div>
 		</div>
 
-		<div class="border-mist-dark mt-14 border-t pt-10">
+		<div
+			id="jangkauan-proof"
+			class="border-mist-dark mt-14 scroll-mt-[calc(var(--nav-height)+1.5rem)] border-t pt-10"
+		>
 			<div
 				class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,1.1fr)] lg:items-end lg:gap-12"
 			>

@@ -8,6 +8,301 @@ function formatMetric(value: number, isDecimal: boolean, suffix: string) {
 	return `${formatted}${suffix}`;
 }
 
+function initJangkauanExplorerInteractions(section: HTMLElement) {
+	const explorer = section.matches("[data-coverage-explorer]")
+		? section
+		: section.querySelector<HTMLElement>("[data-coverage-explorer]");
+
+	if (!explorer) {
+		return () => {};
+	}
+
+	const tabList = explorer.querySelector<HTMLElement>("[data-coverage-tablist]");
+	const tabButtons = gsap.utils.toArray<HTMLAnchorElement>("[data-coverage-region-tab]", explorer);
+	const panels = gsap.utils.toArray<HTMLElement>("[data-coverage-region-panel]", explorer);
+
+	if (!tabButtons.length || !panels.length) {
+		return () => {};
+	}
+
+	const panelById = new Map<string, HTMLElement>();
+	panels.forEach((panel) => {
+		const id = panel.dataset.coverageRegionPanel;
+		if (id) {
+			panelById.set(id, panel);
+		}
+	});
+
+	const searchInput = explorer.querySelector<HTMLInputElement>("[data-coverage-search]");
+	const emptyState = explorer.querySelector<HTMLElement>("[data-coverage-empty]");
+	const liveRegion = explorer.querySelector<HTMLElement>("[data-coverage-live]");
+	const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const controller = new AbortController();
+	const initialHashRegion = window.location.hash.startsWith("#coverage-panel-")
+		? window.location.hash.replace("#coverage-panel-", "")
+		: "";
+
+	let activeRegionId =
+		((initialHashRegion && panelById.has(initialHashRegion) ? initialHashRegion : "") ||
+			tabButtons.find((button) => button.dataset.active === "true")?.dataset.regionId) ??
+		tabButtons[0]?.dataset.regionId ??
+		"";
+
+	tabList?.setAttribute("role", "tablist");
+	tabList?.setAttribute("aria-orientation", "vertical");
+
+	tabButtons.forEach((button) => {
+		button.setAttribute("role", "tab");
+		const panelId = button.getAttribute("href")?.replace(/^#/, "");
+		if (panelId) {
+			button.setAttribute("aria-controls", panelId);
+		}
+	});
+
+	function visibleButtons() {
+		return tabButtons.filter((button) => !button.hidden);
+	}
+
+	function updateTabStates() {
+		tabButtons.forEach((button) => {
+			const regionId = button.dataset.regionId || "";
+			const isActive = regionId === activeRegionId;
+
+			button.dataset.active = isActive ? "true" : "false";
+			button.setAttribute("aria-selected", isActive ? "true" : "false");
+			button.tabIndex = isActive ? 0 : -1;
+		});
+	}
+
+	function announceRegion(regionId: string, fallback = "") {
+		if (!liveRegion) {
+			return;
+		}
+
+		const panel = panelById.get(regionId);
+		liveRegion.textContent = panel?.dataset.summary || fallback;
+	}
+
+	function hidePanel(panel: HTMLElement, animate: boolean) {
+		const runHide = () => {
+			panel.hidden = true;
+			panel.setAttribute("aria-hidden", "true");
+			gsap.set(panel, { clearProps: "all" });
+		};
+
+		gsap.killTweensOf(panel);
+
+		if (!animate || reduceMotion) {
+			runHide();
+			return;
+		}
+
+		gsap.to(panel, {
+			opacity: 0,
+			y: 14,
+			duration: 0.22,
+			ease: "power2.out",
+			onComplete: runHide,
+		});
+	}
+
+	function showPanel(panel: HTMLElement, animate: boolean) {
+		panel.hidden = false;
+		panel.setAttribute("aria-hidden", "false");
+
+		gsap.killTweensOf(panel);
+
+		if (!animate || reduceMotion) {
+			gsap.set(panel, { clearProps: "all" });
+			return;
+		}
+
+		gsap.fromTo(
+			panel,
+			{ opacity: 0, y: 14 },
+			{
+				opacity: 1,
+				y: 0,
+				duration: 0.32,
+				ease: "power2.out",
+				clearProps: "opacity,transform",
+			},
+		);
+
+		const laneItems = panel.querySelectorAll<HTMLElement>(".jangkauan-lane-item");
+
+		if (laneItems.length) {
+			gsap.fromTo(
+				laneItems,
+				{ opacity: 0, y: 12 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.28,
+					ease: "power2.out",
+					stagger: 0.05,
+					clearProps: "opacity,transform",
+				},
+			);
+		}
+	}
+
+	function activateRegion(
+		regionId: string,
+		options: { animate?: boolean; focus?: boolean; syncUrl?: boolean } = {},
+	) {
+		const nextPanel = panelById.get(regionId);
+		const nextButton = tabButtons.find((button) => button.dataset.regionId === regionId);
+
+		if (!nextPanel || !nextButton) {
+			return;
+		}
+
+		activeRegionId = regionId;
+		updateTabStates();
+
+		const shouldAnimate = options.animate !== false;
+
+		panels.forEach((panel) => {
+			if (panel !== nextPanel && !panel.hidden) {
+				hidePanel(panel, shouldAnimate);
+			}
+		});
+
+		showPanel(nextPanel, shouldAnimate);
+		announceRegion(regionId);
+		emptyState?.setAttribute("hidden", "");
+
+		if (options.syncUrl !== false) {
+			const nextHash = `#coverage-panel-${regionId}`;
+			if (window.location.hash !== nextHash) {
+				window.history.replaceState(null, "", nextHash);
+			}
+		}
+
+		if (options.focus) {
+			nextButton.focus({ preventScroll: true });
+		}
+	}
+
+	function filterRegions(query: string) {
+		const needle = query.trim().toLowerCase();
+		let firstVisibleId = "";
+
+		tabButtons.forEach((button) => {
+			const searchable = [
+				button.dataset.regionId || "",
+				button.dataset.keywords || "",
+				button.textContent || "",
+			]
+				.join(" ")
+				.toLowerCase();
+			const visible = !needle || searchable.includes(needle);
+
+			button.hidden = !visible;
+
+			if (visible && !firstVisibleId) {
+				firstVisibleId = button.dataset.regionId || "";
+			}
+		});
+
+		if (!firstVisibleId) {
+			panels.forEach((panel) => {
+				panel.hidden = true;
+				panel.setAttribute("aria-hidden", "true");
+				gsap.set(panel, { clearProps: "all" });
+			});
+
+			if (emptyState) {
+				emptyState.hidden = false;
+			}
+
+			announceRegion("", "Tidak ada wilayah yang cocok dengan pencarian.");
+			updateTabStates();
+			return;
+		}
+
+		emptyState?.setAttribute("hidden", "");
+
+		const activeStillVisible = tabButtons.find(
+			(button) => button.dataset.regionId === activeRegionId && !button.hidden,
+		);
+		const nextActiveId = activeStillVisible?.dataset.regionId || firstVisibleId;
+
+		if (nextActiveId) {
+			activateRegion(nextActiveId, { animate: false, syncUrl: false });
+		}
+	}
+
+	function handleTabKeydown(event: KeyboardEvent) {
+		if (!["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) {
+			return;
+		}
+
+		const available = visibleButtons();
+
+		if (!available.length) {
+			return;
+		}
+
+		const currentIndex = available.indexOf(event.currentTarget as HTMLAnchorElement);
+
+		if (currentIndex === -1) {
+			return;
+		}
+
+		event.preventDefault();
+
+		let nextIndex = currentIndex;
+
+		if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+			nextIndex = (currentIndex + 1) % available.length;
+		} else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+			nextIndex = (currentIndex - 1 + available.length) % available.length;
+		} else if (event.key === "Home") {
+			nextIndex = 0;
+		} else if (event.key === "End") {
+			nextIndex = available.length - 1;
+		}
+
+		const nextButton = available[nextIndex];
+		const nextRegionId = nextButton?.dataset.regionId;
+
+		if (nextRegionId) {
+			activateRegion(nextRegionId, { animate: true, focus: true });
+		}
+	}
+
+	tabButtons.forEach((button) => {
+		button.addEventListener(
+			"click",
+			() => {
+				const regionId = button.dataset.regionId;
+				if (regionId) {
+					activateRegion(regionId, { animate: true });
+				}
+			},
+			{ signal: controller.signal },
+		);
+
+		button.addEventListener("keydown", handleTabKeydown, { signal: controller.signal });
+	});
+
+	searchInput?.addEventListener(
+		"input",
+		() => {
+			filterRegions(searchInput?.value ?? "");
+		},
+		{ signal: controller.signal },
+	);
+
+	filterRegions(searchInput?.value ?? "");
+
+	return () => {
+		controller.abort();
+	};
+}
+
 export function initJangkauanAnimations() {
 	const section = document.getElementById("jangkauan");
 
@@ -15,6 +310,7 @@ export function initJangkauanAnimations() {
 		return () => {};
 	}
 
+	const explorerCleanup = initJangkauanExplorerInteractions(section);
 	const mm = gsap.matchMedia();
 
 	mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -360,6 +656,7 @@ export function initJangkauanAnimations() {
 	});
 
 	return () => {
+		explorerCleanup();
 		mm.revert();
 	};
 }

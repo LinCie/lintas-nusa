@@ -33,6 +33,10 @@ function runInitializers() {
 		);
 	}
 
+	if (page === "jangkauan") {
+		cleanups.push(initJangkauanAnimations());
+	}
+
 	if (page === "tentang") {
 		cleanups.push(initTentangPageAnimations());
 	}
