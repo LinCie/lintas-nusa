@@ -37,3 +37,124 @@ html {
 	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 	--nav-height: 72px;
 }
+
+body {
+	background: var(--color-mist);
+	color: var(--color-charcoal);
+}
+
+#route-transition {
+	position: fixed;
+	inset: 0;
+	z-index: 20000;
+	pointer-events: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#route-transition.is-active {
+	visibility: visible;
+}
+
+.route-transition__veil,
+.route-transition__grid,
+.route-transition__beam,
+.route-transition__line,
+.route-transition__pulse,
+.route-transition__label {
+	position: absolute;
+}
+
+.route-transition__veil {
+	inset: 0;
+	background:
+		linear-gradient(135deg, rgb(15 39 66 / 0.08), rgb(15 39 66 / 0.02) 32%, rgb(13 120 114 / 0.08)),
+		radial-gradient(circle at 20% 50%, rgb(13 120 114 / 0.12), transparent 46%);
+}
+
+.route-transition__grid {
+	top: 0;
+	bottom: 0;
+	left: 8vw;
+	right: 8vw;
+	border-top: 1px solid rgb(13 120 114 / 0.14);
+	border-bottom: 1px solid rgb(13 120 114 / 0.14);
+	background-image:
+		linear-gradient(to right, rgb(13 120 114 / 0.14) 1px, transparent 1px),
+		linear-gradient(to bottom, rgb(15 39 66 / 0.06) 1px, transparent 1px);
+	background-size: 12vw 100%, 100% 7.5rem;
+}
+
+.route-transition__beam {
+	top: 0;
+	bottom: 0;
+	width: 28vw;
+	background: linear-gradient(90deg, transparent, rgb(13 120 114 / 0.22), transparent);
+	filter: blur(18px);
+}
+
+.route-transition__line {
+	top: calc(var(--nav-height) + 1.25rem);
+	left: 8vw;
+	right: 8vw;
+	height: 1px;
+	background: linear-gradient(90deg, rgb(13 120 114 / 0.1), rgb(13 120 114 / 0.95), rgb(13 120 114 / 0.1));
+}
+
+.route-transition__pulse {
+	top: calc(var(--nav-height) + 1rem);
+	left: calc(50% - 0.4rem);
+	width: 0.8rem;
+	height: 0.8rem;
+	border: 1px solid rgb(13 120 114 / 0.7);
+	border-radius: 999px;
+	background: rgb(238 243 247 / 0.65);
+	box-shadow: 0 0 0 0.6rem rgb(13 120 114 / 0.08);
+}
+
+.route-transition__label {
+	top: calc(var(--nav-height) + 2rem);
+	left: 8vw;
+	display: grid;
+	gap: 0.35rem;
+	max-width: min(24rem, 68vw);
+	font-family: var(--font-body);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: rgb(15 39 66 / 0.72);
+}
+
+.route-transition__path {
+	font-size: 0.88rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	color: rgb(13 120 114 / 0.94);
+}
+
+.transition-route-shell {
+	transform-origin: center top;
+}
+
+@media (max-width: 640px) {
+	.route-transition__grid,
+	.route-transition__line,
+	.route-transition__label {
+		left: 1.5rem;
+		right: 1.5rem;
+	}
+
+	.route-transition__beam {
+		width: 54vw;
+	}
+
+	.route-transition__label {
+		max-width: calc(100vw - 3rem);
+		font-size: 0.64rem;
+	}
+
+	.route-transition__path {
+		font-size: 0.8rem;
+	}
+}

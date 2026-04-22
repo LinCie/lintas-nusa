@@ -1,5 +1,9 @@
 ---
-
+const isHomePage = Astro.url.pathname === "/";
+const layananHref = isHomePage ? "#layanan" : "/#layanan";
+const jangkauanHref = isHomePage ? "#jangkauan" : "/#jangkauan";
+const platformHref = isHomePage ? "#platform" : "/#platform";
+const tentangHref = isHomePage ? "#tentang" : "/#tentang";
 ---
 
 <header
@@ -46,29 +50,29 @@
 
 		<nav class="hidden items-center gap-6 lg:ml-auto lg:flex" aria-label="Navigasi utama">
 			<a
-				href="#layanan"
+				href={layananHref}
 				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Layanan</a
 			>
 			<a
-				href="#jangkauan"
+				href={jangkauanHref}
 				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Jangkauan</a
 			>
 			<a
-				href="#platform"
+				href={platformHref}
 				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Platform</a
 			>
 			<a
-				href="#tentang"
+				href={tentangHref}
 				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
 				>Tentang</a
 			>
 		</nav>
 
 		<a
-			href="#layanan"
+			href={layananHref}
 			class="font-body text-teal border-teal hover:bg-teal focus:outline-teal hidden shrink-0 rounded-md border-2 px-4 py-2 text-[13px] font-semibold no-underline transition-colors duration-150 hover:text-white focus:outline-2 focus:outline-offset-3 lg:inline-flex"
 			>Jadwalkan Demo</a
 		>
@@ -94,27 +98,27 @@
 	>
 		<nav class="flex flex-col gap-1 p-4" aria-label="Menu navigasi mobile">
 			<a
-				href="#layanan"
+				href={layananHref}
 				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Layanan</a
 			>
 			<a
-				href="#jangkauan"
+				href={jangkauanHref}
 				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Jangkauan</a
 			>
 			<a
-				href="#platform"
+				href={platformHref}
 				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Platform</a
 			>
 			<a
-				href="#tentang"
+				href={tentangHref}
 				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Tentang</a
 			>
 			<a
-				href="#layanan"
+				href={layananHref}
 				class="mobile-nav-link mobile-nav-cta font-body text-teal focus:outline-teal mt-2 block min-h-11 border-b-0 px-2 py-3.5 text-base font-semibold no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Jadwalkan Demo</a
 			>
@@ -151,32 +155,3 @@
 		}
 	}
 </style>
-
-<script>
-	const mobileMenu = document.getElementById("mobile-menu");
-	const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-
-	function toggleMobileMenu() {
-		const isOpen = mobileMenu?.classList.contains("open");
-		mobileMenu?.classList.toggle("open");
-		mobileMenuToggle?.setAttribute("aria-expanded", String(!isOpen));
-		mobileMenu?.setAttribute("aria-hidden", String(isOpen));
-		if (!isOpen) {
-			mobileMenu?.querySelector("a")?.focus();
-		}
-	}
-
-	function closeMobileMenu() {
-		mobileMenu?.classList.remove("open");
-		mobileMenuToggle?.setAttribute("aria-expanded", "false");
-		mobileMenu?.setAttribute("aria-hidden", "true");
-	}
-
-	mobileMenuToggle?.addEventListener("click", toggleMobileMenu);
-
-	mobileMenu?.querySelectorAll("a").forEach((link) => {
-		link.addEventListener("click", closeMobileMenu);
-	});
-
-	window.addEventListener("resize", closeMobileMenu);
-</script>

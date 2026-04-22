@@ -1,7 +1,4 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger } from "./gsap";
 
 function updateExpandToggle(toggle: HTMLButtonElement, isExpanded: boolean) {
 	toggle.setAttribute("aria-expanded", String(isExpanded));

@@ -23,6 +23,7 @@ import "../styles/global.css";
  * @property {string} [articleSection]
  * @property {string[]} [articleTags]
  * @property {JsonLd | JsonLd[]} [structuredData]
+ * @property {string} [pageName]
  */
 
 const siteName = "LintasNusa Logistics";
@@ -66,6 +67,7 @@ const {
 	articleSection,
 	articleTags = [],
 	structuredData = [],
+	pageName = "default",
 } = /** @type {Props} */ (Astro.props);
 
 const siteUrl = Astro.site ? new URL("/", Astro.site).href : "https://lintasnusa.lincie.me/";
@@ -213,15 +215,29 @@ const jsonLdEntries = [
 			))
 		}
 	</head>
-	<body>
+	<body data-page={pageName}>
 		<a
 			href="#main-content"
 			class="focus:bg-teal focus:font-body focus:ring-offset-navy sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
 		>
 			Skip to main content
 		</a>
-		<main id="main-content">
+		<main id="main-content" class="transition-route-shell" data-swup-container="true">
 			<slot />
 		</main>
+		<div id="route-transition" aria-hidden="true">
+			<div class="route-transition__veil"></div>
+			<div class="route-transition__grid"></div>
+			<div class="route-transition__beam"></div>
+			<div class="route-transition__line"></div>
+			<div class="route-transition__pulse"></div>
+			<div class="route-transition__label">
+				<span>Route Handoff</span>
+				<span class="route-transition__path">/</span>
+			</div>
+		</div>
+		<script>
+			import "../scripts/site-runtime";
+		</script>
 	</body>
 </html>

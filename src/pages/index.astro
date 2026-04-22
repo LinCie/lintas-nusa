@@ -13,6 +13,7 @@ import CtaContactSection from "../components/CtaContactSection.astro";
 <Layout
 	title="Beranda"
 	description="Perusahaan logistik digital Indonesia untuk brand, UMKM, dan enterprise yang membutuhkan visibilitas real-time, SLA terukur, dan kontrol operasional end-to-end."
+	pageName="home"
 >
 	<a
 		href="#layanan"
@@ -20,17 +21,13 @@ import CtaContactSection from "../components/CtaContactSection.astro";
 		>Langsung ke konten</a
 	>
 	<Header />
-	<Hero />
-	<LayananSection />
-	<JangkauanSection />
-	<PlatformSection />
-	<TentangSection />
-	<CtaContactSection />
-	<Footer />
+	<div class="route-stage" data-page-view="home">
+		<Hero />
+		<LayananSection />
+		<JangkauanSection />
+		<PlatformSection />
+		<TentangSection />
+		<CtaContactSection />
+		<Footer />
+	</div>
 </Layout>
-
-<script>
-	import { initHomeAnimations } from "../scripts/home-animations";
-
-	initHomeAnimations();
-</script>

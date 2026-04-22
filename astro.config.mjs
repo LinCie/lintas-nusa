@@ -1,9 +1,26 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import swup from "@swup/astro";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+	integrations: [
+		swup({
+			theme: false,
+			animationClass: false,
+			globalInstance: true,
+			preload: {
+				hover: true,
+				visible: true,
+			},
+			reloadScripts: false,
+			updateHead: {
+				awaitAssets: true,
+				persistAssets: true,
+			},
+		}),
+	],
 	site: "https://lintasnusa.lincie.me",
 	server: {
 		host: true,
