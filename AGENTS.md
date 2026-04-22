@@ -17,7 +17,7 @@ Use Bun for package management and scripts.
 
 - `bun install`: install dependencies.
 - `bun dev`: start the Astro dev server.
-- `bun build`: create a production build in `dist/`.
+- `bun run build`: create a production build in `dist/`.
 - `bun preview`: serve the production build locally.
 - `bun run lint`: run ESLint on `src/**/*.{js,astro}`.
 - `bun run format`: format `src/**/*.{js,astro}` with Prettier.
@@ -41,7 +41,7 @@ There is no automated test suite configured yet. Until one exists, treat the fol
 
 - `bun run lint`
 - `bun run format:check`
-- `bun build`
+- `bun run build`
 
 If you add tests later, place them near the feature or in a dedicated `tests/` directory and document the command here.
 

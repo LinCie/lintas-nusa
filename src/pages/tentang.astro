@@ -1,0 +1,1249 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Tentang";
+const pageDescription =
+	"Profil LintasNusa Logistics, perusahaan logistik digital Indonesia yang membangun satu sistem operasional untuk brand, UMKM, dan enterprise.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+	<a
+		href="#main-content"
+		class="skip-to-content bg-navy font-body focus:outline-teal absolute -top-full left-4 z-9999 rounded-md px-5 py-3 text-sm font-semibold text-white no-underline transition-[top] duration-150 focus:top-4 focus:outline-2 focus:outline-offset-2"
+		>Langsung ke konten</a
+	>
+	<Header />
+
+<nav
+		id="section-nav"
+		class="section-nav fixed top-18 z-40 w-full bg-white/95 backdrop-blur-sm"
+		aria-label="Section navigation"
+	>
+		<div class="mx-auto flex max-w-7xl items-center px-4 sm:px-8">
+			<div
+				class="flex items-center gap-0.5 overflow-x-auto py-3 text-[11px] font-medium tracking-wide sm:gap-2"
+			>
+				<a
+					href="#cerita"
+					class="section-nav-link text-white/80 hover:bg-white/10 hover:text-white shrink-0 rounded px-3 py-1.5 transition-colors duration-150"
+					data-section="cerita"
+				>
+					Cerita
+				</a>
+				<span class="text-charcoal-mid/20 mx-1" aria-hidden="true">/</span>
+				<a
+					href="#misi"
+					class="section-nav-link text-white/80 hover:bg-white/10 hover:text-white shrink-0 rounded px-3 py-1.5 transition-colors duration-150"
+					data-section="misi"
+				>
+					Visi & Misi
+				</a>
+				<span class="text-charcoal-mid/20 mx-1" aria-hidden="true">/</span>
+				<a
+					href="#nilai"
+					class="section-nav-link text-white/80 hover:bg-white/10 hover:text-white shrink-0 rounded px-3 py-1.5 transition-colors duration-150"
+					data-section="nilai"
+				>
+					Nilai Inti
+				</a>
+				<span class="text-charcoal-mid/20 mx-1" aria-hidden="true">/</span>
+				<a
+					href="#kepemimpinan"
+					class="section-nav-link text-white/80 hover:bg-white/10 hover:text-white shrink-0 rounded px-3 py-1.5 transition-colors duration-150"
+					data-section="kepemimpinan"
+				>
+					Kepemimpinan
+				</a>
+				<span class="text-charcoal-mid/20 mx-1" aria-hidden="true">/</span>
+				<a
+					href="#kontak"
+					class="section-nav-link text-white/80 hover:bg-white/10 hover:text-white shrink-0 rounded px-3 py-1.5 transition-colors duration-150"
+					data-section="kontak"
+				>
+					Kontak
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<section
+			id="hero"
+			class="bg-navy relative flex min-h-svh flex-col justify-center overflow-hidden"
+			aria-labelledby="hero-tagline"
+		>
+			<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+				<svg
+					class="h-full w-full"
+					viewBox="0 0 1440 900"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					preserveAspectRatio="xMidYMid slice"
+				>
+					<path
+						d="M-60 700 Q180 580 400 600 T900 520 T1400 480 T1540 460"
+						stroke="var(--color-teal)"
+						stroke-width="1"
+						opacity="0.12"></path>
+					<path
+						d="M-60 640 Q200 520 440 540 T940 460 T1440 420 T1540 400"
+						stroke="var(--color-teal)"
+						stroke-width="0.5"
+						opacity="0.08"></path>
+					<path
+						d="M-60 360 Q180 440 420 400 T920 340 T1420 300 T1540 280"
+						stroke="var(--color-teal)"
+						stroke-width="1"
+						opacity="0.10"></path>
+					<path
+						d="M-60 300 Q240 380 480 340 T980 280 T1480 240 T1540 220"
+						stroke="var(--color-teal)"
+						stroke-width="0.5"
+						opacity="0.06"></path>
+					<line
+						x1="720"
+						y1="0"
+						x2="720"
+						y2="900"
+						stroke="var(--color-teal)"
+						stroke-width="0.4"
+						opacity="0.05"
+						stroke-dasharray="6 12"></line>
+					<circle cx="720" cy="450" r="2" fill="var(--color-teal)" opacity="0.15"></circle>
+					<circle cx="400" cy="600" r="1.5" fill="var(--color-teal)" opacity="0.12"></circle>
+					<circle cx="900" cy="520" r="1.5" fill="var(--color-teal)" opacity="0.10"></circle>
+					<circle cx="420" cy="400" r="1.5" fill="var(--color-teal)" opacity="0.12"></circle>
+					<circle cx="920" cy="340" r="1.5" fill="var(--color-teal)" opacity="0.10"></circle>
+					<circle cx="200" cy="680" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+					<circle cx="1100" cy="420" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+					<circle cx="600" cy="320" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+					<circle cx="1000" cy="280" r="1" fill="var(--color-teal)" opacity="0.08"></circle>
+				</svg>
+			</div>
+
+			<div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 sm:px-8 lg:py-32">
+				<div class="hero-tagline-block max-w-4xl">
+					<p
+						class="hero-tagline-label text-teal mb-6 font-mono text-[10px] font-medium tracking-[0.25em] uppercase"
+					>
+						PT Lintas Nusa Terpadu, Didirikan 2021
+					</p>
+					<h1
+						id="hero-tagline"
+						class="hero-tagline font-display leading-[1.02] font-black tracking-tight text-white"
+						style="font-size: clamp(3rem, 8vw, 6rem);"
+					>
+						Satu Sistem.<br />Seluruh Nusantara.
+					</h1>
+					<p
+						class="hero-tagline-sub font-body text-mist/70 mt-8 max-w-[52ch] text-base leading-relaxed sm:text-lg"
+					>
+						Kami membangun logistik yang tidak sekadar menggerakkan paket, tetapi juga menginformasikan
+						setiap langkahnya. Dari pickup hingga penerima, satu sistem, satu cara kerja.
+					</p>
+				</div>
+
+				<div class="hero-thesis-block mt-16 max-w-2xl">
+					<div class="border-t border-white/10 pt-8">
+						<p
+							class="mb-3 font-mono text-[10px] font-medium tracking-[0.2em] text-white/40 uppercase"
+						>
+							Tesis Perusahaan
+						</p>
+						<p
+							class="font-display text-mist/90 text-[clamp(1.25rem,2.5vw,1.75rem)] leading-tight font-bold tracking-tight"
+						>
+							Logistik bukanlah sekadar gerak. Ia adalah disiplin informasi.
+						</p>
+						<p
+							class="mt-4 font-mono text-[9px] font-medium tracking-[0.15em] text-white/30 uppercase"
+						>
+							L — Lugas &nbsp;&nbsp; I — Integritas &nbsp;&nbsp; N — Nyata &nbsp;&nbsp; T — Tanggap
+							&nbsp;&nbsp; A — Andal &nbsp;&nbsp; S — Selaras
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="hero-scroll-indicator absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3"
+				aria-hidden="true"
+			>
+				<span class="font-mono text-[9px] font-medium tracking-[0.2em] text-white/30 uppercase">
+					Scroll
+				</span>
+				<div class="scroll-line h-12 w-0.5 bg-linear-to-b from-white/40 to-transparent"></div>
+			</div>
+		</section>
+
+		<section id="cerita" aria-labelledby="cerita-heading" class="bg-white py-24 lg:py-32">
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div
+					class="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.5fr)] lg:gap-24"
+				>
+					<div class="cerita-prose space-y-8">
+						<div class="mb-10">
+							<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+								Asal Mula
+							</span>
+						</div>
+
+						<div class="cerita-block space-y-6">
+							<h2
+								id="cerita-heading"
+								class="font-display text-navy leading-[1.05] font-bold tracking-tight"
+								style="font-size: clamp(2rem, 4vw, 3rem);"
+							>
+								Masalahnya sederhana: logistik sudah digital, tapi terpecah di banyak sistem.
+							</h2>
+
+							<div class="space-y-5">
+								<p class="font-body text-charcoal-mid text-base leading-relaxed">
+									LintasNusa didirikan tahun 2021 di Jakarta Selatan oleh tim yang sebelumnya
+									bekerja di operasi e-commerce, distribusi last-mile, dan produk SaaS.
+									Masing-masing mengalami masalah yang sama: pengiriman sudah digital, tapi
+									pengalamannya terpecah di banyak portal, aplikasi, dan subdomain yang berbeda.
+								</p>
+
+								<p class="font-body text-charcoal-mid text-base leading-relaxed">
+									Seller mengelola pesanan di satu dashboard. Tim finance membaca laporan di sistem
+									lain. Customer service mengejar ticket di platform terpisah. Sementara itu,
+									penerima paket sering hanya bisa menunggu tanpa tahu pasti di mana paket mereka
+									berada.
+								</p>
+
+								<p class="font-body text-charcoal-mid text-base leading-relaxed">
+									Tim kami sampai pada kesimpulan yang sama: <em
+										>pengalaman logistics yang baik bukan tentang memiliki aplikasi terbanyak,
+										melainkan tentang membangun satu sistem yang bekerja sebagai satu kesatuan.</em
+									>
+								</p>
+							</div>
+						</div>
+
+						<div class="cerita-thesis border-teal/30 bg-teal/5 rounded-xl border p-6">
+							<p
+								class="font-display text-navy text-[clamp(1.25rem,2.5vw,1.75rem)] leading-tight font-bold tracking-tight"
+							>
+								Kami merancang LintasNusa sebagai sistem operasi tunggal untuk pengiriman,
+								fulfillment, pelacakan, klaim, dan retur.
+							</p>
+							<p
+								class="text-charcoal-mid/50 mt-3 font-mono text-[9px] font-medium tracking-[0.12em] uppercase"
+							>
+								Enam nilai: Lugas, Integritas, Nyata, Tanggap, Andal, Selaras.
+							</p>
+						</div>
+					</div>
+
+					<aside class="cerita-sidebar self-start lg:sticky lg:top-32 lg:pt-2">
+						<div class="border-mist-dark bg-mist/50 rounded-3xl border p-6 sm:p-8">
+							<p
+								class="text-navy/50 mb-5 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
+							>
+								Profil perusahaan
+							</p>
+							<dl class="space-y-5">
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Nama
+									</dt>
+									<dd class="font-display text-navy mt-1 text-base font-bold">
+										LintasNusa Logistics
+									</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Entitas Hukum
+									</dt>
+									<dd class="font-body text-charcoal-mid mt-1 text-sm">PT Lintas Nusa Terpadu</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Diresmikan
+									</dt>
+									<dd class="font-body text-charcoal-mid mt-1 text-sm">2021</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Kantor Pusat
+									</dt>
+									<dd class="font-body text-charcoal-mid mt-1 text-sm">Jakarta Selatan</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Kota & Kabupaten
+									</dt>
+									<dd class="font-display text-navy mt-1 text-2xl font-bold">247</dd>
+									<dd class="text-charcoal-mid/50 font-mono text-[8px] tracking-wide">
+										Jawa, Sumatra, Kalimantan, Sulawesi
+									</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Gateway Hub
+									</dt>
+									<dd class="font-display text-navy mt-1 text-2xl font-bold">9</dd>
+									<dd class="text-charcoal-mid/50 font-mono text-[8px] tracking-wide">
+										strategic cross-island points
+									</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Satellite Hub
+									</dt>
+									<dd class="font-display text-navy mt-1 text-2xl font-bold">38</dd>
+									<dd class="text-charcoal-mid/50 font-mono text-[8px] tracking-wide">
+										last-mile coverage points
+									</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Armada Kendaraan
+									</dt>
+									<dd class="font-display text-navy mt-1 text-2xl font-bold">1.120</dd>
+									<dd class="text-charcoal-mid/50 font-mono text-[8px] tracking-wide">
+										proprietary fleet units
+									</dd>
+								</div>
+								<div>
+									<dt
+										class="text-charcoal-mid/70 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+									>
+										Tim & Partner
+									</dt>
+									<dd class="font-display text-navy mt-1 text-2xl font-bold">2.850</dd>
+									<dd class="text-charcoal-mid/50 font-mono text-[8px] tracking-wide">
+										employees & logistics partners
+									</dd>
+								</div>
+							</dl>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="misi"
+			aria-labelledby="misi-heading"
+			class="bg-mist/40 border-mist-dark border-t py-24 lg:py-32"
+		>
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div class="mb-16 max-w-2xl">
+					<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+						Visi & Misi
+					</span>
+					<h2
+						id="misi-heading"
+						class="font-display text-navy mt-4 leading-[1.05] font-bold tracking-tight"
+						style="font-size: clamp(2rem, 4vw, 3rem);"
+					>
+						Menjadi partner logistik digital yang dipercaya untuk perdagangan modern di Indonesia.
+					</h2>
+				</div>
+
+				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+					<div class="misi-item border-mist-dark rounded-2xl border bg-white p-6">
+						<span class="font-display text-navy/45 text-3xl leading-none font-bold">01</span>
+						<p class="font-body text-charcoal mt-4 text-sm leading-relaxed">
+							Menghilangkan ketidakpastian pengiriman dengan lacak real-time dan standar layanan
+							yang jelas.
+						</p>
+					</div>
+					<div class="misi-item border-mist-dark rounded-2xl border bg-white p-6">
+						<span class="font-display text-navy/45 text-3xl leading-none font-bold">02</span>
+						<p class="font-body text-charcoal mt-4 text-sm leading-relaxed">
+							Membantu brand dan UMKM Indonesia berkembang dengan alat logistik yang lebih simpel,
+							laporan yang jujur, dan layanan klaim yang bisa diandalkan.
+						</p>
+					</div>
+					<div class="misi-item border-mist-dark rounded-2xl border bg-white p-6">
+						<span class="font-display text-navy/45 text-3xl leading-none font-bold">03</span>
+						<p class="font-body text-charcoal mt-4 text-sm leading-relaxed">
+							Membangun layanan logistik lintas pulau yang transparan dalam proses, modern dalam
+							sistem, dan disiplin dalam eksekusi.
+						</p>
+					</div>
+					<div class="misi-item border-mist-dark rounded-2xl border bg-white p-6">
+						<span class="font-display text-navy/45 text-3xl leading-none font-bold">04</span>
+						<p class="font-body text-charcoal mt-4 text-sm leading-relaxed">
+							Menyatukan fulfillment, pengiriman, retur, dan rekonsiliasi dalam satu alur yang
+							tersambung.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="nilai"
+			aria-labelledby="nilai-heading"
+			class="border-mist-dark border-t bg-white py-24 lg:py-32"
+		>
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div class="mb-16 max-w-2xl">
+					<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+						Nilai Inti
+					</span>
+					<h2
+						id="nilai-heading"
+						class="font-display text-navy mt-4 leading-[1.05] font-bold tracking-tight"
+						style="font-size: clamp(2rem, 4vw, 3rem);"
+					>
+						LINTAS, singkatan yang mengikat cara kerja kami.
+					</h2>
+				</div>
+
+				<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+					<div class="nilai-item bg-mist/40 rounded-2xl p-6 sm:p-8">
+						<div class="mb-4 flex items-center gap-4">
+							<span
+								class="bg-navy text-teal font-display flex size-12 items-center justify-center rounded-full text-xl font-bold"
+							>
+								L
+							</span>
+							<div>
+								<p class="font-display text-navy text-lg font-bold">Lugas</p>
+								<p
+									class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+								>
+									Communicate clearly
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							To the point. Tanpa basa-basi. Setiap dokumen, setiap SLA, setiap Janji harus bisa
+							dibaca tanpa perlu penafsiran ulang.
+						</p>
+					</div>
+
+					<div class="nilai-item bg-mist/40 rounded-2xl p-6 sm:p-8">
+						<div class="mb-4 flex items-center gap-4">
+							<span
+								class="bg-navy text-teal font-display flex size-12 items-center justify-center rounded-full text-xl font-bold"
+							>
+								I
+							</span>
+							<div>
+								<p class="font-display text-navy text-lg font-bold">Integritas</p>
+								<p
+									class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+								>
+									Act with honesty
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Janji yang ditepati, klaim yang dituntaskan. Kalau ada kendala, kami komunikasikan,
+							bukan sembunyikan.
+						</p>
+					</div>
+
+					<div class="nilai-item bg-mist/40 rounded-2xl p-6 sm:p-8">
+						<div class="mb-4 flex items-center gap-4">
+							<span
+								class="bg-navy text-teal font-display flex size-12 items-center justify-center rounded-full text-xl font-bold"
+							>
+								N
+							</span>
+							<div>
+								<p class="font-display text-navy text-lg font-bold">Nyata</p>
+								<p
+									class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+								>
+									Prove it with data
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Klaim harus bisa dibuktikan dengan data. Setiap angka yang kami sampaikan berasal dari
+							sistem, bukan estimasi.
+						</p>
+					</div>
+
+					<div class="nilai-item bg-mist/40 rounded-2xl p-6 sm:p-8">
+						<div class="mb-4 flex items-center gap-4">
+							<span
+								class="bg-navy text-teal font-display flex size-12 items-center justify-center rounded-full text-xl font-bold"
+							>
+								T
+							</span>
+							<div>
+								<p class="font-display text-navy text-lg font-bold">Tanggap</p>
+								<p
+									class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+								>
+									Respond and resolve
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Cepat tangkap masalah, cepat selesaikan akar penyebabnya, bukan sekadar tambal
+							permukaan lalu biarkan muncul lagi.
+						</p>
+					</div>
+
+					<div class="nilai-item bg-mist/40 rounded-2xl p-6 sm:p-8">
+						<div class="mb-4 flex items-center gap-4">
+							<span
+								class="bg-navy text-teal font-display flex size-12 items-center justify-center rounded-full text-xl font-bold"
+							>
+								A
+							</span>
+							<div>
+								<p class="font-display text-navy text-lg font-bold">Andal</p>
+								<p
+									class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+								>
+									Reliability is the product
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Keandalan adalah produk. Kalau bilang next-day, ya next-day. Kalau 98% on-time, angka
+							itu yang dipertanggungjawabkan.
+						</p>
+					</div>
+
+					<div class="nilai-item bg-mist/40 rounded-2xl p-6 sm:p-8">
+						<div class="mb-4 flex items-center gap-4">
+							<span
+								class="bg-navy text-teal font-display flex size-12 items-center justify-center rounded-full text-xl font-bold"
+							>
+								S
+							</span>
+							<div>
+								<p class="font-display text-navy text-lg font-bold">Selaras</p>
+								<p
+									class="text-charcoal-mid/60 font-mono text-[9px] font-medium tracking-[0.15em] uppercase"
+								>
+									Grow together
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Sukses bareng klien, agen, dan komunitas. Bukan hanya saat hubungan baik, tetapi juga
+							saat ada masalah yang harus diselesaikan bersama.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="kepemimpinan"
+			aria-labelledby="kepemimpinan-heading"
+			class="border-mist-dark border-t bg-white py-24 lg:py-32"
+		>
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div class="mb-16 max-w-2xl">
+					<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+						Jajaran Kepemimpinan
+					</span>
+					<h2
+						id="kepemimpinan-heading"
+						class="font-display text-navy mt-4 leading-[1.05] font-bold tracking-tight"
+						style="font-size: clamp(2rem, 4vw, 3rem);"
+					>
+						Tim dengan pengalaman nyata di commerce, operasi, dan teknologi.
+					</h2>
+				</div>
+
+				<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+					<article
+						class="leader-card group border-mist-dark rounded-2xl border bg-white p-6 transition-shadow duration-200 hover:shadow-[0_8px_24px_rgba(15,39,66,0.08)] sm:p-8"
+					>
+						<div class="mb-5 flex items-center gap-4">
+							<div
+								class="leader-photo text-teal/20 font-display relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linear-to-br from-[#0f2742] to-navy-light text-2xl font-bold"
+								aria-hidden="true"
+							>
+								NP
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+									aria-hidden="true"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="text-teal/60"
+									>
+										<path
+											d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+										></path>
+										<path
+											d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div>
+								<h3 class="font-display text-navy text-base leading-tight font-bold">
+									Nadira Prasetyo
+								</h3>
+								<p class="text-teal mt-0.5 font-mono text-xs font-medium tracking-[0.04em]">
+									Founder & CEO
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Mantan kepala strategi fulfillment di platform commerce regional. Memimpin
+							product-market fit dan pertumbuhan jaringan di seluruh Indonesia.
+						</p>
+					</article>
+
+					<article
+						class="leader-card group border-mist-dark rounded-2xl border bg-white p-6 transition-shadow duration-200 hover:shadow-[0_8px_24px_rgba(15,39,66,0.08)] sm:p-8"
+					>
+						<div class="mb-5 flex items-center gap-4">
+							<div
+								class="leader-photo text-teal/20 font-display relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linear-to-br from-[#0f2742] to-navy-light text-2xl font-bold"
+								aria-hidden="true"
+							>
+								BA
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+									aria-hidden="true"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="text-teal/60"
+									>
+										<path
+											d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+										></path>
+										<path
+											d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div>
+								<h3 class="font-display text-navy text-base leading-tight font-bold">
+									Bima Ardian
+								</h3>
+								<p class="text-teal mt-0.5 font-mono text-xs font-medium tracking-[0.04em]">
+									Chief Operating Officer
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Membangun program line-haul dan last-mile di Jawa dan Sumatra. Bertanggung jawab atas
+							reliabilitas jaringan dan kualitas layanan nasional.
+						</p>
+					</article>
+
+					<article
+						class="leader-card group border-mist-dark rounded-2xl border bg-white p-6 transition-shadow duration-200 hover:shadow-[0_8px_24px_rgba(15,39,66,0.08)] sm:p-8"
+					>
+						<div class="mb-5 flex items-center gap-4">
+							<div
+								class="leader-photo text-teal/20 font-display relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linear-to-br from-[#0f2742] to-navy-light text-2xl font-bold"
+								aria-hidden="true"
+							>
+								KH
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+									aria-hidden="true"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="text-teal/60"
+									>
+										<path
+											d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+										></path>
+										<path
+											d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div>
+								<h3 class="font-display text-navy text-base leading-tight font-bold">
+									Kevin Halim
+								</h3>
+								<p class="text-teal mt-0.5 font-mono text-xs font-medium tracking-[0.04em]">
+									Chief Technology Officer
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Mantan arsitek integrasi SaaS. Memimpin merchant OS, stack API, dan control tower
+							layer yang menyatukan seluruh data operasional.
+						</p>
+					</article>
+
+					<article
+						class="leader-card group border-mist-dark rounded-2xl border bg-white p-6 transition-shadow duration-200 hover:shadow-[0_8px_24px_rgba(15,39,66,0.08)] sm:p-8"
+					>
+						<div class="mb-5 flex items-center gap-4">
+							<div
+								class="leader-photo text-teal/20 font-display relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linear-to-br from-[#0f2742] to-navy-light text-2xl font-bold"
+								aria-hidden="true"
+							>
+								MG
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+									aria-hidden="true"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="text-teal/60"
+									>
+										<path
+											d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+										></path>
+										<path
+											d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div>
+								<h3 class="font-display text-navy text-base leading-tight font-bold">
+									Marissa Gunawan
+								</h3>
+								<p class="text-teal mt-0.5 font-mono text-xs font-medium tracking-[0.04em]">
+									Chief Commercial Officer
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Spesialis desain penjualan D2C dan B2B. Memimpin solusi industri dan pengelolaan akun
+							besar nasional untuk segment enterprise.
+						</p>
+					</article>
+
+					<article
+						class="leader-card group border-mist-dark rounded-2xl border bg-white p-6 transition-shadow duration-200 hover:shadow-[0_8px_24px_rgba(15,39,66,0.08)] sm:p-8"
+					>
+						<div class="mb-5 flex items-center gap-4">
+							<div
+								class="leader-photo text-teal/20 font-display relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linear-to-br from-[#0f2742] to-navy-light text-2xl font-bold"
+								aria-hidden="true"
+							>
+								RW
+								<div
+									class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+									aria-hidden="true"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="text-teal/60"
+									>
+										<path
+											d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+										></path>
+										<path
+											d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+										></path>
+									</svg>
+								</div>
+							</div>
+							<div>
+								<h3 class="font-display text-navy text-base leading-tight font-bold">
+									Raka Wibisono
+								</h3>
+								<p class="text-teal mt-0.5 font-mono text-xs font-medium tracking-[0.04em]">
+									VP Network & Quality
+								</p>
+							</div>
+						</div>
+						<p class="font-body text-charcoal-mid text-sm leading-relaxed">
+							Mengelola gateway, rutinitas audit, integritas POD, dan standar penanganan khusus di
+							seluruh jaringan operasional.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section id="kontak" aria-labelledby="kontak-heading" class="bg-navy py-24 lg:py-32">
+			<div class="mx-auto max-w-7xl px-6 sm:px-8">
+				<div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+					<div class="kontak-content">
+						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+							Hubungi Tim Kami
+						</span>
+						<h2
+							id="kontak-heading"
+							class="font-display text-white mt-4 leading-[1.05] font-bold tracking-tight"
+							style="font-size: clamp(2rem, 4vw, 3rem);"
+						>
+							Siap membahas alur distribusi Anda?
+						</h2>
+						<p class="font-body text-mist/60 mt-5 max-w-[46ch] text-base leading-relaxed">
+							Jadwalkan sesi konsultasi operasional dengan tim kami. Kami akan mendengarkan lane
+							prioritas, pola muatan, dan standar bukti yang perlu dijaga sebelum kerja sama
+							dimulai.
+						</p>
+						<a
+							href="mailto:partner@lintasnusa.co.id"
+							class="cta-primary bg-orange font-body focus:outline-teal hover:bg-orange-hover mt-8 inline-flex min-h-13 items-center justify-center gap-2 rounded-md px-8 py-4 text-[15px] font-semibold text-white no-underline transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(169,60,25,0.25)] focus:outline-2 focus:outline-offset-3 active:translate-y-0 active:scale-[.99] active:shadow-none"
+						>
+							Jadwalkan konsultasi operasional
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+								<path
+									d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"></path>
+							</svg>
+						</a>
+					</div>
+
+					<div class="kontak-info">
+						<div class="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8">
+							<p
+								class="mb-6 font-mono text-[10px] font-medium tracking-[0.2em] text-white/40 uppercase"
+							>
+								Langsung hubungi kami
+							</p>
+							<div class="space-y-5">
+								<div class="flex items-start gap-4">
+									<div
+										class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10"
+									>
+										<svg
+											width="18"
+											height="18"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="var(--color-mist)"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											aria-hidden="true"
+										>
+											<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+											<path d="M22 6L12 13L2 6"></path>
+										</svg>
+									</div>
+									<div>
+										<p
+											class="font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+										>
+											Email
+										</p>
+										<a
+											href="mailto:partner@lintasnusa.co.id"
+											class="font-body text-mist/80 mt-0.5 block text-sm leading-relaxed no-underline transition-colors duration-150 hover:text-white"
+										>
+											partner@lintasnusa.co.id
+										</a>
+									</div>
+								</div>
+
+								<div class="flex items-start gap-4">
+									<div
+										class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10"
+									>
+										<svg
+											width="18"
+											height="18"
+											viewBox="0 0 24 24"
+											fill="var(--color-mist)"
+											aria-hidden="true"
+										>
+											<path
+												d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+											></path>
+										</svg>
+									</div>
+									<div>
+										<p
+											class="font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+										>
+											WhatsApp
+										</p>
+										<a
+											href="https://wa.me/6281234567890"
+											target="_blank"
+											rel="noopener noreferrer"
+											aria-label="Chat via WhatsApp: +62 812 3456 7890"
+											class="font-body text-mist/80 mt-0.5 block text-sm leading-relaxed no-underline transition-colors duration-150 hover:text-white"
+										>
+											+62 812 3456 7890
+										</a>
+									</div>
+								</div>
+
+								<div class="flex items-start gap-4">
+									<div
+										class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10"
+									>
+										<svg
+											width="18"
+											height="18"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="var(--color-mist)"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											aria-hidden="true"
+										>
+											<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+											<circle cx="12" cy="10" r="3"></circle>
+										</svg>
+									</div>
+									<div>
+										<p
+											class="font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+										>
+											Kantor Pusat
+										</p>
+										<p class="font-body text-mist/80 mt-0.5 text-sm leading-relaxed">
+											Jl. TB Simatupang No. 17, Cilandak,<br />
+											Jakarta Selatan 12430
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="mt-6 border-t border-white/10 pt-6">
+								<p
+									class="font-mono text-[9px] font-medium tracking-[0.15em] text-white/40 uppercase"
+								>
+									Jam operasional
+								</p>
+								<p class="font-body text-mist/70 mt-1 text-sm">Senin – Jumat: 08.00 – 17.00 WIB</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function initTentangAnimations() {
+		const mm = gsap.matchMedia();
+
+		mm.add("(prefers-reduced-motion: no-preference)", () => {
+			const sectionNavLinks = document.querySelectorAll<HTMLElement>(".section-nav-link");
+			const sections = ["cerita", "misi", "nilai", "kepemimpinan", "kontak"];
+
+			sections.forEach((id) => {
+				const section = document.getElementById(id);
+				const link = document.querySelector<HTMLElement>(`.section-nav-link[data-section="${id}"]`);
+				if (!section || !link) return;
+
+				ScrollTrigger.create({
+					trigger: section,
+					start: "top 40%",
+					end: "bottom 40%",
+					onEnter: () => {
+						sectionNavLinks.forEach((l) => l.classList.remove("bg-teal", "text-white"));
+						link.classList.add("bg-teal", "text-white");
+					},
+					onLeaveBack: () => {
+						const idx = sections.indexOf(id);
+						const prev = sections[idx - 1];
+						sectionNavLinks.forEach((l) => l.classList.remove("bg-teal", "text-white"));
+						if (prev) {
+							const prevLink = document.querySelector<HTMLElement>(
+								`.section-nav-link[data-section="${prev}"]`,
+							);
+							if (prevLink) prevLink.classList.add("bg-teal", "text-white");
+						}
+					},
+				});
+			});
+
+			const heroTl = gsap.timeline({ delay: 0.2 });
+			heroTl
+				.from(".hero-tagline-label", {
+					opacity: 0,
+					duration: 0.6,
+					ease: "power2.out",
+				})
+				.from(
+					".hero-tagline",
+					{
+						opacity: 0,
+						y: 24,
+						duration: 0.8,
+						ease: "power3.out",
+					},
+					"-=0.3",
+				)
+				.from(
+					".hero-tagline-sub",
+					{
+						opacity: 0,
+						y: 16,
+						duration: 0.6,
+						ease: "power2.out",
+					},
+					"-=0.4",
+				)
+				.from(
+					".hero-thesis-block",
+					{
+						opacity: 0,
+						y: 16,
+						duration: 0.6,
+						ease: "power2.out",
+					},
+					"-=0.3",
+				)
+				.from(
+					".hero-scroll-indicator",
+					{
+						opacity: 0,
+						duration: 0.5,
+						ease: "power2.out",
+					},
+					"-=0.2",
+				);
+
+			const scrollLine = document.querySelector<HTMLElement>(".scroll-line");
+			if (scrollLine) {
+				gsap.fromTo(
+					scrollLine,
+					{ opacity: 0.25, scaleY: 1 },
+					{
+						opacity: 0.5,
+						scaleY: 1.1,
+						duration: 1,
+						ease: "sine.inOut",
+						repeat: -1,
+						yoyo: true,
+						delay: 1.5,
+					},
+				);
+			}
+
+			const ceritaBlocks = gsap.utils.toArray<HTMLElement>(".cerita-block");
+			ceritaBlocks.forEach((block) => {
+				gsap.from(block.querySelectorAll("p, h2"), {
+					opacity: 0,
+					y: 16,
+					duration: 0.5,
+					ease: "power2.out",
+					stagger: 0.1,
+					scrollTrigger: {
+						trigger: block,
+						start: "top 80%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			});
+
+			gsap.from(".cerita-prose", {
+				opacity: 0,
+				scrollTrigger: {
+					trigger: ".cerita-prose",
+					start: "top 85%",
+					once: true,
+				},
+				clearProps: "opacity",
+			});
+
+			gsap.from(".cerita-sidebar", {
+				opacity: 0,
+				scrollTrigger: {
+					trigger: ".cerita-sidebar",
+					start: "top 80%",
+					once: true,
+				},
+				clearProps: "opacity",
+			});
+
+			gsap.from(".cerita-thesis", {
+				opacity: 0,
+				scrollTrigger: {
+					trigger: ".cerita-thesis",
+					start: "top 85%",
+					once: true,
+				},
+				clearProps: "opacity",
+			});
+
+			const misiSection = document.querySelector<HTMLElement>("#misi");
+			if (misiSection) {
+				gsap.from(misiSection.querySelector("h2"), {
+					opacity: 0,
+					y: 16,
+					duration: 0.5,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: misiSection,
+						start: "top 80%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+
+				gsap.from(misiSection.querySelectorAll(".misi-item"), {
+					opacity: 0,
+					y: 20,
+					duration: 0.5,
+					ease: "power2.out",
+					stagger: 0.1,
+					scrollTrigger: {
+						trigger: misiSection.querySelector(".misi-item"),
+						start: "top 85%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			}
+
+			const nilaiSection = document.querySelector<HTMLElement>("#nilai");
+			if (nilaiSection) {
+				gsap.from(nilaiSection.querySelector("h2"), {
+					opacity: 0,
+					y: 16,
+					duration: 0.5,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: nilaiSection,
+						start: "top 80%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+
+				gsap.from(nilaiSection.querySelectorAll(".nilai-item"), {
+					opacity: 0,
+					y: 20,
+					duration: 0.5,
+					ease: "power2.out",
+					stagger: 0.08,
+					scrollTrigger: {
+						trigger: nilaiSection.querySelector(".nilai-item"),
+						start: "top 85%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			}
+
+			const leaderSection = document.querySelector<HTMLElement>("#kepemimpinan");
+			if (leaderSection) {
+				gsap.from(leaderSection.querySelector("h2"), {
+					opacity: 0,
+					y: 16,
+					duration: 0.5,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: leaderSection,
+						start: "top 80%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+
+				gsap.from(leaderSection.querySelectorAll(".leader-card"), {
+					opacity: 0,
+					y: 24,
+					duration: 0.55,
+					ease: "power2.out",
+					stagger: 0.1,
+					scrollTrigger: {
+						trigger: leaderSection.querySelector(".leader-card"),
+						start: "top 85%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			}
+
+			const kontakSection = document.querySelector<HTMLElement>("#kontak");
+			if (kontakSection) {
+				gsap.from(kontakSection.querySelectorAll(".kontak-content, .kontak-info"), {
+					opacity: 0,
+					y: 24,
+					duration: 0.6,
+					ease: "power2.out",
+					stagger: 0.15,
+					scrollTrigger: {
+						trigger: kontakSection,
+						start: "top 80%",
+						once: true,
+					},
+					clearProps: "opacity,transform",
+				});
+			}
+		});
+	}
+
+	initTentangAnimations();
+
+	function updateSectionNav() {
+		const sectionNav = document.getElementById("section-nav");
+		const sectionNavLinks = document.querySelectorAll(".section-nav-link");
+		if (window.scrollY > 20) {
+			sectionNav?.classList.add("bg-white/95", "backdrop-blur-sm");
+			sectionNavLinks.forEach((link) => {
+				link.classList.remove("text-white/80", "hover:text-white", "hover:bg-white/10");
+				link.classList.add("text-charcoal-mid", "hover:text-navy", "hover:bg-mist");
+			});
+		} else {
+			sectionNav?.classList.remove("bg-white/95", "backdrop-blur-sm");
+			sectionNavLinks.forEach((link) => {
+				link.classList.remove("text-charcoal-mid", "hover:text-navy", "hover:bg-mist");
+				link.classList.add("text-white/80", "hover:text-white", "hover:bg-white/10");
+			});
+		}
+	}
+
+	window.addEventListener("scroll", updateSectionNav, { passive: true });
+	updateSectionNav();
+</script>
