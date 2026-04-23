@@ -3,6 +3,7 @@ const layananHref = "/layanan";
 const jangkauanHref = "/jangkauan";
 const platformHref = "/platform";
 const tentangHref = "/tentang";
+const demoHref = Astro.url.pathname === "/" ? "#demo" : "/#demo";
 ---
 
 <header
@@ -71,7 +72,7 @@ const tentangHref = "/tentang";
 		</nav>
 
 		<a
-			href={layananHref}
+			href={demoHref}
 			class="font-body text-teal border-teal hover:bg-teal focus:outline-teal hidden shrink-0 rounded-md border-2 px-4 py-2 text-[13px] font-semibold no-underline transition-colors duration-150 hover:text-white focus:outline-2 focus:outline-offset-3 lg:inline-flex"
 			>Jadwalkan Demo</a
 		>
@@ -117,7 +118,7 @@ const tentangHref = "/tentang";
 				>Tentang</a
 			>
 			<a
-				href={layananHref}
+				href={demoHref}
 				class="mobile-nav-link mobile-nav-cta font-body text-teal focus:outline-teal mt-2 block min-h-11 border-b-0 px-2 py-3.5 text-base font-semibold no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
 				>Jadwalkan Demo</a
 			>

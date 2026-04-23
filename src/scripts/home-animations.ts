@@ -1,292 +1,50 @@
 import { gsap, ScrollTrigger } from "./gsap";
 
-function updateExpandToggle(toggle: HTMLButtonElement, isExpanded: boolean) {
-	toggle.setAttribute("aria-expanded", String(isExpanded));
-
-	const label = toggle.querySelector<HTMLElement>(".toggle-label");
-	if (label) {
-		label.textContent = isExpanded
-			? (toggle.dataset.labelExpanded ?? "")
-			: (toggle.dataset.labelDefault ?? "");
-	}
-}
-
-function collapseExpandGroup(panel: HTMLElement) {
-	const toggle = panel.querySelector<HTMLButtonElement>(".service-expand-toggle");
-	if (!toggle) {
-		return;
-	}
-
-	const expandId = toggle.getAttribute("aria-controls");
-	if (!expandId) {
-		return;
-	}
-
-	const expandGroup = panel.querySelector<HTMLElement>(`#${expandId}`);
-	if (!expandGroup) {
-		return;
-	}
-
-	gsap.killTweensOf(expandGroup);
-	gsap.killTweensOf(toggle.querySelector(".toggle-chevron"));
-	gsap.set(expandGroup, { clearProps: "all" });
-	gsap.set(toggle.querySelector(".toggle-chevron"), { clearProps: "transform" });
-
-	expandGroup.hidden = true;
-	updateExpandToggle(toggle, false);
-}
-
-function revealServiceCategory(category: HTMLElement) {
-	if (category.dataset.revealed === "true") {
-		return;
-	}
-
-	category.dataset.revealed = "true";
-
-	if (!window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
-		return;
-	}
-
-	const header = category.querySelector<HTMLElement>(".service-category-header");
-	const cards = Array.from(category.querySelectorAll<HTMLElement>(".service-card"));
-
-	const timeline = gsap.timeline({
-		defaults: {
-			ease: "power3.out",
-		},
-	});
-
-	if (header) {
-		timeline.from(header, {
-			opacity: 0,
-			y: 18,
-			duration: 0.45,
-			clearProps: "opacity,transform",
-		});
-	}
-
-	if (cards.length) {
-		timeline.from(
-			cards,
-			{
-				opacity: 0,
-				y: 24,
-				duration: 0.55,
-				stagger: 0.08,
-				clearProps: "opacity,transform",
-			},
-			header ? "-=0.2" : 0,
-		);
-	}
-}
-
-function initServiceSection(section: HTMLElement) {
-	const tabList = section.querySelector<HTMLElement>(".service-tab-list");
-	const tabs = Array.from(section.querySelectorAll<HTMLAnchorElement>("[data-service-tab]"));
-	const panels = Array.from(section.querySelectorAll<HTMLElement>("[data-service-panel]"));
-
-	if (tabs.length === 0 || panels.length === 0) {
+export function initHomeAnimations() {
+	const page = document.querySelector<HTMLElement>('.route-stage[data-page-view="home"]');
+	if (!page) {
 		return () => {};
 	}
 
-	section.dataset.enhanced = "true";
-	tabList?.setAttribute("role", "tablist");
-	tabList?.setAttribute("aria-orientation", "horizontal");
-
-	tabs.forEach((tab) => {
-		tab.setAttribute("role", "tab");
-		tab.setAttribute("aria-selected", "false");
-		tab.setAttribute("tabindex", "-1");
-
-		const panelId = tab.getAttribute("href")?.slice(1);
-		if (panelId) {
-			tab.setAttribute("aria-controls", panelId);
-		}
-	});
-
-	panels.forEach((panel) => {
-		panel.setAttribute("role", "tabpanel");
-	});
-
-	section.querySelectorAll<HTMLButtonElement>(".service-expand-toggle").forEach((toggle) => {
-		toggle.hidden = false;
-	});
-
-	const activateTab = (
-		target: HTMLAnchorElement,
-		options: { focus?: boolean; reveal?: boolean } = {},
-	) => {
-		const { focus = true, reveal = true } = options;
-
-		tabs.forEach((tab) => {
-			const isActive = tab === target;
-			tab.classList.toggle("active", isActive);
-			tab.setAttribute("aria-selected", String(isActive));
-			tab.setAttribute("tabindex", isActive ? "0" : "-1");
-			if (isActive) {
-				tab.setAttribute("aria-current", "true");
-			} else {
-				tab.removeAttribute("aria-current");
-			}
-
-			if (isActive && focus) {
-				tab.focus();
-			}
-		});
-
-		panels.forEach((panel) => {
-			const isTarget = panel.getAttribute("aria-labelledby") === target.id;
-			panel.hidden = !isTarget;
-
-			if (!isTarget) {
-				collapseExpandGroup(panel);
-			}
-		});
-
-		if (reveal) {
-			const panelId = target.getAttribute("aria-controls");
-			if (!panelId) {
-				return;
-			}
-
-			const targetPanel = section.querySelector<HTMLElement>(`#${panelId}`);
-			if (targetPanel) {
-				revealServiceCategory(targetPanel);
-			}
-		}
-	};
-
-	const listeners: Array<() => void> = [];
-
-	tabs.forEach((tab) => {
-		const clickHandler = (event: MouseEvent) => {
-			event.preventDefault();
-			activateTab(tab);
-		};
-		const keyHandler = (event: KeyboardEvent) => {
-			const currentIndex = tabs.indexOf(tab);
-
-			if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-				event.preventDefault();
-				const nextIndex =
-					event.key === "ArrowRight"
-						? (currentIndex + 1) % tabs.length
-						: (currentIndex - 1 + tabs.length) % tabs.length;
-				activateTab(tabs[nextIndex]);
-			}
-
-			if (event.key === "Home") {
-				event.preventDefault();
-				activateTab(tabs[0]);
-			}
-
-			if (event.key === "End") {
-				event.preventDefault();
-				activateTab(tabs[tabs.length - 1]);
-			}
-		};
-
-		tab.addEventListener("click", clickHandler);
-		tab.addEventListener("keydown", keyHandler);
-
-		listeners.push(() => {
-			tab.removeEventListener("click", clickHandler);
-			tab.removeEventListener("keydown", keyHandler);
-		});
-	});
-
-	section.querySelectorAll<HTMLButtonElement>(".service-expand-toggle").forEach((toggle) => {
-		const clickHandler = () => {
-			const expandId = toggle.getAttribute("aria-controls");
-			if (!expandId) {
-				return;
-			}
-
-			const panel = toggle.closest<HTMLElement>("[data-service-panel]");
-			const expandGroup = panel?.querySelector<HTMLElement>(`#${expandId}`);
-			const chevron = toggle.querySelector<HTMLElement>(".toggle-chevron");
-
-			if (!panel || !expandGroup) {
-				return;
-			}
-
-			const isExpanded = toggle.getAttribute("aria-expanded") === "true";
-			const shouldExpand = !isExpanded;
-			const canAnimate = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-
-			updateExpandToggle(toggle, shouldExpand);
-
-			if (!canAnimate) {
-				expandGroup.hidden = !shouldExpand;
-				return;
-			}
-
-			gsap.killTweensOf(expandGroup);
-			gsap.killTweensOf(chevron);
-
-			if (shouldExpand) {
-				expandGroup.hidden = false;
-				gsap.fromTo(
-					expandGroup,
-					{ height: 0, opacity: 0 },
-					{
-						height: "auto",
-						opacity: 1,
-						duration: 0.32,
-						ease: "power2.out",
-						clearProps: "height,opacity",
-					},
-				);
-				if (chevron) {
-					gsap.to(chevron, {
-						rotate: 180,
-						duration: 0.22,
-						ease: "power2.out",
-					});
-				}
-				return;
-			}
-
-			gsap.to(expandGroup, {
-				height: 0,
-				opacity: 0,
-				duration: 0.24,
-				ease: "power2.inOut",
-				onComplete: () => {
-					expandGroup.hidden = true;
-					gsap.set(expandGroup, { clearProps: "height,opacity" });
-				},
-			});
-			if (chevron) {
-				gsap.to(chevron, {
-					rotate: 0,
-					duration: 0.2,
-					ease: "power2.out",
-				});
-			}
-		};
-
-		toggle.addEventListener("click", clickHandler);
-		listeners.push(() => toggle.removeEventListener("click", clickHandler));
-	});
-
-	panels.forEach((panel) => collapseExpandGroup(panel));
-
-	const activeTab = tabs.find((tab) => tab.dataset.defaultActive === "true") ?? tabs[0];
-	activateTab(activeTab, { focus: false, reveal: false });
-
-	return () => {
-		listeners.forEach((removeListener) => removeListener());
-	};
-}
-
-export function initHomeAnimations() {
-	const heroElements = gsap.utils.toArray<HTMLElement>(".hero-reveal");
-	const scrollLine = document.querySelector<HTMLElement>(".scroll-line");
-	const serviceSections = Array.from(
-		document.querySelectorAll<HTMLElement>("[data-service-section]"),
-	);
-	const cleanupHandlers = serviceSections.map((section) => initServiceSection(section));
+	const heroElements = gsap.utils.toArray<HTMLElement>("[data-home-hero]", page);
+	const revealSections = gsap.utils.toArray<HTMLElement>("[data-home-reveal]", page);
+	const hoverItems = gsap.utils.toArray<HTMLElement>("[data-home-hover]", page);
+	const commandShell = page.querySelector<HTMLElement>("[data-home-map-shell]");
+	const scanBeam = commandShell?.querySelector<HTMLElement>(".jangkauan-scan-beam");
+	const scanLine = commandShell?.querySelector<HTMLElement>(".jangkauan-scan-line");
+	const commandCards = commandShell
+		? gsap.utils.toArray<HTMLElement>(".jangkauan-command-card", commandShell)
+		: [];
+	const commandPills = commandShell
+		? gsap.utils.toArray<HTMLElement>(".jangkauan-command-pill", commandShell)
+		: [];
+	const commandHeader = commandShell?.querySelector<HTMLElement>(".jangkauan-command-header");
+	const commandCaption = commandShell?.querySelector<HTMLElement>(".jangkauan-command-caption");
+	const routePaths = commandShell
+		? gsap.utils.toArray<SVGPathElement>(
+				".jangkauan-route-primary, .jangkauan-route-support, .jangkauan-route-glow",
+				commandShell,
+			)
+		: [];
+	const routeSignals = commandShell
+		? gsap.utils.toArray<SVGPathElement>(".jangkauan-route-signal", commandShell)
+		: [];
+	const controlRings = commandShell
+		? gsap.utils.toArray<SVGCircleElement>(".jangkauan-control-ring", commandShell)
+		: [];
+	const nodePulses = commandShell
+		? gsap.utils.toArray<SVGCircleElement>(".jangkauan-node-pulse", commandShell)
+		: [];
+	const networkNodes = commandShell
+		? gsap.utils.toArray<SVGCircleElement>(".jangkauan-network-node", commandShell)
+		: [];
+	const networkLabels = commandShell
+		? gsap.utils.toArray<SVGTextElement>(".jangkauan-network-label", commandShell)
+		: [];
+	const controlCore = commandShell?.querySelector<SVGCircleElement>(".jangkauan-control-core");
+	const auras = commandShell
+		? gsap.utils.toArray<HTMLElement>(".jangkauan-command-aura", commandShell)
+		: [];
 
 	const mm = gsap.matchMedia();
 
@@ -302,157 +60,323 @@ export function initHomeAnimations() {
 			});
 
 			heroTimeline.from(heroElements, {
-				y: 24,
+				y: 26,
 				opacity: 0,
-				stagger: 0.1,
+				stagger: 0.09,
 				clearProps: "opacity,transform",
 			});
-
-			if (scrollLine) {
-				gsap.fromTo(
-					scrollLine,
-					{
-						opacity: 0.25,
-						scaleY: 1,
-					},
-					{
-						opacity: 0.5,
-						scaleY: 1.1,
-						duration: 1,
-						ease: "sine.inOut",
-						repeat: -1,
-						yoyo: true,
-						delay: 0.45,
-					},
-				);
-			}
 		}
 
-		const visibleCategories = gsap.utils.toArray<HTMLElement>(".service-category:not([hidden])");
-		visibleCategories.forEach((category) => {
-			ScrollTrigger.create({
-				trigger: category,
-				start: "top 82%",
-				once: true,
-				onEnter: () => revealServiceCategory(category),
-			});
-		});
+		revealSections.forEach((section) => {
+			const revealItems = gsap.utils.toArray<HTMLElement>("[data-home-reveal-item]", section);
+			if (!revealItems.length) {
+				return;
+			}
 
-		serviceSections.forEach((section) => {
-			section.querySelectorAll<HTMLElement>(".service-card").forEach((card) => {
-				const surface = card.querySelector<HTMLElement>(".service-card-surface");
-
-				if (!surface) {
-					return;
-				}
-
-				const enter = () => {
-					gsap.to(surface, {
-						y: -4,
-						boxShadow: "0 10px 24px rgba(15,39,66,0.08)",
-						duration: 0.22,
-						ease: "power2.out",
-					});
-				};
-
-				const leave = () => {
-					gsap.to(surface, {
-						y: 0,
-						boxShadow: "0 0 0 rgba(15,39,66,0)",
-						duration: 0.2,
-						ease: "power2.out",
-					});
-				};
-
-				card.addEventListener("pointerenter", enter);
-				card.addEventListener("pointerleave", leave);
-
-				hoverCleanups.push(() => {
-					card.removeEventListener("pointerenter", enter);
-					card.removeEventListener("pointerleave", leave);
-				});
-			});
-
-			section.querySelectorAll<HTMLButtonElement>(".service-expand-toggle").forEach((toggle) => {
-				const enter = () => {
-					gsap.to(toggle, {
-						x: 4,
-						duration: 0.18,
-						ease: "power2.out",
-					});
-				};
-				const leave = () => {
-					gsap.to(toggle, {
-						x: 0,
-						duration: 0.18,
-						ease: "power2.out",
-					});
-				};
-
-				toggle.addEventListener("pointerenter", enter);
-				toggle.addEventListener("pointerleave", leave);
-
-				hoverCleanups.push(() => {
-					toggle.removeEventListener("pointerenter", enter);
-					toggle.removeEventListener("pointerleave", leave);
-				});
-			});
-		});
-
-		const ctaBlock = document.querySelector<HTMLElement>(".service-cta-block");
-		if (ctaBlock) {
-			gsap.from(ctaBlock, {
+			gsap.from(revealItems, {
 				scrollTrigger: {
-					trigger: ctaBlock,
-					start: "top 85%",
+					trigger: section,
+					start: "top 82%",
 					once: true,
 				},
+				y: 22,
 				opacity: 0,
-				y: 16,
-				duration: 0.5,
+				duration: 0.62,
+				stagger: 0.08,
 				ease: "power3.out",
 				clearProps: "opacity,transform",
 			});
+		});
+
+		if (commandShell && routePaths.length) {
+			routePaths.forEach((path) => {
+				const length = path.getTotalLength();
+				gsap.set(path, {
+					strokeDasharray: length,
+					strokeDashoffset: length,
+				});
+			});
+
+			gsap.set(routeSignals, {
+				strokeDashoffset: 0,
+				opacity: 0,
+			});
+			gsap.set(controlRings, {
+				transformOrigin: "center center",
+				scale: 0.7,
+				opacity: 0,
+			});
+			gsap.set(nodePulses, {
+				transformOrigin: "center center",
+				scale: 0.6,
+				opacity: 0,
+			});
+			gsap.set(networkNodes, {
+				transformOrigin: "center center",
+				scale: 0,
+				opacity: 0,
+			});
+			gsap.set(networkLabels, {
+				opacity: 0,
+				y: 6,
+			});
+			if (controlCore) {
+				gsap.set(controlCore, {
+					transformOrigin: "center center",
+					scale: 0.72,
+				});
+			}
+
+			const commandIntro = gsap.timeline({ paused: true });
+
+			if (commandHeader) {
+				commandIntro.from(
+					Array.from(commandHeader.children),
+					{
+						opacity: 0,
+						y: 22,
+						duration: 0.55,
+						ease: "power3.out",
+						stagger: 0.08,
+						clearProps: "opacity,transform",
+					},
+					0,
+				);
+			}
+
+			if (commandPills.length) {
+				commandIntro.from(
+					commandPills,
+					{
+						opacity: 0,
+						y: 14,
+						duration: 0.4,
+						ease: "power2.out",
+						stagger: 0.05,
+						clearProps: "opacity,transform",
+					},
+					0.08,
+				);
+			}
+
+			commandIntro.to(
+				routePaths,
+				{
+					strokeDashoffset: 0,
+					duration: 1.05,
+					ease: "power2.out",
+					stagger: 0.06,
+					clearProps: "strokeDasharray,strokeDashoffset",
+				},
+				0.15,
+			);
+
+			commandIntro.to(
+				networkNodes,
+				{
+					scale: 1,
+					opacity: 1,
+					duration: 0.34,
+					ease: "back.out(1.35)",
+					stagger: 0.04,
+					clearProps: "opacity,transform",
+				},
+				0.58,
+			);
+
+			commandIntro.to(
+				networkLabels,
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.34,
+					ease: "power2.out",
+					stagger: 0.03,
+					clearProps: "opacity,transform",
+				},
+				0.68,
+			);
+
+			commandIntro.to(
+				controlRings,
+				{
+					scale: 1,
+					opacity: (_, target) => (target.classList.contains("stroke-teal/24") ? 0.42 : 0.25),
+					duration: 0.6,
+					ease: "power2.out",
+					stagger: 0.08,
+				},
+				0.48,
+			);
+
+			if (controlCore) {
+				commandIntro.to(
+					controlCore,
+					{
+						scale: 1,
+						duration: 0.5,
+						ease: "power2.out",
+						clearProps: "transform",
+					},
+					0.58,
+				);
+			}
+
+			if (commandCaption) {
+				commandIntro.from(
+					Array.from(commandCaption.children),
+					{
+						opacity: 0,
+						y: 18,
+						duration: 0.45,
+						ease: "power2.out",
+						stagger: 0.08,
+						clearProps: "opacity,transform",
+					},
+					0.7,
+				);
+			}
+
+			if (commandCards.length) {
+				commandIntro.from(
+					commandCards,
+					{
+						opacity: 0,
+						y: 18,
+						duration: 0.42,
+						ease: "power2.out",
+						stagger: 0.07,
+						clearProps: "opacity,transform",
+					},
+					0.86,
+				);
+			}
+
+			const ambientTweens: gsap.core.Tween[] = [
+				gsap.to(routeSignals, {
+					strokeDashoffset: -44,
+					opacity: 0.92,
+					duration: 1.45,
+					ease: "none",
+					repeat: -1,
+					paused: true,
+					stagger: {
+						each: 0.1,
+						from: "start",
+					},
+				}),
+				gsap.to(controlRings, {
+					scale: (index) => (index === 0 ? 1.35 : 1.58),
+					opacity: 0,
+					duration: 2.3,
+					ease: "power1.out",
+					repeat: -1,
+					paused: true,
+					stagger: 0.4,
+				}),
+				gsap.to(nodePulses, {
+					scale: 2.4,
+					opacity: 0,
+					duration: 1.7,
+					ease: "power1.out",
+					repeat: -1,
+					paused: true,
+					stagger: {
+						each: 0.14,
+						from: "random",
+					},
+				}),
+				gsap.fromTo(
+					scanBeam,
+					{
+						xPercent: -135,
+						opacity: 0.18,
+					},
+					{
+						xPercent: 190,
+						opacity: 0.95,
+						duration: 3.1,
+						ease: "sine.inOut",
+						repeat: -1,
+						yoyo: true,
+						paused: true,
+					},
+				),
+				gsap.fromTo(
+					scanLine,
+					{
+						xPercent: -140,
+						opacity: 0.2,
+					},
+					{
+						xPercent: 560,
+						opacity: 0.72,
+						duration: 3.1,
+						ease: "sine.inOut",
+						repeat: -1,
+						yoyo: true,
+						paused: true,
+					},
+				),
+				gsap.to(auras, {
+					opacity: 0.75,
+					scale: 1.08,
+					duration: 2.8,
+					ease: "sine.inOut",
+					repeat: -1,
+					yoyo: true,
+					paused: true,
+					stagger: 0.3,
+					transformOrigin: "center center",
+				}),
+			];
+
+			ScrollTrigger.create({
+				trigger: commandShell,
+				start: "top 82%",
+				end: "bottom top",
+				once: false,
+				onEnter: () => {
+					commandIntro.restart();
+					ambientTweens.forEach((tween) => tween.play(0));
+				},
+				onLeave: () => {
+					ambientTweens.forEach((tween) => tween.pause());
+				},
+				onEnterBack: () => {
+					commandIntro.play();
+					ambientTweens.forEach((tween) => tween.play());
+				},
+				onLeaveBack: () => {
+					ambientTweens.forEach((tween) => tween.pause(0));
+				},
+			});
 		}
 
-		const ctaButton = document.querySelector<HTMLElement>(".service-cta-btn");
-		const ctaIcon = ctaButton?.querySelector<HTMLElement>(".service-cta-icon");
-		if (ctaButton && ctaIcon) {
+		hoverItems.forEach((item) => {
 			const enter = () => {
-				gsap.to(ctaButton, {
-					y: -2,
-					boxShadow: "0 8px 18px rgba(15,39,66,0.18)",
+				gsap.to(item, {
+					y: -5,
 					duration: 0.22,
-					ease: "power2.out",
-				});
-				gsap.to(ctaIcon, {
-					x: 3,
-					duration: 0.2,
 					ease: "power2.out",
 				});
 			};
 			const leave = () => {
-				gsap.to(ctaButton, {
+				gsap.to(item, {
 					y: 0,
-					boxShadow: "0 0 0 rgba(15,39,66,0)",
 					duration: 0.2,
-					ease: "power2.out",
-				});
-				gsap.to(ctaIcon, {
-					x: 0,
-					duration: 0.18,
 					ease: "power2.out",
 				});
 			};
 
-			ctaButton.addEventListener("pointerenter", enter);
-			ctaButton.addEventListener("pointerleave", leave);
+			item.addEventListener("pointerenter", enter);
+			item.addEventListener("pointerleave", leave);
 
 			hoverCleanups.push(() => {
-				ctaButton.removeEventListener("pointerenter", enter);
-				ctaButton.removeEventListener("pointerleave", leave);
+				item.removeEventListener("pointerenter", enter);
+				item.removeEventListener("pointerleave", leave);
 			});
-		}
+		});
 
 		return () => {
 			hoverCleanups.forEach((cleanup) => cleanup());
@@ -460,7 +384,6 @@ export function initHomeAnimations() {
 	});
 
 	return () => {
-		cleanupHandlers.forEach((cleanup) => cleanup());
 		mm.revert();
 	};
 }

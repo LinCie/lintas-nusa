@@ -1,0 +1,187 @@
+---
+const demoAgenda = [
+	{
+		number: "01",
+		title: "Review lane prioritas",
+		description:
+			"Membaca wilayah aktif, ritme distribusi, dan titik risiko yang perlu dipertahankan.",
+	},
+	{
+		number: "02",
+		title: "Demo alur lintas tim",
+		description:
+			"Menunjukkan bagaimana ops, finance, dan customer service bekerja dari sumber data yang sama.",
+	},
+	{
+		number: "03",
+		title: "Kalibrasi bukti dan SLA",
+		description:
+			"Menyepakati proof layer, exception handling, dan target respons sebelum implementasi dibahas.",
+	},
+];
+
+const audienceNotes = [
+	"Untuk tim operasi yang perlu membaca handoff, exception, dan ritme dispatch tanpa tebakan.",
+	"Untuk finance dan customer service yang perlu melihat payout, klaim, dan status kirim dari alur yang sama.",
+	"Untuk pengambil keputusan yang mengevaluasi partner logistik dari disiplin data, bukan dari slogan.",
+];
+---
+
+<section
+	id="home-hero"
+	class="bg-mist relative overflow-hidden pt-(--nav-height)"
+	aria-labelledby="home-hero-heading"
+>
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		<svg
+			class="absolute inset-0 h-full w-full"
+			viewBox="0 0 1440 920"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			preserveAspectRatio="xMidYMid slice"
+		>
+			<path
+				d="M-60 700 Q220 590 460 620 T980 560 T1500 510"
+				stroke="var(--color-navy)"
+				stroke-width="1"
+				opacity="0.06"></path>
+			<path
+				d="M-60 640 Q240 520 500 548 T1020 482 T1500 430"
+				stroke="var(--color-teal)"
+				stroke-width="0.8"
+				opacity="0.08"></path>
+			<path
+				d="M-60 320 Q220 392 500 352 T1040 282 T1500 240"
+				stroke="var(--color-navy)"
+				stroke-width="0.9"
+				opacity="0.05"></path>
+			<line
+				x1="850"
+				y1="0"
+				x2="850"
+				y2="920"
+				stroke="var(--color-navy)"
+				stroke-width="0.6"
+				opacity="0.05"
+				stroke-dasharray="6 10"></line>
+			<circle cx="500" cy="548" r="3" fill="var(--color-teal)" opacity="0.14"></circle>
+			<circle cx="1020" cy="482" r="3" fill="var(--color-teal)" opacity="0.12"></circle>
+		</svg>
+	</div>
+
+	<div class="relative z-10 mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-18 lg:py-24">
+		<div class="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-14">
+			<div class="flex max-w-3xl flex-col gap-8">
+				<p
+					class="hero-reveal text-navy/70 font-body text-sm font-semibold tracking-[0.18em] uppercase"
+					data-home-hero
+				>
+					Logistik enterprise untuk operasi, finance, dan customer service
+				</p>
+				<div class="space-y-5">
+					<h1
+						id="home-hero-heading"
+						class="hero-reveal font-display text-navy max-w-[11ch] text-[clamp(3rem,7vw,5.4rem)] leading-[0.96] font-black tracking-tight"
+						data-home-hero
+					>
+						Visibilitas jaringan dan SLA yang bisa dipertanggungjawabkan.
+					</h1>
+					<p
+						class="hero-reveal font-body text-charcoal-mid max-w-[60ch] text-base leading-8 sm:text-[1.0625rem]"
+						data-home-hero
+					>
+						LintasNusa dirancang untuk tim enterprise yang perlu membaca lane, bukti serah-terima,
+						klaim, dan status layanan dari satu sistem operasional. Homepage ini hanya membawa inti
+						evaluasinya; detail layanan, coverage, dan platform tetap dibuka di halaman khusus.
+					</p>
+				</div>
+
+				<div
+					class="hero-reveal flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
+					data-home-hero
+				>
+					<a
+						href="#demo"
+						class="bg-orange font-body focus:outline-teal hover:bg-orange-hover inline-flex min-h-12 items-center justify-center rounded-md px-6 py-4 text-[15px] font-semibold text-white no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-3 sm:min-w-52"
+					>
+						Jadwalkan Demo
+					</a>
+					<a
+						href="#coverage"
+						class="font-body text-teal hover:text-navy focus:outline-teal inline-flex min-h-12 items-center gap-2 rounded-sm py-2 text-sm font-semibold no-underline transition-colors duration-150 focus:outline-2 focus:outline-offset-4"
+					>
+						Lihat Jangkauan
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+							<path
+								d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</a>
+				</div>
+
+				<div
+					class="hero-reveal border-navy/10 grid gap-4 border-t pt-6 sm:grid-cols-3 sm:gap-5"
+					data-home-hero
+				>
+					{
+						audienceNotes.map((note) => (
+							<p class="font-body text-charcoal-mid text-sm leading-6">{note}</p>
+						))
+					}
+				</div>
+			</div>
+
+			<aside
+				class="hero-reveal border-navy/12 relative overflow-hidden rounded-3xl border bg-white/92 p-6 shadow-[0_18px_42px_rgba(15,39,66,0.08)] backdrop-blur-sm sm:p-8"
+				aria-label="Agenda demo enterprise LintasNusa"
+				data-home-hero
+			>
+				<div class="bg-mist absolute inset-x-0 top-0 h-24"></div>
+				<div
+					class="border-navy/10 relative inline-flex items-center rounded-full border bg-white px-3 py-1"
+				>
+					<span class="font-body text-navy text-[11px] font-semibold tracking-[0.14em] uppercase">
+						Format demo formal
+					</span>
+				</div>
+				<div class="relative mt-5 space-y-4">
+					<h2
+						class="font-display text-navy max-w-[15ch] text-[clamp(1.9rem,3.8vw,2.75rem)] leading-[1.04] font-bold tracking-tight"
+					>
+						Satu sesi untuk membaca kecocokan lane, sistem, dan target layanan.
+					</h2>
+					<p class="font-body text-charcoal-mid max-w-[34ch] text-sm leading-7">
+						Demo tidak dimulai dari katalog fitur. Tim kami memulai dari alur distribusi, siapa yang
+						perlu visibilitas, dan bukti operasional apa yang wajib tersedia saat exception muncul.
+					</p>
+				</div>
+
+				<ol class="relative mt-8 grid gap-4">
+					{
+						demoAgenda.map((item) => (
+							<li class="border-navy/10 grid grid-cols-[auto_1fr] gap-4 border-b pb-4 last:border-b-0 last:pb-0">
+								<span class="bg-navy text-mist font-display inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold">
+									{item.number}
+								</span>
+								<div class="grid gap-1">
+									<p class="font-body text-navy text-sm font-semibold">{item.title}</p>
+									<p class="font-body text-charcoal-mid text-sm leading-6">{item.description}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+
+				<div class="border-navy/10 relative mt-8 border-t pt-5">
+					<p class="font-body text-charcoal-mid text-sm leading-6">
+						<span class="text-navy font-semibold">Output demo:</span> pembacaan lane prioritas, gambaran
+						workflow lintas tim, dan poin evaluasi untuk tahap teknis berikutnya.
+					</p>
+				</div>
+			</aside>
+		</div>
+	</div>
+</section>

@@ -1,4 +1,3 @@
-import { initCtaContactAnimations } from "./cta-contact-animations";
 import { initFooter } from "./footer";
 import { initHeader } from "./header";
 import { initHomeAnimations } from "./home-animations";
@@ -7,7 +6,6 @@ import { initLayananAnimations } from "./layanan-animations";
 import { initPlatformAnimations } from "./platform-animations";
 import { setupSwupRuntime } from "./swup-runtime";
 import { initTentangPageAnimations } from "./tentang-page";
-import { initTentangSectionAnimations } from "./tentang-section-animations";
 
 let cleanup = () => {};
 
@@ -24,13 +22,7 @@ function runInitializers() {
 	const page = document.querySelector<HTMLElement>("[data-page-view]")?.dataset.pageView;
 
 	if (page === "home") {
-		cleanups.push(
-			initHomeAnimations(),
-			initJangkauanAnimations(),
-			initPlatformAnimations(),
-			initTentangSectionAnimations(),
-			initCtaContactAnimations(),
-		);
+		cleanups.push(initHomeAnimations());
 	}
 
 	if (page === "jangkauan") {
@@ -43,6 +35,10 @@ function runInitializers() {
 
 	if (page === "layanan") {
 		cleanups.push(initLayananAnimations());
+	}
+
+	if (page === "platform") {
+		cleanups.push(initPlatformAnimations());
 	}
 
 	cleanup = () => {

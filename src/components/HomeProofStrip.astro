@@ -1,0 +1,65 @@
+---
+const proofItems = [
+	{
+		value: "97,9%",
+		label: "Kepatuhan pemindaian",
+		detail: "setiap perpindahan utama tetap terbaca sepanjang 2025",
+	},
+	{
+		value: "95,8%",
+		label: "Keberhasilan kirim pertama",
+		detail: "untuk menjaga SLA dan mengurangi follow-up manual",
+	},
+	{
+		value: "91%",
+		label: "Klaim standar selesai",
+		detail: "dalam 2 x 24 jam dengan evidence trail yang jelas",
+	},
+	{
+		value: "247",
+		label: "Kota dan kabupaten aktif",
+		detail: "dibuka berdasarkan lane yang tervalidasi, bukan janji rata",
+	},
+];
+---
+
+<section
+	id="home-proof"
+	class="border-mist-dark border-t bg-white py-14 sm:py-16"
+	aria-labelledby="home-proof-heading"
+	data-home-reveal
+>
+	<div class="mx-auto max-w-7xl px-6 sm:px-8">
+		<div class="grid gap-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-12">
+			<div class="space-y-3" data-home-reveal-item>
+				<p class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+					Bukti Operasional
+				</p>
+				<h2
+					id="home-proof-heading"
+					class="font-display text-navy max-w-[14ch] text-[clamp(1.8rem,3vw,2.5rem)] leading-[1.06] font-bold tracking-tight"
+				>
+					Empat angka yang cukup untuk membaca disiplin dasarnya.
+				</h2>
+			</div>
+
+			<dl class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+				{
+					proofItems.map((item) => (
+						<div
+							class="border-mist-dark bg-mist/55 rounded-3xl border px-5 py-5"
+							data-home-reveal-item
+							data-home-hover
+						>
+							<dt class="font-body text-charcoal-mid text-sm leading-6">{item.label}</dt>
+							<dd class="font-display text-navy mt-3 text-[clamp(2rem,4vw,2.8rem)] leading-none font-bold tracking-tight">
+								{item.value}
+							</dd>
+							<dd class="font-body text-charcoal-mid mt-3 text-sm leading-6">{item.detail}</dd>
+						</div>
+					))
+				}
+			</dl>
+		</div>
+	</div>
+</section>

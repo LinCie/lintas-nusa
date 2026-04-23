@@ -1,33 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import LayananSection from "../components/LayananSection.astro";
-import JangkauanSection from "../components/JangkauanSection.astro";
-import PlatformSection from "../components/PlatformSection.astro";
-import TentangSection from "../components/TentangSection.astro";
 import Footer from "../components/Footer.astro";
-import CtaContactSection from "../components/CtaContactSection.astro";
+import HomeHero from "../components/HomeHero.astro";
+import HomeProofStrip from "../components/HomeProofStrip.astro";
+import HomeDifferentiators from "../components/HomeDifferentiators.astro";
+import HomeCoverageSummary from "../components/HomeCoverageSummary.astro";
+import HomeCapabilityTeasers from "../components/HomeCapabilityTeasers.astro";
+import HomeFAQ from "../components/HomeFAQ.astro";
+import HomeDemoCta from "../components/HomeDemoCta.astro";
 ---
 
 <Layout
 	title="Beranda"
-	description="Perusahaan logistik digital Indonesia untuk brand, UMKM, dan enterprise yang membutuhkan visibilitas real-time, SLA terukur, dan kontrol operasional end-to-end."
+	description="Landing page enterprise LintasNusa Logistics untuk tim yang mengevaluasi visibilitas jaringan, SLA terukur, dan kontrol operasional lintas fungsi."
 	pageName="home"
 >
 	<a
-		href="#layanan"
+		href="#home-hero"
 		class="skip-to-content bg-navy font-body focus:outline-teal absolute -top-full left-4 z-9999 rounded-md px-5 py-3 text-sm font-semibold text-white no-underline transition-[top] duration-150 focus:top-4 focus:outline-2 focus:outline-offset-2"
 		>Langsung ke konten</a
 	>
 	<Header />
 	<div class="route-stage" data-page-view="home">
-		<Hero />
-		<LayananSection />
-		<JangkauanSection />
-		<PlatformSection />
-		<TentangSection />
-		<CtaContactSection />
+		<HomeHero />
+		<HomeProofStrip />
+		<HomeDifferentiators />
+		<HomeCoverageSummary />
+		<HomeCapabilityTeasers />
+		<HomeFAQ />
+		<HomeDemoCta />
 		<Footer />
 	</div>
 </Layout>

@@ -1,0 +1,143 @@
+---
+const teaserCards = [
+	{
+		eyebrow: "Layanan",
+		title: "Baca portofolio layanan hanya saat Anda memang perlu membandingkan alur.",
+		description:
+			"Halaman layanan memuat ritme kirim, handling khusus, reverse logistics, dan bukti operasional yang menempel pada tiap skenario.",
+		points: [
+			"Regular, next-day, same-day, COD, cold chain, secure delivery, dan reverse logistics.",
+			"Penjelasan kapan sebuah layanan sebaiknya dipakai, bukan hanya daftar nama produknya.",
+			"Ringkasan evidence layer yang diterima tim ops dan customer service.",
+		],
+		href: "/layanan",
+		linkLabel: "Buka Halaman Layanan",
+		surfaceClass: "border-mist-dark bg-mist/65 text-navy",
+	},
+	{
+		eyebrow: "Platform",
+		title: "Masuk ke detail sistem saat evaluasi Anda sudah bergeser ke workflow dan integrasi.",
+		description:
+			"Halaman platform menjelaskan bagaimana recipient, merchant, ops, finance, dan enterprise bergerak dari operating layer yang sama.",
+		points: [
+			"Satu login untuk peran yang berbeda tanpa memecah sumber data antar-tim.",
+			"Pembacaan SLA, exception, COD, dan return dari dashboard yang sama.",
+			"API, webhook, approval flow, dan incident reporting untuk implementasi enterprise.",
+		],
+		href: "/platform",
+		linkLabel: "Buka Halaman Platform",
+		surfaceClass: "bg-navy text-white border-white/8",
+	},
+];
+---
+
+<section
+	id="capabilities"
+	class="border-mist-dark border-t bg-white py-18 lg:py-24"
+	aria-labelledby="capabilities-heading"
+	data-home-reveal
+>
+	<div class="mx-auto max-w-7xl px-6 sm:px-8">
+		<div class="grid gap-8 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-14">
+			<div class="space-y-4" data-home-reveal-item>
+				<p class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+					Teaser Halaman Detail
+				</p>
+				<h2
+					id="capabilities-heading"
+					class="font-display text-navy max-w-[14ch] text-[clamp(2rem,4vw,3rem)] leading-[1.02] font-bold tracking-tight"
+				>
+					Homepage berhenti di tingkat keputusan. Detail lengkap dibuka di sini.
+				</h2>
+				<p class="font-body text-charcoal-mid max-w-[46ch] text-base leading-7">
+					Kami sengaja menahan halaman utama agar tetap fokus. Jika evaluasi Anda sudah masuk ke
+					tingkat skenario layanan atau arsitektur platform, lanjutkan ke halaman yang sesuai.
+				</p>
+			</div>
+
+			<div class="grid gap-4 lg:grid-cols-2">
+				{
+					teaserCards.map((card) => (
+						<article
+							class:list={["rounded-[2rem] border px-6 py-6 sm:px-7 sm:py-7", card.surfaceClass]}
+							data-home-reveal-item
+							data-home-hover
+						>
+							<div class="flex min-h-full flex-col">
+								<div class="space-y-4">
+									<p
+										class:list={[
+											"font-mono text-[10px] font-medium tracking-[0.2em] uppercase",
+											card.eyebrow === "Platform" ? "text-teal" : "text-teal",
+										]}
+									>
+										{card.eyebrow}
+									</p>
+									<h3
+										class:list={[
+											"font-display text-[1.55rem] leading-[1.08] font-bold tracking-tight",
+											card.eyebrow === "Platform" ? "text-white" : "text-navy",
+										]}
+									>
+										{card.title}
+									</h3>
+									<p
+										class:list={[
+											"font-body text-sm leading-7",
+											card.eyebrow === "Platform" ? "text-white/76" : "text-charcoal-mid",
+										]}
+									>
+										{card.description}
+									</p>
+								</div>
+
+								<ul class="mt-6 grid gap-3">
+									{card.points.map((point) => (
+										<li
+											class:list={[
+												"font-body grid grid-cols-[auto_1fr] gap-3 text-sm leading-6",
+												card.eyebrow === "Platform" ? "text-white/78" : "text-charcoal-mid",
+											]}
+										>
+											<span
+												class:list={[
+													"mt-2 block h-1.5 w-1.5 rounded-full",
+													card.eyebrow === "Platform" ? "bg-teal" : "bg-navy",
+												]}
+												aria-hidden="true"
+											/>
+											<span>{point}</span>
+										</li>
+									))}
+								</ul>
+
+								<div class="mt-8 pt-2">
+									<a
+										href={card.href}
+										class:list={[
+											"font-body inline-flex min-h-11 items-center gap-2 text-sm font-semibold no-underline transition-colors duration-150",
+											card.eyebrow === "Platform"
+												? "text-teal hover:text-white focus:outline-white"
+												: "text-teal hover:text-navy focus:outline-teal",
+										]}
+									>
+										{card.linkLabel}
+										<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+											<path
+												d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+												stroke="currentColor"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

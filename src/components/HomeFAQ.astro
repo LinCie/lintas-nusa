@@ -1,0 +1,417 @@
+---
+const categories = [
+	{
+		id: "layanan",
+		label: "Layanan & Jangkauan",
+		items: [
+			{
+				question: "Layanan apa saja yang tersedia dan kapan sebaiknya masing-masing digunakan?",
+				answer:
+					"LintasNusa menyediakan LN Regular untuk pengiriman standar 2–5 hari, LN NextDay untuk jalur utama yang sampai besok, LN SameDay Metro untuk klaster metro yang sama hari, LN COD Clear untuk pembayaran COD dengan rekonsiliasi next business day, LN Cold untuk pengiriman beku–dingin dengan log suhu, LN Secure untuk paket bernilai tinggi dengan OTP dan foto POD, serta LN BulkDrop untuk multi-stop ke beberapa alamat. Untuk memilih layanan yang tepat, tim kami akan menganalisis pola lane, ritme pickup, dan tolerance SLA Anda sebelum merekomendasikan konfigurasi.",
+			},
+			{
+				question:
+					"Apakah LintasNusa menangani kiriman dengan karakteristik khusus seperti barang beku atau bernilai tinggi?",
+				answer:
+					"Ya. LN Cold menanganikiriman chilled dan frozen dengan rentang suhu yang geo-stamped dan bisa direkam. LN Secure menambahkan lapisan OTP + foto POD plus escrowed delivery confirmation untuk paket yang nilainya tinggi atau risco tinggi. Keduanya terintegrasi dengan dashboard monitoring yang sama, jadi tim ops bisa melihat status handling khusus secara real-time tanpa membuka portal terpisah.",
+			},
+			{
+				question: "Berapa luas jangkauan jaringan LintasNusa saat ini?",
+				answer:
+					"Jaringan LintasNusa mencakup 247 kota/kabupaten dengan 9 gateway hubs, 38 satellite hubs, dan 286 service points. Control tower nasional beroperasi di Cikarang, dengan gateway regional di Medan, Palembang, Bandung, Semarang, Surabaya, Denpasar, Balikpapan, dan Makassar. Fleet mencakup 1.120 kendaraan line-haul dan last-mile yang beroperasi 365 hari.",
+			},
+			{
+				question: "Bagaimana sistem pengembalian dan klaim barang bekerja?",
+				answer:
+					'LN Return memungkinkan pengembalian terjadwal dengan reason coding terstruktur — bukan sekadar "dikembalikan" tapi kenapa dikembalikan. LN ClaimCenter menyediakan centralized intake dengan evidence trail: foto POD, geo-stamp, dan timestamp yang menempel pada satuAWB. Klaim standar diproses dalam 2 × 24 jam dengan visibility penuh bagi tim customer service dan merchant di dashboard yang sama.',
+			},
+		],
+	},
+	{
+		id: "integrasi",
+		label: "Integrasi & API",
+		items: [
+			{
+				question: "Bagaimana cara mengakses API dan webhook LintasNusa?",
+				answer:
+					"Dokumentasi API tersedia untuk partner yang sudah memiliki akun enterprise. API mendukung tracking event push via webhook, status update berbasis AWB, label generation, dan pickup booking secara terprogram. Untuk mendapat akses, tim teknis Anda menandatangani data sharing agreement terlebih dahulu — diskusi awal bisa dijadwalkan tanpa komitmen.",
+			},
+			{
+				question: "Apakah LintasNusa terintegrasi dengan sistem ERP atau WMS yang sudah ada?",
+				answer:
+					"Kami menyediakan integration layer untuk ERP dan WMS yang umum digunakan di enterprise Indonesia. Opsi yang tersedia meliputi flat-file exchange untuk sistem yang belum punya API native, middleware connector untuk platform yang lebih legacy, dan direct API integration untuk stack modern. Tim integrasi kami accompany kebutuhan teknis sebelum technical scoping dimulai.",
+			},
+			{
+				question: "Bagaimana dashboard berbagi peran antar-tim (ops, finance, customer service)?",
+				answer:
+					"Satu akun merchant bisa memiliki beberapa role: owner, operations manager, finance, dan customer service. Masing-masing melihat data yang relevan untuk perannya — finance tidak perlu melihat exception timeline, customer service tidak perlu melihat payout reconciliation detail. Role permissions bisa dikonfigurasi dan tidak memerlukan login terpisah. Pembacaan tetap dari satuAWB yang sama sehingga tidak ada inconsistency data antar-tim.",
+			},
+			{
+				question: "Apakah ada dedicated environment untuk proses integrasi dan testing?",
+				answer:
+					"Ya. Partner enterprise mendapat akses ke sandbox environment yang mereplikasiAPI production dengan data test. Ini memungkinkan tim teknis menguji webhook payloads, polling flows, dan label generation sebelum go-live tanpa mempengaruhi operasi aktif. Sandbox access tidak terbatas waktu selama masa evaluasi.",
+			},
+		],
+	},
+	{
+		id: "akun",
+		label: "Akun & SLA",
+		items: [
+			{
+				question: "Bagaimana struktur akun enterprise berbeda dari akun standar?",
+				answer:
+					"Akun enterprise mendapat designated account manager, SLA commitments yang tertulis, akses ke control-tower view untuk multi-branch, approval workflows untuk kiriman yang perlu otorisasi berlapis, dan incident escalation path langsung ke network operations. Akun standar melayani kebutuhan pickup dan tracking dengan self-service penuh. Transisi dari standar ke enterprise bisa dilakukan tanpa migrasi data.",
+			},
+			{
+				question: "Apa saja SLA yang bisa dijamin dan bagaimana pengukurannya?",
+				answer:
+					"SLA LintasNusa diukur per lane dan per service type. Untuk LN NextDay, target on-time dispatch adalah 98,3% dan first-attempt delivery success 95,8%. Scan compliance dijamin 97,9% — setiap parcel yang keluar dari gateway harus discan sebelum berlanjut. SLA报告 bulanan dost tersedia di dashboard untuk akun enterprise, dan variance dari target akan disertai root-cause analysis dari tim quality.",
+			},
+			{
+				question: "Bagaimana escalation path jika ada gangguan atau keterlambatan systemic?",
+				answer:
+					"Akun enterprise mendapat akses ke incident reporting channel dengan dedicated response. Untuk gangguan yang affecting entire lanes atau gateway, LintasNusa memulangkan incident status page yang memperbarui secara real-time. Tim network operations kami mengkomunikasikan ETA recovery dalam 30 menit setelah incident diidentifikasi, bukan setelah incident resolved. Ini memungkinkan tim Anda mengambil keputusan operasional sementara kami menyelesaikan root cause.",
+			},
+			{
+				question: "Apakah dukungan tersedia di luar jam kerja standard?",
+				answer:
+					"Customer service LintasNusa beroperasi 24/7 untuk tracking dan exception handling dasar. Akun enterprise mendapat prioritas queue dan akses ke dedicated support contact (direct line, bukan general CS). Untuk incident systemic yang affecting大批 volumes, kom不好意思, saya akan melanjutkan: Untuk incident systemic yang affecting batch volumes, komunikasi proaktif dikirim ke account manager dan designated contacts sebelum customer Anda menyadari ada masalah — berdasarkan delivery confidence score per route yang dipantau secara otomatis.",
+			},
+		],
+	},
+	{
+		id: "kemitraan",
+		label: "Kemitraan",
+		items: [
+			{
+				question: "Model kemitraan seperti apa yang tersedia di LintasNusa?",
+				answer:
+					"Kami menawarkan tiga model: Mitra Agent untuk individu atau bisnis yang inginoperasikan service point dan handling lokal, Mitra Dropship untuk seller yang kirim dari satu warehouse tapi butuh tampilanorigin berbeda, dan partnership enterprise untuk distributor atau 3PL yang ingin white-label atau co-branded service. Setiap model punya struktur revenue share dansupport package yang berbeda — tidak ada one-size-fits-all.",
+			},
+			{
+				question: "Bagaimana program Mitra Agent bekerja dan apa requirements-nya?",
+				answer:
+					"Mitra Agent cukup-operasikan service point fisik dengan minimal footprint — cukup counter dan akses terhadap sistem picking. LintasNusa menyediakan training platform, sistem labeling, dan visibility tools. Agent tidak perlu invest di fleet karena last-mile delivery dari service point dilakukan oleh armada LintasNusa. Onboarding rata-rata selesai dalam 2–3 minggu tergantung kesiapan lokasi dan tim.",
+			},
+			{
+				question: "Apakah bisa mendiskusikan integrasi partnership yang tidak standar?",
+				answer:
+					"Ya. Untuk distributor dengan network proprietary, 3PL yang ingin sub-contract specific lanes, atau brand yang butuh branded tracking experience dengan subdomain sendiri, kami mendiskusikan struktur khusus di level partnership conversation, bukan melalui form standar. Kirimkan brief singkat ke partner@lintasnusa.co.id dan tim kami akan merespons dalam 1 hari kerja dengan proposal struktur awal.",
+			},
+		],
+	},
+	{
+		id: "penagihan",
+		label: "Penagihan & Pembayaran",
+		items: [
+			{
+				question: "Bagaimana sistem rekonsiliasi COD dan kapan dana dicairkan?",
+				answer:
+					"COD settlement dilakukan dengan next-business-day visibility di dashboard finance — bukan 3–5 hari seperti beberapa kompetitor. Finance team bisa melihat detail COD perAWB, fee breakdown, dan status payout dalam satu view tanpa meminta bantuan customer service. Dana dicairkan ke rekening tercatat setelah delivery confirmation received, dengan discrepancy report yanggenerated otomatis jika ada variance antara amount collected dan amount expected.",
+			},
+			{
+				question: "Bagaimana invoice dan dokumen pajak dihasilkan?",
+				answer:
+					"Invoice dan tax documents (Faktur Pajak where applicable) tersedia untuk di-download langsung dari dashboard finance. Dokumen dihasilkan per billing period dan bisa di-filter per branch, per service type, atau per cost center untuk klien enterprise dengan multiple operational units. Semua dokumen tersedia dalam format PDF dan structured data (untuk klien yang butuh automated reconciliation).",
+			},
+			{
+				question: "Apakah tersedia opsi pembayaran selain COD dan postpaid?",
+				answer:
+					"Opsi pembayaran meliputi prepaid (pembayaran sebelum shipment picked up), postpaid dengan credit limit yang disesuaikan berdasarkan historis dan business profile, dan hybrid untuk klien yang punya mix channel. Untuk enterprise baru, credit application dan onboarding process memakan waktu 3–5 hari kerja dengan review berbasis business documentation. Tidak ada minimum volume commitment untuk akses postpaid — limit disesuaikan dengan pola shipment aktual.",
+			},
+			{
+				question: "Bagaimana penanganan dispute billing ditangani?",
+				answer:
+					"Dispute billing dikelola melalui dispute ticket system di dashboard — bukan via email atau support chat. Finance team Anda mengajukan dispute dengan menyertakanAWB terkait, upload evidence, dan memilih reason code. Tim billing LintasNusa merespons dalam 2 × 24 jam kerja dengan resolusi atau escalation path yang jelas. Semua dispute status tracked dan visible oleh kedua belah pihak sampai closed, bukan disappeared into a ticket queue.",
+			},
+		],
+	},
+];
+---
+
+<section
+	id="faq"
+	class="border-mist-dark bg-mist/30 border-t py-18 lg:py-24"
+	aria-labelledby="faq-heading"
+>
+	<div class="mx-auto max-w-7xl px-6 sm:px-8">
+		<header class="mb-12 lg:mb-14">
+			<p class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+				Pertanyaan Umum
+			</p>
+			<h2
+				id="faq-heading"
+				class="font-display text-navy mt-3 max-w-[20ch] text-[clamp(1.75rem,3.5vw,2.6rem)] leading-[1.05] font-bold tracking-tight"
+			>
+				Pertanyaan yang sering muncul sebelum evaluasi partnership
+			</h2>
+			<p class="font-body text-charcoal-mid mt-4 max-w-[56ch] text-base leading-7">
+				Jika Anda tidak menemukan jawaban yang dicari, tim kami siap mendiskusikan kebutuhan
+				operasional Anda secara langsung.
+			</p>
+		</header>
+
+		<div class="faq-layout lg:grid lg:grid-cols-[14rem_1fr] lg:gap-10 xl:gap-14">
+			<nav class="faq-categories hidden lg:block" aria-label="FAQ categories">
+				<ul class="space-y-1">
+					{
+						categories.map((cat) => (
+							<li>
+								<button
+									class="faq-cat-btn font-body group text-charcoal-mid flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors duration-150"
+									data-cat={cat.id}
+									aria-pressed="false"
+								>
+									<span class="faq-cat-indicator bg-teal/0 group-hover:bg-teal/40 h-0.5 w-4 rounded-full transition-all duration-200" />
+									{cat.label}
+								</button>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<div class="faq-mobile-cats lg:hidden">
+				<div class="scrollbar-none flex gap-2 overflow-x-auto pb-3">
+					{
+						categories.map((cat) => (
+							<button
+								class="faq-cat-tab border-mist-dark text-charcoal-mid rounded-full border bg-white px-4 py-2 font-mono text-[10px] font-medium tracking-[0.12em] whitespace-nowrap uppercase transition-all duration-150"
+								data-cat={cat.id}
+								aria-pressed="false"
+							>
+								{cat.label}
+							</button>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="faq-panels mt-6 lg:mt-0">
+				{
+					categories.map((cat) => (
+						<div class="faq-panel hidden" data-panel={cat.id}>
+							<ul class="faq-list space-y-0" role="list">
+								{cat.items.map((item, i) => (
+									<li class="faq-item border-mist-dark border-b last:border-b-0">
+										<button
+											class="faq-q font-body group text-navy hover:text-teal flex w-full items-start justify-between gap-4 py-5 text-left text-[15px] leading-6 font-semibold transition-colors duration-150"
+											aria-expanded="false"
+											aria-controls={`faq-a-${cat.id}-${i}`}
+										>
+											{item.question}
+											<span class="faq-chevron text-teal mt-1 shrink-0" aria-hidden="true">
+												<svg
+													width="16"
+													height="16"
+													viewBox="0 0 16 16"
+													fill="none"
+													class="transition-transform duration-200"
+												>
+													<path
+														d="M4 6L8 10L12 6"
+														stroke="currentColor"
+														stroke-width="1.5"
+														stroke-linecap="round"
+														stroke-linejoin="round"
+													/>
+												</svg>
+											</span>
+										</button>
+										<div
+											id={`faq-a-${cat.id}-${i}`}
+											class="faq-answer overflow-hidden"
+											style="display: none;"
+										>
+											<p class="font-body text-charcoal-mid pb-6 text-sm leading-7">
+												{item.answer}
+											</p>
+										</div>
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<div class="border-mist-dark mt-12 border-t pt-8">
+			<p class="font-body text-charcoal-mid text-sm">
+				Tidak menemukan jawaban yang Anda cari?{" "}
+				<a
+					href="mailto:partner@lintasnusa.co.id?subject=Permintaan%20Informasi%20LintasNusa"
+					class="text-teal hover:text-navy font-semibold no-underline underline-offset-2 transition-colors duration-150"
+				>
+					Diskusikan kebutuhan Anda dengan tim kami
+				</a>
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.faq-panel:not(.hidden) {
+		display: block;
+	}
+
+	.faq-cat-btn[aria-pressed="true"] {
+		color: var(--color-navy);
+	}
+
+	.faq-cat-btn[aria-pressed="true"] .faq-cat-indicator {
+		background-color: var(--color-teal);
+		width: 1.5rem;
+	}
+
+	.faq-cat-tab[aria-pressed="true"] {
+		border-color: var(--color-teal);
+		background-color: var(--color-teal);
+		color: #fff;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.faq-answer {
+			transition: none !important;
+		}
+		.faq-chevron svg {
+			transition: none !important;
+		}
+	}
+</style>
+
+<script>
+	import gsap from "gsap";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const catBtns = document.querySelectorAll<HTMLButtonElement>(".faq-cat-btn");
+		const catTabs = document.querySelectorAll<HTMLButtonElement>(".faq-cat-tab");
+		const panels = document.querySelectorAll<HTMLElement>(".faq-panel");
+		const questions = document.querySelectorAll<HTMLButtonElement>(".faq-q");
+
+		const mm = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+		function setCategory(catId: string, animate = true) {
+			catBtns.forEach((btn) => {
+				const active = btn.dataset.cat === catId;
+				btn.setAttribute("aria-pressed", String(active));
+			});
+			catTabs.forEach((tab) => {
+				const active = tab.dataset.cat === catId;
+				tab.setAttribute("aria-pressed", String(active));
+			});
+
+			panels.forEach((panel) => {
+				if (panel.dataset.panel === catId) {
+					panel.classList.remove("hidden");
+
+					if (animate && !mm.matches) {
+						const items = panel.querySelectorAll<HTMLElement>(".faq-item");
+						gsap.fromTo(
+							items,
+							{ opacity: 0, y: 10 },
+							{
+								opacity: 1,
+								y: 0,
+								duration: 0.25,
+								ease: "power2.out",
+								stagger: 0.06,
+							},
+						);
+					} else {
+						const items = panel.querySelectorAll<HTMLElement>(".faq-item");
+						items.forEach((item) => {
+							item.style.opacity = "1";
+						});
+					}
+				} else {
+					panel.classList.add("hidden");
+				}
+			});
+		}
+
+		catBtns.forEach((btn) => {
+			btn.addEventListener("click", () => setCategory(btn.dataset.cat ?? ""));
+		});
+
+		catTabs.forEach((tab) => {
+			tab.addEventListener("click", () => setCategory(tab.dataset.cat ?? ""));
+		});
+
+		const firstCatId = panels[0]?.dataset.panel ?? "";
+		setCategory(firstCatId);
+
+		questions.forEach((q) => {
+			q.addEventListener("click", () => {
+				const answerId = q.getAttribute("aria-controls");
+				const answer = answerId ? document.getElementById(answerId) : null;
+				if (!answer) return;
+
+				const isOpen = q.getAttribute("aria-expanded") === "true";
+				const chevron = q.querySelector<SVGElement>(".faq-chevron svg");
+
+				const allAnswers = document.querySelectorAll<HTMLElement>(".faq-answer");
+
+				if (!isOpen) {
+					allAnswers.forEach((a) => {
+						if (a.style.display === "block" && a.id !== answerId) {
+							const correspondingQ = document.querySelector(`[aria-controls="${a.id}"]`);
+							if (correspondingQ) correspondingQ.setAttribute("aria-expanded", "false");
+							const correspondingChevron =
+								correspondingQ?.querySelector<SVGElement>(".faq-chevron svg");
+							if (correspondingChevron && !mm.matches) {
+								gsap.to(correspondingChevron, { rotation: 0, duration: 0.2, ease: "power2.out" });
+							}
+							if (!mm.matches) {
+								gsap.to(a, {
+									height: 0,
+									duration: 0.2,
+									ease: "power2.in",
+									onComplete: () => {
+										a.style.display = "none";
+										(a as HTMLElement).style.height = "";
+									},
+								});
+							} else {
+								a.style.display = "none";
+							}
+						}
+					});
+				}
+
+				q.setAttribute("aria-expanded", String(!isOpen));
+
+				if (isOpen) {
+					if (!mm.matches) {
+						gsap.to(answer, {
+							height: 0,
+							duration: 0.25,
+							ease: "power2.in",
+							onComplete: () => {
+								answer.style.display = "none";
+								(answer as HTMLElement).style.height = "";
+							},
+						});
+					} else {
+						answer.style.display = "none";
+					}
+					if (chevron && !mm.matches) {
+						gsap.to(chevron, { rotation: 0, duration: 0.2, ease: "power2.out" });
+					}
+				} else {
+					answer.style.display = "block";
+					const targetHeight = answer.scrollHeight;
+					answer.style.height = "0px";
+					if (!mm.matches) {
+						gsap.to(answer, { height: targetHeight, duration: 0.3, ease: "power2.out" });
+					} else {
+						(answer as HTMLElement).style.height = "";
+					}
+					if (chevron && !mm.matches) {
+						gsap.to(chevron, { rotation: 180, duration: 0.2, ease: "power2.out" });
+					}
+				}
+			});
+		});
+	});
+</script>
