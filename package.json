@@ -15,6 +15,7 @@
     "format:check": "prettier --no-error-on-unmatched-pattern --check src/**/*.{js,ts,astro}"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/plus-jakarta-sans": "^5.2.8",

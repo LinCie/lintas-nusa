@@ -1,11 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from "@astrojs/sitemap";
 import swup from "@swup/astro";
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
+		sitemap(),
 		swup({
 			theme: false,
 			animationClass: false,
