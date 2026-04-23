@@ -1,9 +1,15 @@
 ---
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => {
+	if (href === "/") return pathname === "/";
+	return pathname.startsWith(href);
+};
+
 const layananHref = "/layanan";
 const jangkauanHref = "/jangkauan";
 const platformHref = "/platform";
 const tentangHref = "/tentang";
-const demoHref = Astro.url.pathname === "/" ? "#demo" : "/#demo";
+const demoHref = pathname === "/" ? "#demo" : "/#demo";
 ---
 
 <header
@@ -45,22 +51,26 @@ const demoHref = Astro.url.pathname === "/" ? "#demo" : "/#demo";
 		<nav class="hidden items-center gap-6 lg:ml-auto lg:flex" aria-label="Navigasi utama">
 			<a
 				href={layananHref}
-				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
+				class:list={["nav-link font-body relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3", isActive(layananHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(layananHref) ? "page" : undefined}
 				>Layanan</a
 			>
 			<a
 				href={jangkauanHref}
-				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
+				class:list={["nav-link font-body relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3", isActive(jangkauanHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(jangkauanHref) ? "page" : undefined}
 				>Jangkauan</a
 			>
 			<a
 				href={platformHref}
-				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
+				class:list={["nav-link font-body relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3", isActive(platformHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(platformHref) ? "page" : undefined}
 				>Platform</a
 			>
 			<a
 				href={tentangHref}
-				class="nav-link font-body text-charcoal-mid hover:text-navy focus:outline-teal relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3"
+				class:list={["nav-link font-body relative block py-2 text-sm font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-3", isActive(tentangHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(tentangHref) ? "page" : undefined}
 				>Tentang</a
 			>
 		</nav>
@@ -93,22 +103,26 @@ const demoHref = Astro.url.pathname === "/" ? "#demo" : "/#demo";
 		<nav class="flex flex-col gap-1 p-4" aria-label="Menu navigasi mobile">
 			<a
 				href={layananHref}
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
+				class:list={["mobile-nav-link font-body border-mist-dark block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2", isActive(layananHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(layananHref) ? "page" : undefined}
 				>Layanan</a
 			>
 			<a
 				href={jangkauanHref}
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
+				class:list={["mobile-nav-link font-body border-mist-dark block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2", isActive(jangkauanHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(jangkauanHref) ? "page" : undefined}
 				>Jangkauan</a
 			>
 			<a
 				href={platformHref}
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
+				class:list={["mobile-nav-link font-body border-mist-dark block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2", isActive(platformHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(platformHref) ? "page" : undefined}
 				>Platform</a
 			>
 			<a
 				href={tentangHref}
-				class="mobile-nav-link font-body text-charcoal-mid border-mist-dark hover:text-navy focus:outline-teal block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2"
+				class:list={["mobile-nav-link font-body border-mist-dark block min-h-11 border-b px-2 py-3.5 text-base font-medium no-underline transition-colors duration-150 focus:outline-[3px] focus:outline-offset-2", isActive(tentangHref) ? "is-active text-navy" : "text-charcoal-mid hover:text-navy"]}
+				aria-current={isActive(tentangHref) ? "page" : undefined}
 				>Tentang</a
 			>
 			<a
@@ -136,9 +150,13 @@ const demoHref = Astro.url.pathname === "/" ? "#demo" : "/#demo";
 	.nav-link:hover::after {
 		transform: scaleX(1);
 	}
+	.nav-link.is-active::after {
+		transform: scaleX(1);
+	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.nav-link::after {
+		.nav-link::after,
+		.nav-link.is-active::after {
 			transition: none;
 		}
 	}

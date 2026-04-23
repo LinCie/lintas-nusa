@@ -1,4 +1,10 @@
 ---
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => {
+	if (href === "/") return pathname === "/";
+	return pathname.startsWith(href);
+};
+
 const pageLinks = [
 	{ label: "Beranda", href: "/" },
 	{ label: "Layanan", href: "/layanan" },
@@ -104,7 +110,8 @@ const operatingNotes = [
 								<li>
 									<a
 										href={link.href}
-										class="footer-nav-link font-body inline-flex min-h-11 items-center py-2 text-sm text-white/72 no-underline transition-colors duration-150 hover:text-white"
+										class:list={["footer-nav-link font-body inline-flex min-h-11 items-center py-2 text-sm no-underline transition-colors duration-150", isActive(link.href) ? "is-active text-white" : "text-white/72 hover:text-white"]}
+										aria-current={isActive(link.href) ? "page" : undefined}
 									>
 										{link.label}
 									</a>
@@ -213,8 +220,13 @@ const operatingNotes = [
 		transform: scaleX(1);
 	}
 
+	.footer-nav-link.is-active::after {
+		transform: scaleX(1);
+	}
+
 	@media (prefers-reduced-motion: reduce) {
-		.footer-nav-link::after {
+		.footer-nav-link::after,
+		.footer-nav-link.is-active::after {
 			transition: none;
 			transform: none;
 		}
