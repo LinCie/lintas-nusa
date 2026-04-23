@@ -10,24 +10,16 @@ export function initHomeAnimations() {
 	const revealSections = gsap.utils.toArray<HTMLElement>("[data-home-reveal]", page);
 	const hoverItems = gsap.utils.toArray<HTMLElement>("[data-home-hover]", page);
 	const commandShell = page.querySelector<HTMLElement>("[data-home-map-shell]");
-	const scanBeam = commandShell?.querySelector<HTMLElement>(".jangkauan-scan-beam");
-	const scanLine = commandShell?.querySelector<HTMLElement>(".jangkauan-scan-line");
 	const commandCards = commandShell
 		? gsap.utils.toArray<HTMLElement>(".jangkauan-command-card", commandShell)
-		: [];
-	const commandPills = commandShell
-		? gsap.utils.toArray<HTMLElement>(".jangkauan-command-pill", commandShell)
 		: [];
 	const commandHeader = commandShell?.querySelector<HTMLElement>(".jangkauan-command-header");
 	const commandCaption = commandShell?.querySelector<HTMLElement>(".jangkauan-command-caption");
 	const routePaths = commandShell
 		? gsap.utils.toArray<SVGPathElement>(
-				".jangkauan-route-primary, .jangkauan-route-support, .jangkauan-route-glow",
+				".jangkauan-route-primary, .jangkauan-route-support",
 				commandShell,
 			)
-		: [];
-	const routeSignals = commandShell
-		? gsap.utils.toArray<SVGPathElement>(".jangkauan-route-signal", commandShell)
 		: [];
 	const controlRings = commandShell
 		? gsap.utils.toArray<SVGCircleElement>(".jangkauan-control-ring", commandShell)
@@ -42,9 +34,6 @@ export function initHomeAnimations() {
 		? gsap.utils.toArray<SVGTextElement>(".jangkauan-network-label", commandShell)
 		: [];
 	const controlCore = commandShell?.querySelector<SVGCircleElement>(".jangkauan-control-core");
-	const auras = commandShell
-		? gsap.utils.toArray<HTMLElement>(".jangkauan-command-aura", commandShell)
-		: [];
 
 	const mm = gsap.matchMedia();
 
@@ -97,10 +86,6 @@ export function initHomeAnimations() {
 				});
 			});
 
-			gsap.set(routeSignals, {
-				strokeDashoffset: 0,
-				opacity: 0,
-			});
 			gsap.set(controlRings, {
 				transformOrigin: "center center",
 				scale: 0.7,
@@ -144,21 +129,6 @@ export function initHomeAnimations() {
 				);
 			}
 
-			if (commandPills.length) {
-				commandIntro.from(
-					commandPills,
-					{
-						opacity: 0,
-						y: 14,
-						duration: 0.4,
-						ease: "power2.out",
-						stagger: 0.05,
-						clearProps: "opacity,transform",
-					},
-					0.08,
-				);
-			}
-
 			commandIntro.to(
 				routePaths,
 				{
@@ -177,11 +147,24 @@ export function initHomeAnimations() {
 					scale: 1,
 					opacity: 1,
 					duration: 0.34,
-					ease: "back.out(1.35)",
+					ease: "power2.out",
 					stagger: 0.04,
 					clearProps: "opacity,transform",
 				},
 				0.58,
+			);
+
+			commandIntro.to(
+				nodePulses,
+				{
+					scale: 1,
+					opacity: 0.55,
+					duration: 0.32,
+					ease: "power2.out",
+					stagger: 0.03,
+					clearProps: "opacity,transform",
+				},
+				0.62,
 			);
 
 			commandIntro.to(
@@ -252,103 +235,12 @@ export function initHomeAnimations() {
 				);
 			}
 
-			const ambientTweens: gsap.core.Tween[] = [
-				gsap.to(routeSignals, {
-					strokeDashoffset: -44,
-					opacity: 0.92,
-					duration: 1.45,
-					ease: "none",
-					repeat: -1,
-					paused: true,
-					stagger: {
-						each: 0.1,
-						from: "start",
-					},
-				}),
-				gsap.to(controlRings, {
-					scale: (index) => (index === 0 ? 1.35 : 1.58),
-					opacity: 0,
-					duration: 2.3,
-					ease: "power1.out",
-					repeat: -1,
-					paused: true,
-					stagger: 0.4,
-				}),
-				gsap.to(nodePulses, {
-					scale: 2.4,
-					opacity: 0,
-					duration: 1.7,
-					ease: "power1.out",
-					repeat: -1,
-					paused: true,
-					stagger: {
-						each: 0.14,
-						from: "random",
-					},
-				}),
-				gsap.fromTo(
-					scanBeam,
-					{
-						xPercent: -135,
-						opacity: 0.18,
-					},
-					{
-						xPercent: 190,
-						opacity: 0.95,
-						duration: 3.1,
-						ease: "sine.inOut",
-						repeat: -1,
-						yoyo: true,
-						paused: true,
-					},
-				),
-				gsap.fromTo(
-					scanLine,
-					{
-						xPercent: -140,
-						opacity: 0.2,
-					},
-					{
-						xPercent: 560,
-						opacity: 0.72,
-						duration: 3.1,
-						ease: "sine.inOut",
-						repeat: -1,
-						yoyo: true,
-						paused: true,
-					},
-				),
-				gsap.to(auras, {
-					opacity: 0.75,
-					scale: 1.08,
-					duration: 2.8,
-					ease: "sine.inOut",
-					repeat: -1,
-					yoyo: true,
-					paused: true,
-					stagger: 0.3,
-					transformOrigin: "center center",
-				}),
-			];
-
 			ScrollTrigger.create({
 				trigger: commandShell,
 				start: "top 82%",
-				end: "bottom top",
-				once: false,
+				once: true,
 				onEnter: () => {
 					commandIntro.restart();
-					ambientTweens.forEach((tween) => tween.play(0));
-				},
-				onLeave: () => {
-					ambientTweens.forEach((tween) => tween.pause());
-				},
-				onEnterBack: () => {
-					commandIntro.play();
-					ambientTweens.forEach((tween) => tween.play());
-				},
-				onLeaveBack: () => {
-					ambientTweens.forEach((tween) => tween.pause(0));
 				},
 			});
 		}
@@ -356,8 +248,8 @@ export function initHomeAnimations() {
 		hoverItems.forEach((item) => {
 			const enter = () => {
 				gsap.to(item, {
-					y: -5,
-					duration: 0.22,
+					y: -3,
+					duration: 0.2,
 					ease: "power2.out",
 				});
 			};

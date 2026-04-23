@@ -11,7 +11,18 @@ let isSetup = false;
 
 const ROUTE_ORDER = new Map([
 	["/", 0],
-	["/tentang", 1],
+	["/layanan", 1],
+	["/jangkauan", 2],
+	["/platform", 3],
+	["/tentang", 4],
+]);
+
+const ROUTE_LABELS = new Map([
+	["/", "Beranda"],
+	["/layanan", "Layanan"],
+	["/jangkauan", "Jangkauan"],
+	["/platform", "Platform"],
+	["/tentang", "Tentang"],
 ]);
 
 function tweenToPromise(tween: gsap.core.Tween | gsap.core.Timeline) {
@@ -67,8 +78,9 @@ async function animateOut(url?: string) {
 	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	const direction = getDirection(url);
 	const destination = new URL(url ?? window.location.href, window.location.origin);
+	const normalizedDestination = normalizePath(destination.pathname);
 
-	path.textContent = normalizePath(destination.pathname) === "/" ? "Beranda" : destination.pathname;
+	path.textContent = ROUTE_LABELS.get(normalizedDestination) ?? normalizedDestination;
 	shell.classList.add("is-active");
 
 	if (prefersReducedMotion) {

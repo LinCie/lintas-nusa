@@ -36,11 +36,36 @@ html {
 	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 	--nav-height: 72px;
+	--surface-map-shell: #0c1c2b;
+	--surface-map-shell-border: rgb(255 255 255 / 0.1);
+	--surface-map-shell-frame: rgb(255 255 255 / 0.08);
+	--surface-map-shell-grid: rgb(255 255 255 / 0.018);
+	--surface-map-halo-strong: rgb(98 233 214 / 0.34);
+	--surface-map-halo-soft: rgb(98 233 214 / 0.12);
+	--surface-map-halo-fade: rgb(98 233 214 / 0);
+	--surface-route-transition-veil-start: rgb(15 39 66 / 0.08);
+	--surface-route-transition-veil-mid: rgb(15 39 66 / 0.02);
+	--surface-route-transition-veil-accent: rgb(13 120 114 / 0.08);
+	--surface-route-transition-halo: rgb(13 120 114 / 0.12);
+	--surface-route-transition-grid-border: rgb(13 120 114 / 0.14);
+	--surface-route-transition-grid-line: rgb(13 120 114 / 0.14);
+	--surface-route-transition-grid-scan: rgb(15 39 66 / 0.06);
+	--surface-route-transition-beam: rgb(13 120 114 / 0.22);
+	--surface-route-transition-line: rgb(13 120 114 / 0.95);
+	--surface-route-transition-line-faint: rgb(13 120 114 / 0.1);
+	--surface-route-transition-pulse-border: rgb(13 120 114 / 0.7);
+	--surface-route-transition-pulse-fill: rgb(238 243 247 / 0.65);
+	--surface-route-transition-pulse-shadow: rgb(13 120 114 / 0.08);
+	--surface-route-transition-label: rgb(15 39 66 / 0.72);
+	--surface-route-transition-path: rgb(13 120 114 / 0.94);
 }
 
 body {
 	background: var(--color-mist);
 	color: var(--color-charcoal);
+	font-family: var(--font-body);
+	font-kerning: normal;
+	line-height: 1.6;
 }
 
 #route-transition {
@@ -68,8 +93,13 @@ body {
 .route-transition__veil {
 	inset: 0;
 	background:
-		linear-gradient(135deg, rgb(15 39 66 / 0.08), rgb(15 39 66 / 0.02) 32%, rgb(13 120 114 / 0.08)),
-		radial-gradient(circle at 20% 50%, rgb(13 120 114 / 0.12), transparent 46%);
+		linear-gradient(
+			135deg,
+			var(--surface-route-transition-veil-start),
+			var(--surface-route-transition-veil-mid) 32%,
+			var(--surface-route-transition-veil-accent)
+		),
+		radial-gradient(circle at 20% 50%, var(--surface-route-transition-halo), transparent 46%);
 }
 
 .route-transition__grid {
@@ -77,11 +107,11 @@ body {
 	bottom: 0;
 	left: 8vw;
 	right: 8vw;
-	border-top: 1px solid rgb(13 120 114 / 0.14);
-	border-bottom: 1px solid rgb(13 120 114 / 0.14);
+	border-top: 1px solid var(--surface-route-transition-grid-border);
+	border-bottom: 1px solid var(--surface-route-transition-grid-border);
 	background-image:
-		linear-gradient(to right, rgb(13 120 114 / 0.14) 1px, transparent 1px),
-		linear-gradient(to bottom, rgb(15 39 66 / 0.06) 1px, transparent 1px);
+		linear-gradient(to right, var(--surface-route-transition-grid-line) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--surface-route-transition-grid-scan) 1px, transparent 1px);
 	background-size: 12vw 100%, 100% 7.5rem;
 }
 
@@ -89,7 +119,7 @@ body {
 	top: 0;
 	bottom: 0;
 	width: 28vw;
-	background: linear-gradient(90deg, transparent, rgb(13 120 114 / 0.22), transparent);
+	background: linear-gradient(90deg, transparent, var(--surface-route-transition-beam), transparent);
 	filter: blur(18px);
 }
 
@@ -98,7 +128,12 @@ body {
 	left: 8vw;
 	right: 8vw;
 	height: 1px;
-	background: linear-gradient(90deg, rgb(13 120 114 / 0.1), rgb(13 120 114 / 0.95), rgb(13 120 114 / 0.1));
+	background: linear-gradient(
+		90deg,
+		var(--surface-route-transition-line-faint),
+		var(--surface-route-transition-line),
+		var(--surface-route-transition-line-faint)
+	);
 }
 
 .route-transition__pulse {
@@ -106,10 +141,10 @@ body {
 	left: calc(50% - 0.4rem);
 	width: 0.8rem;
 	height: 0.8rem;
-	border: 1px solid rgb(13 120 114 / 0.7);
+	border: 1px solid var(--surface-route-transition-pulse-border);
 	border-radius: 999px;
-	background: rgb(238 243 247 / 0.65);
-	box-shadow: 0 0 0 0.6rem rgb(13 120 114 / 0.08);
+	background: var(--surface-route-transition-pulse-fill);
+	box-shadow: 0 0 0 0.6rem var(--surface-route-transition-pulse-shadow);
 }
 
 .route-transition__label {
@@ -123,14 +158,14 @@ body {
 	font-weight: 700;
 	letter-spacing: 0.24em;
 	text-transform: uppercase;
-	color: rgb(15 39 66 / 0.72);
+	color: var(--surface-route-transition-label);
 }
 
 .route-transition__path {
 	font-size: 0.88rem;
 	font-weight: 600;
 	letter-spacing: 0.08em;
-	color: rgb(13 120 114 / 0.94);
+	color: var(--surface-route-transition-path);
 }
 
 .transition-route-shell {

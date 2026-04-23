@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro";
 
 const platformStats = [
 	{ value: "18.500", label: "Bisnis Aktif", suffix: "" },
-	{ value: "31", label: "Volume dari Dashboard & API", suffix: "%" },
+	{ value: "31", label: "Volume dari dashboard dan API", suffix: "%" },
 	{ value: "97,9", label: "Kepatuhan Pemindaian", suffix: "%" },
 ];
 
@@ -13,44 +13,44 @@ const customerFeatures = [
 	{
 		title: "Lacak Tanpa Login",
 		description:
-			"Paket bisa dilacak lewat nomor AWB atau tautan langsung yang dibagikan pengirim. Tanpa harus membuat akun atau masuk dulu.",
+			"Paket bisa dilacak lewat nomor AWB atau tautan yang dibagikan pengirim. Penerima tidak perlu membuat akun atau masuk dulu.",
 		mechanism:
-			"Sistem menghasilkan tautan unik per kiriman yang bisa dibuka recipient kapan saja. Setiap pemindaian memperbarui posisi secara real-time.",
+			"Sistem membuat tautan unik per kiriman yang bisa dibuka penerima kapan saja. Setiap pemindaian memperbarui posisi secara real-time.",
 	},
 	{
 		title: "Booking Pickup",
 		description:
-			"Jadwalkan penjemputan paket tanpa harus hubungi call center. Pilih tanggal, window waktu, dan titik ambil yang sesuai.",
+			"Jadwalkan penjemputan paket tanpa perlu menghubungi call center. Pilih tanggal, jendela waktu, dan titik ambil yang sesuai.",
 		mechanism:
-			"Setelah booking, kurir mendapat instruksi otomatis dan sender mendapat konfirmasi dengan detail penjemputan.",
+			"Setelah booking, kurir menerima instruksi otomatis dan pengirim mendapat konfirmasi dengan detail penjemputan.",
 	},
 	{
 		title: "Kalkulator Tarif",
 		description:
-			"Hitung estimasi biaya pengiriman sebelum memutuskan untuk kirim. Semua layanan yang tersedia di lane tersebut sudah termasuk dalam perhitungan.",
+			"Hitung estimasi biaya kirim sebelum memutuskan untuk mengirim. Semua layanan yang tersedia di lane tersebut sudah ikut dihitung.",
 		mechanism:
-			"Kalkulasi berdasarkan berat, dimensi, lane tujuan, dan layanan tambahan. Hasil ditampilkan dalam hitungan detik.",
+			"Kalkulasi berdasarkan berat, dimensi, lane tujuan, dan layanan tambahan. Hasilnya tampil dalam hitungan detik.",
 	},
 	{
 		title: "Coverage Explorer",
 		description:
-			"Lihat lane yang aktif dan layanan yang tersedia per destination — bukan sekadar daftar kota.",
+			"Lihat lane yang aktif dan layanan yang tersedia per tujuan, bukan sekadar daftar kota.",
 		mechanism:
-			"Visualisasi lane per region dengan indikasi layanan aktif, tidak aktif, dan dalam review. Membantu estimasi kelayakan sebelum kirim.",
+			"Visualisasi lane per region dengan status aktif, tidak aktif, dan review. Membantu menilai kelayakan sebelum kirim.",
 	},
 	{
 		title: "ETA dan Alerts",
 		description:
-			"Notifikasi akurat di setiap perubahan status pengiriman. Dari pickup sampai delivered.",
+			"Notifikasi muncul di setiap perubahan status pengiriman, dari pickup sampai delivered.",
 		mechanism:
-			"ETA dihitung dari data historis lane dan kondisi aktual. Alerts dipicu saat paket berpindah scanner point atau ada exception.",
+			"ETA dihitung dari data historis lane dan kondisi aktual. Alerts dipicu saat paket berpindah scan point atau ada exception.",
 	},
 	{
 		title: "Reschedule dan Safe-Drop",
 		description:
-			"Penerima bisa atur ulang waktu terima atau tinggalkan instruksi untuk kurir tanpa harus hubungi CS.",
+			"Penerima bisa mengatur ulang waktu terima atau meninggalkan instruksi untuk kurir tanpa menghubungi CS.",
 		mechanism:
-			"Penerima akses via tautan lacak, pilih opsi reschedule atau masukkan instruksi safe-drop. Semua tercatat di sistem.",
+			"Penerima membuka tautan lacak, memilih reschedule atau mengisi instruksi safe-drop. Semua tercatat di sistem.",
 	},
 ];
 
@@ -58,179 +58,172 @@ const merchantCapabilities = [
 	{
 		title: "Satu Login, Banyak Peran",
 		description:
-			"Owner, ops, finance, dan CS mengakses data yang sama dengan role masing-masing. Tidak perlu Bagi akses ke banyak platform.",
+			"Owner, ops, finance, dan CS mengakses data yang sama dengan peran masing-masing. Tidak perlu membagi akses ke banyak platform.",
 		detail:
-			"Owner melihat ringkasan bisnis. Finance fokus ke settlement dan payout. Ops memantau performance lane. CS menangani exception. Semua dalam satu dashboard.",
+			"Owner melihat ringkasan bisnis. Finance fokus ke settlement dan payout. Ops memantau performa lane. CS menangani exception. Semua ada di satu dashboard.",
 	},
 	{
-		title: "Sync Pesanan",
+		title: "Sinkronisasi Pesanan",
 		description:
-			"Order dari marketplace, website, atau CSV masuk ke dashboard yang sama. Satu tempat untuk semua sumber order.",
+			"Pesanan dari marketplace, website, atau CSV masuk ke dashboard yang sama. Semua sumber pesanan terkumpul di satu tempat.",
 		detail:
-			"Mendukung integrasi dengan Tokopedia, Shopee, TikTok Shop, dan marketplace lainnya. API dan webhook untuk koneksi custom.",
+			"Mendukung integrasi dengan Tokopedia, Shopee, TikTok Shop, dan marketplace lainnya. API dan webhook tersedia untuk koneksi khusus.",
 	},
 	{
 		title: "Monitoring Multi-AWB",
 		description:
-			"Lacak puluhan hingga ratusan AWB secara bersamaan. Filter by status, lane, layanan, atau tanggal.",
+			"Lacak puluhan hingga ratusan AWB secara bersamaan. Filter berdasarkan status, lane, layanan, atau tanggal.",
 		detail:
-			"Dashboard menampilkan posisi semua paket dengan update real-time. Ekspor ke CSV atau Excel tersedia untuk pelaporan internal.",
+			"Dashboard menampilkan posisi semua paket dengan update real-time. Ekspor ke CSV atau Excel tersedia untuk laporan internal.",
 	},
 	{
-		title: "SLA Performance Dashboard",
+		title: "Dashboard Kinerja SLA",
 		description:
-			"Lihat on-time rate per lane, per layanan, dan per periode. Proof nyata bukan claim promosi.",
+			"Lihat on-time rate per lane, per layanan, dan per periode. Bukti nyata, bukan klaim promosi.",
 		detail:
-			"Data diambil dari scan compliance dan timestamps aktual. Breakdown bisa dilakukan per destination city atau region.",
+			"Data diambil dari scan compliance dan timestamp aktual. Rincian bisa dilakukan per kota tujuan atau wilayah.",
 	},
 	{
-		title: "NDR Analysis",
-		description:
-			"Pahami alasan kegagalan kirim (Non-Delivery Rate) per kategori dan mulai recovery lebih cepat.",
+		title: "Analisis NDR",
+		description: "Pahami alasan kegagalan kirim per kategori dan mulai recovery lebih cepat.",
 		detail:
-			"NDR categories: address unclear, recipient unavailable, refused, damaged, dan lainnya. Setiap kategori menunjukkan count dan percentage.",
+			"Kategori NDR: alamat tidak jelas, penerima tidak tersedia, ditolak, rusak, dan lainnya. Setiap kategori menunjukkan jumlah dan persentase.",
 	},
 	{
 		title: "COD Settlement",
 		description:
 			"Rekonsiliasi payout dan tagihan COD tanpa laporan terpisah. Semua tercatat di dashboard yang sama.",
 		detail:
-			"Dana COD yang diterima direkonsiliasi dengan order yang dispatched. Settlement report bisa di-download per periode.",
+			"Dana COD yang diterima direkonsiliasi dengan pesanan yang dikirim. Laporan settlement bisa diunduh per periode.",
 	},
 	{
 		title: "Return Analytics",
 		description:
-			"Retur dibaca per alasan — bukan sekadar jumlah. Membantu tim product dan ops improvement.",
+			"Retur dibaca per alasan, bukan sekadar jumlah. Membantu tim product dan ops memperbaiki proses.",
 		detail:
-			"Return reasons coded: wrong item, damaged, not as described, size mismatch, dan lainnya. Breakdown tersedia per product category.",
+			"Alasan retur dikodekan: barang salah, rusak, tidak sesuai deskripsi, ukuran tidak cocok, dan lainnya. Rincian tersedia per kategori produk.",
 	},
 	{
 		title: "Invoice dan Dokumen Pajak",
 		description:
-			"Download invoice dan tax documents langsung dari dashboard. Tidak perlu ajukan ke finance team.",
+			"Unduh invoice dan dokumen pajak langsung dari dashboard. Tidak perlu minta ke tim finance.",
 		detail:
-			"Invoice per shipment atau bulk per period. Format comply dengan ketentuan perpajakan Indonesia.",
+			"Invoice tersedia per shipment atau bulk per periode. Formatnya mengikuti ketentuan perpajakan Indonesia.",
 	},
 ];
 
 const enterpriseFeatures = [
 	{
-		title: "API dan Webhook Access",
+		title: "Akses API dan Webhook",
 		description:
 			"Kirim data otomatis ke sistem Anda saat ada update lacak, tanpa middleware atau integrasi manual.",
 		mechanism:
-			"RESTful API dengan dokumentasi yang jelas. Webhook dipicu saat status berubah, delivered, atau exception.",
+			"RESTful API dengan dokumentasi yang jelas. Webhook dipicu saat status berubah, paket terkirim, atau exception muncul.",
 		useCases: [
-			"Update internal tracking system",
-			"Trigger downstream fulfillment",
-			"Automate customer notification",
+			"Perbarui sistem pelacakan internal",
+			"Picu fulfillment berikutnya",
+			"Otomatiskan notifikasi pelanggan",
 		],
 	},
 	{
-		title: "ERP/WMS Integration",
+		title: "Integrasi ERP/WMS",
 		description:
 			"Koneksi ke sistem manajemen gudang (WMS) dan keuangan (ERP) yang sudah berjalan di perusahaan.",
 		mechanism:
 			"Mendukung koneksi ke SAP, Oracle, JDE, dan sistem lokal Indonesia. Tim integrasi kami membantu onboarding.",
 		useCases: [
-			"Sync inventory dari WMS",
-			"Auto-create shipment dari order ERP",
-			"Reconcile COD dengan finance system",
+			"Sinkronkan inventori dari WMS",
+			"Buat pengiriman otomatis dari pesanan ERP",
+			"Rekonsiliasi COD dengan sistem finance",
 		],
 	},
 	{
-		title: "Dedicated Account View",
+		title: "Tampilan Akun Khusus",
 		description:
-			"Struktur akun terpisah untuk klien dengan banyak cabang atau anak perusahaan. Isolasi data yang jelas.",
+			"Struktur akun terpisah untuk klien dengan banyak cabang atau anak perusahaan. Data tetap terisolasi dengan jelas.",
 		mechanism:
-			"Multi-entity support dengan parent-child relationship. Setiap entity punya own dashboard dan reporting.",
+			"Dukungan multi-entitas dengan hubungan induk-anak. Setiap entitas punya dashboard dan pelaporan sendiri.",
 		useCases: [
-			"Holding company dengan banyak subsidiary",
-			"Franchise operations",
-			"Multi-region management",
+			"Holding company dengan banyak anak usaha",
+			"Operasi waralaba",
+			"Manajemen lintas wilayah",
 		],
 	},
 	{
-		title: "Approval Workflows",
+		title: "Alur Persetujuan",
 		description:
-			"Tetapkan jenjang persetujuan untuk kiriman dan laporan. Notifikasi ke approver yang relevant.",
+			"Tetapkan jenjang persetujuan untuk kiriman dan laporan. Notifikasi dikirim ke penyetuju yang relevan.",
 		mechanism:
-			"Configurable approval chain based on shipment value, destination, atau service type. Audit trail lengkap.",
+			"Rantai persetujuan bisa dikonfigurasi berdasarkan nilai kiriman, tujuan, atau jenis layanan. Audit trail lengkap.",
 		useCases: [
-			"High-value shipment approval",
-			"Budget center authorization",
-			"Cross-branch shipment validation",
+			"Persetujuan kiriman bernilai tinggi",
+			"Otorisasi pusat biaya",
+			"Validasi kiriman lintas cabang",
 		],
 	},
 	{
-		title: "Incident Reporting",
+		title: "Pelaporan Insiden",
 		description:
-			"Komunikasi gangguan terstruktur dengan service status page. Customer tidak perlu tanya-tanya.",
+			"Komunikasi gangguan yang terstruktur lewat halaman status layanan. Pelanggan tidak perlu bertanya satu per satu.",
 		mechanism:
-			"Status page public yang menunjukkan service health per region dan service type. Incident reports dengan timeline.",
+			"Halaman status publik yang menunjukkan kesehatan layanan per wilayah dan jenis layanan. Laporan insiden menampilkan timeline.",
 		useCases: [
-			"Proactive customer communication",
-			"SLA documentation for contracts",
-			"Post-incident review",
+			"Komunikasi proaktif ke pelanggan",
+			"Dokumentasi SLA untuk kontrak",
+			"Tinjauan pascainsiden",
 		],
 	},
 ];
 
 const trustProofPoints = [
 	{
-		title: "Photo POD Gallery",
+		title: "Galeri Photo POD",
 		description:
-			"Bukti foto serah terima yang bisa diakses langsung dari dashboard. Bukan scanned dokumen.",
+			"Bukti foto serah terima yang bisa diakses langsung dari dashboard, bukan scan dokumen.",
 		proof:
-			"Setiap delivery yang menggunakan LN Secure automatically captures photo. Photo stored minimal 90 hari.",
+			"Setiap pengiriman yang memakai LN Secure otomatis mengambil foto. Foto disimpan minimal 90 hari.",
 	},
 	{
-		title: "Geo-Stamped Scans",
+		title: "Scan dengan Geo-Stamp",
 		description:
-			"Titik lokasi tiap pemindaian terekam otomatis. Latitude, longitude, dan timestamp.",
+			"Titik lokasi tiap pemindaian terekam otomatis, lengkap dengan latitude, longitude, dan timestamp.",
 		proof:
-			"Scan point diambil saat paket scan di setiap hub dan last-mile. Akurasi within 50 meter radius.",
+			"Scan point diambil saat paket dipindai di setiap hub dan last-mile. Akurasi dalam radius 50 meter.",
 	},
 	{
-		title: "Live Exception Alerts",
-		description: "Notifikasi real-time saat ada hambatan di lapangan. Sebelum customer komplain.",
+		title: "Peringatan Exception Langsung",
+		description: "Notifikasi real-time saat ada hambatan di lapangan, sebelum pelanggan komplain.",
 		proof:
-			"Exception detected via comparing lokasi pemindaian actual dengan rute yang diharapkan. Alert dikirim via dashboard dan webhook.",
+			"Exception terdeteksi dengan membandingkan lokasi scan aktual dan rute yang diharapkan. Peringatan dikirim lewat dashboard dan webhook.",
 	},
 	{
-		title: "Claims Clock",
+		title: "Jam Klaim",
 		description:
-			"Timer klaim dengan target respons 2 × 24 jam. Setiap klaim punya deadline yang jelas.",
+			"Timer klaim dengan target respons 2 × 24 jam. Setiap klaim punya batas waktu yang jelas.",
 		proof:
-			"Clock starts saat claim submitted. Dashboard menunjukkan countdown dan escalation status.",
+			"Jam berjalan saat klaim dikirim. Dashboard menampilkan hitung mundur dan status eskalasi.",
 	},
 	{
-		title: "Delivery Confidence Score",
+		title: "Skor Keandalan Pengiriman",
 		description:
-			"Skor keandalan per route dan tipe layanan. Helps merchant set realistic expectation.",
-		proof:
-			"Dihitung dari historical data: on-time rate, NDR rate, dan exception frequency per lane.",
+			"Skor keandalan per rute dan jenis layanan. Membantu merchant menetapkan ekspektasi yang realistis.",
+		proof: "Dihitung dari data historis: on-time rate, NDR rate, dan frekuensi exception per lane.",
 	},
 ];
 
 const dashboardMockup = {
-	label: "Dashboard Preview",
+	label: "Pratinjau Dashboard",
 	title: "Satu layar. Seluruh operasi.",
 	description:
-		"Merchant dashboard menampilkan semua informasi critical tanpa harus switching tabs atau systems.",
+		"Dasbor merchant menampilkan semua informasi penting tanpa harus pindah tab atau sistem.",
 };
 ---
 
 <Layout
 	title="Platform"
-	description="Platform digital LintasNusa: dashboard terpadu untuk merchant, API untuk enterprise, dan recipient tools. Satu ekosistem untuk seluruh peran."
+	description="Platform digital LintasNusa: dashboard terpadu untuk merchant, API untuk enterprise, dan alat penerima. Satu ekosistem untuk seluruh peran."
 	pageName="platform"
 >
-	<a
-		href="#main-content"
-		class="skip-to-content bg-navy font-body focus:outline-teal absolute -top-full left-4 z-50 rounded-md px-5 py-3 text-sm font-semibold text-white no-underline transition-[top] duration-150 focus:top-4 focus:outline-2 focus:outline-offset-2"
-		>Langsung ke konten</a
-	>
 	<Header />
 
 	<div class="route-stage" data-page-view="platform">
@@ -269,13 +262,13 @@ const dashboardMockup = {
 						class="hero-tagline font-display leading-[1.02] font-black tracking-tight text-white"
 						style="font-size: clamp(3rem, 8vw, 5.5rem);"
 					>
-						Untuk bisnis yang butuh visibility, bukan sekadar kirim.
+						Untuk bisnis yang butuh visibilitas, bukan sekadar kirim.
 					</h1>
 					<p
 						class="platform-hero-copy font-body text-mist/70 mt-8 max-w-[52ch] text-base leading-relaxed sm:text-lg"
 					>
-						Satu akun untuk sender, recipient, merchant, finance, dan enterprise. Semua duduk di
-						sistem yang sama — bukan portal yang berbeda.
+						Satu akun untuk pengirim, penerima, merchant, finance, dan enterprise. Semua bekerja di
+						sistem yang sama, bukan portal yang berbeda.
 					</p>
 				</div>
 
@@ -321,28 +314,29 @@ const dashboardMockup = {
 				>
 					<div class="ekosistem-prose space-y-6">
 						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
-							One Ecosystem
+							Satu ekosistem
 						</span>
 						<h2
 							id="ekosistem-heading"
 							class="font-display text-navy leading-[1.05] font-bold tracking-tight"
 							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
 						>
-							Mengapa satu platform lebih baik dari banyak portal.
+							Kenapa satu platform lebih rapi daripada banyak portal.
 						</h2>
 						<div class="space-y-4">
 							<p class="font-body text-charcoal-mid text-base leading-[1.7]">
-								Sebagian besar perusahaan logistik Memisahkan experience per role. Sender pakai satu
-								app, recipient pakai tautan berbeda, merchant login ke dashboard terpisah, dan
-								enterprise harus setup integrasi via email. Hasilnya: data terfragmentasi, tim kerja
-								tidak sinkron, dan customer service menjelaskan status dari dua tempat.
+								Banyak perusahaan logistik memisahkan pengalaman per peran. Pengirim memakai satu
+								aplikasi, penerima memakai tautan berbeda, merchant login ke dashboard terpisah, dan
+								enterprise harus menyiapkan integrasi lewat email. Hasilnya, data terfragmentasi,
+								tim tidak sinkron, dan tim layanan pelanggan menjelaskan status dari tempat yang
+								berbeda.
 							</p>
 							<p class="font-body text-charcoal-mid text-base leading-[1.7]">
-								LintasNusa dibangun dengan satu thesis: <strong class="text-navy"
-									>logistics is not just movement — it is information discipline.</strong
+								LintasNusa dibangun dengan satu tesis: <strong class="text-navy"
+									>logistik bukan cuma gerak, melainkan disiplin informasi.</strong
 								>
-								Semua role melihat data yang sama, dari saat paket dijemput sampai settlement selesai.
-								Update terjadi di satu tempat dan langsung visible untuk semua yang berkepentingan.
+								Semua peran membaca data yang sama, dari saat paket dijemput sampai settlement selesai.
+								Update terjadi di satu tempat dan langsung terlihat oleh semua pihak yang berkepentingan.
 							</p>
 						</div>
 					</div>
@@ -352,31 +346,31 @@ const dashboardMockup = {
 							<p
 								class="text-navy/50 mb-5 font-mono text-[10px] font-medium tracking-[0.2em] uppercase"
 							>
-								Platform components
+								Komponen platform
 							</p>
 							<ul class="space-y-4">
 								<li class="flex items-start gap-3">
 									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
 									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
-										>Recipient tools — lacak, reschedule, safe-drop</span
+										>Alat penerima: lacak, atur ulang, safe-drop</span
 									>
 								</li>
 								<li class="flex items-start gap-3">
 									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
 									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
-										>Merchant dashboard — order, SLA, COD, returns</span
+										>Dashboard merchant: pesanan, SLA, COD, retur</span
 									>
 								</li>
 								<li class="flex items-start gap-3">
 									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
 									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
-										>Enterprise API — sync, webhook, integration</span
+										>API enterprise: sinkronisasi, webhook, integrasi</span
 									>
 								</li>
 								<li class="flex items-start gap-3">
 									<span class="bg-teal mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full"></span>
 									<span class="font-body text-charcoal-mid text-sm leading-relaxed"
-										>Trust layer — photo POD, geo-stamp, claims clock</span
+										>Lapisan bukti: photo POD, geo-stamp, jam klaim</span
 									>
 								</li>
 							</ul>
@@ -405,11 +399,11 @@ const dashboardMockup = {
 							class="font-display text-navy leading-[1.05] font-bold tracking-tight"
 							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
 						>
-							Recipient tools yang bekerja independent dari merchant.
+							Alat untuk penerima yang bekerja terpisah dari merchant.
 						</h2>
 						<p class="font-body text-charcoal-mid text-base leading-relaxed">
-							Recipient tidak perlu install app atau punya account untuk lacak paket, ubah jadwal,
-							atau berikan instruksi. Semua dilakukan dari tautan yang diberikan pengirim.
+							Penerima tidak perlu memasang aplikasi atau punya akun untuk melacak paket, mengubah
+							jadwal, atau memberi instruksi. Semua dilakukan dari tautan yang dibagikan pengirim.
 						</p>
 					</div>
 				</div>
@@ -431,7 +425,7 @@ const dashboardMockup = {
 								</p>
 								<div class="border-mist-dark border-t pt-4">
 									<p class="text-teal mb-2 font-mono text-[10px] font-medium tracking-[0.15em] uppercase">
-										Mechanism
+										Cara kerja
 									</p>
 									<p class="font-body text-charcoal-mid/80 text-xs leading-relaxed">
 										{feature.mechanism}
@@ -456,18 +450,18 @@ const dashboardMockup = {
 				>
 					<div class="max-w-2xl space-y-5">
 						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
-							Merchant Dashboard
+							Dashboard merchant
 						</span>
 						<h2
 							id="merchant-heading"
 							class="font-display leading-[1.05] font-bold tracking-tight text-white"
 							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
 						>
-							satu login. Owner, ops, finance, CS.
+							Satu login untuk owner, ops, finance, dan CS.
 						</h2>
 						<p class="font-body text-mist/70 text-base leading-relaxed">
-							Masing-masing role punya view yang sesuai dengan tanggung jawabnya — tetapi semua dari
-							data yang sama. Tidak perlu switching antar platform.
+							Masing-masing peran punya tampilan yang sesuai dengan tanggung jawabnya, tetapi semua
+							membaca data yang sama. Tidak perlu pindah antar platform.
 						</p>
 					</div>
 				</div>
@@ -496,42 +490,42 @@ const dashboardMockup = {
 								<div
 									class="rounded-xl border border-white/8 bg-white/5 p-4"
 									role="group"
-									aria-label="Today: 1,284 shipments"
+									aria-label="Hari ini: 1.284 pengiriman"
 								>
 									<p class="text-mist/70 mb-1 font-mono text-[10px] tracking-wide uppercase">
-										Today
+										Hari ini
 									</p>
 									<p class="font-display text-xl font-bold text-white">1,284</p>
-									<p class="font-body text-teal text-xs">Shipments</p>
+									<p class="font-body text-teal text-xs">Pengiriman</p>
 								</div>
 								<div
 									class="rounded-xl border border-white/8 bg-white/5 p-4"
 									role="group"
-									aria-label="On-Time: 97.2% SLA Rate"
+									aria-label="Tepat waktu: 97,2% rasio SLA"
 								>
 									<p class="text-mist/70 mb-1 font-mono text-[10px] tracking-wide uppercase">
-										On-Time
+										Tepat waktu
 									</p>
 									<p class="font-display text-xl font-bold text-white">97.2%</p>
-									<p class="font-body text-teal text-xs">SLA Rate</p>
+									<p class="font-body text-teal text-xs">Rasio SLA</p>
 								</div>
 								<div
 									class="rounded-xl border border-white/8 bg-white/5 p-4"
 									role="group"
-									aria-label="COD: Rp 842jt to settle"
+									aria-label="COD: Rp 842 juta menunggu settlement"
 								>
 									<p class="text-mist/70 mb-1 font-mono text-[10px] tracking-wide uppercase">COD</p>
 									<p class="font-display text-xl font-bold text-white">Rp 842jt</p>
-									<p class="font-body text-teal text-xs">To Settle</p>
+									<p class="font-body text-teal text-xs">Menunggu settlement</p>
 								</div>
 								<div
 									class="rounded-xl border border-white/8 bg-white/5 p-4"
 									role="group"
-									aria-label="NDR: 2.8% rate"
+									aria-label="NDR: 2,8% rasio"
 								>
 									<p class="text-mist/70 mb-1 font-mono text-[10px] tracking-wide uppercase">NDR</p>
 									<p class="font-display text-xl font-bold text-white">2.8%</p>
-									<p class="font-body text-teal text-xs">Rate</p>
+									<p class="font-body text-teal text-xs">Rasio</p>
 								</div>
 							</div>
 						</div>
@@ -573,11 +567,11 @@ const dashboardMockup = {
 							class="font-display text-navy leading-[1.05] font-bold tracking-tight"
 							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
 						>
-							API-first integrations untuk operasi skala besar.
+							Integrasi API-first untuk operasi skala besar.
 						</h2>
 						<p class="font-body text-charcoal-mid text-base leading-relaxed">
-							Dibangun untuk tim technical dan operations yang butuh koneksi real-time ke sistem
-							mereka — bukan dashboard yang harus dibuka manual.
+							Dibangun untuk tim teknis dan operasi yang butuh koneksi real-time ke sistem mereka,
+							bukan dashboard yang harus dibuka manual.
 						</p>
 					</div>
 				</div>
@@ -612,7 +606,7 @@ const dashboardMockup = {
 								</p>
 								<div class="border-mist-dark border-t pt-4">
 									<p class="text-charcoal-mid/60 mb-3 font-mono text-[10px] font-medium tracking-[0.15em] uppercase">
-										Use Cases
+										Contoh penggunaan
 									</p>
 									<ul class="space-y-2">
 										{feature.useCases.map((uc) => (
@@ -644,18 +638,18 @@ const dashboardMockup = {
 				>
 					<div class="max-w-2xl space-y-5">
 						<span class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
-							Trust Layer
+							Lapisan kepercayaan
 						</span>
 						<h2
 							id="trust-heading"
 							class="font-display leading-[1.05] font-bold tracking-tight text-white"
 							style="font-size: clamp(1.75rem, 3.5vw, 2.75rem);"
 						>
-							Proof before slogans. Bukti yang bisa diakses.
+							Bukti dulu, slogan belakangan. Semuanya bisa diakses.
 						</h2>
 						<p class="font-body text-mist/60 text-base leading-relaxed">
-							Semua trust feature terintegrasi dengan shipment tracking — bukan fitur terpisah yang
-							harus diminta secara khusus.
+							Semua fitur bukti terintegrasi dengan pelacakan pengiriman, bukan fitur terpisah yang
+							harus diminta khusus.
 						</p>
 					</div>
 				</div>
@@ -689,7 +683,7 @@ const dashboardMockup = {
 								</p>
 								<div class="border-t border-white/10 pt-4">
 									<p class="text-teal/60 mb-1 font-mono text-[10px] font-medium tracking-[0.15em] uppercase">
-										Proof
+										Bukti
 									</p>
 									<p class="font-body text-mist/50 text-xs leading-relaxed">{point.proof}</p>
 								</div>
@@ -716,7 +710,7 @@ const dashboardMockup = {
 							Lihat demo dashboard atau diskusikan kebutuhan integrasi Anda.
 						</h2>
 						<p class="font-body text-mist/60 mt-5 max-w-[46ch] text-base leading-relaxed">
-							Tim solutions kami membantu mapping alur yang paling sesuai dengan operational setup
+							Tim solusi kami membantu memetakan alur yang paling sesuai dengan setup operasional
 							saat ini.
 						</p>
 					</div>
@@ -740,7 +734,7 @@ const dashboardMockup = {
 							href="mailto:api@lintasnusa.co.id"
 							class="cta-secondary font-body text-mist/80 border-mist/30 focus:outline-teal inline-flex min-h-13 items-center justify-center gap-2 rounded-md border px-8 py-4 text-[15px] font-semibold no-underline transition-all duration-150 hover:border-white/50 hover:text-white focus:outline-2 focus:outline-offset-3 sm:w-auto"
 						>
-							Diskusikan API Integration
+							Diskusikan Integrasi API
 						</a>
 					</div>
 				</div>

@@ -13,7 +13,7 @@ const heroStats = [
 		target: "247",
 		suffix: "",
 		decimal: false,
-		note: "dibuka per lane, bukan disamaratakan",
+		note: "dibuka per lane, bukan dipukul rata",
 	},
 	{
 		label: "Node sinkron",
@@ -37,14 +37,14 @@ const heroStats = [
 		target: "31",
 		suffix: "%",
 		decimal: false,
-		note: "datang dari dashboard dan API",
+		note: "berasal dari dashboard dan API",
 	},
 ];
 
 const statusLegend = [
 	{
 		label: "Aktif",
-		note: "Siap dikutip sekarang",
+		note: "Siap dikutip saat ini",
 	},
 	{
 		label: "Terbatas",
@@ -52,7 +52,7 @@ const statusLegend = [
 	},
 	{
 		label: "Review",
-		note: "Perlu review SLA dulu",
+		note: "Perlu cek SLA dulu",
 	},
 ];
 
@@ -65,7 +65,7 @@ const coverageRegions = [
 		openLaneCount: "8",
 		reviewLaneCount: "2",
 		nodes: ["Jakarta Selatan", "Cikarang", "Bekasi", "Tangerang"],
-		summary: "Metro core dengan cut-off paling ketat dan proof stack paling lengkap.",
+		summary: "Metro core dengan cut-off paling ketat dan lapisan bukti paling lengkap.",
 		liveSummary:
 			"Jabodetabek dipilih. 8 lane aktif dan 2 lane review. Cocok untuk SameDay Metro, NextDay, COD Clear, dan Secure.",
 		focus: ["SameDay Metro", "NextDay", "COD Clear", "Secure"],
@@ -88,7 +88,7 @@ const coverageRegions = [
 				cutoff: "16:00",
 				handling: "Standard parcel",
 				proof: "Geo scan",
-				note: "Stabil untuk D2C dan replenishment kota.",
+				note: "Stabil untuk D2C dan pengisian ulang stok kota.",
 			},
 			{
 				scope: "Open lane",
@@ -128,7 +128,7 @@ const coverageRegions = [
 		reviewLaneCount: "3",
 		nodes: ["Bandung", "Cirebon", "Karawang"],
 		summary:
-			"Koridor trans-Jawa Barat untuk replenishment, retail, dan drop yang butuh ritme stabil.",
+			"Koridor trans-Jawa Barat untuk pengisian ulang, retail, dan drop yang butuh ritme stabil.",
 		liveSummary:
 			"Jawa Barat dipilih. 7 lane aktif dan 3 lane review. Fokus pada NextDay, Regular, COD, dan Secure.",
 		focus: ["Regular", "NextDay", "COD Clear", "Fulfill"],
@@ -222,7 +222,7 @@ const coverageRegions = [
 				cutoff: "Per rute",
 				handling: "Multi-drop",
 				proof: "Route manifest",
-				note: "Cocok untuk reseller, store network, dan distribusi project.",
+				note: "Cocok untuk reseller, jaringan toko, dan distribusi proyek.",
 			},
 			{
 				scope: "Open lane",
@@ -381,7 +381,7 @@ const matrixColumns = [
 const serviceMatrix = [
 	{
 		service: "LN Regular",
-		note: "Baseline coverage untuk paket standar dan volume campuran.",
+		note: "Jangkauan dasar untuk paket standar dan volume campuran.",
 		cells: {
 			jabodetabek: "Aktif",
 			"jawa-barat": "Aktif",
@@ -458,7 +458,7 @@ const serviceMatrix = [
 	},
 	{
 		service: "LN BulkDrop",
-		note: "Multi-drop distribusi untuk store network dan project shipment.",
+		note: "Multi-drop distribusi untuk jaringan toko dan pengiriman proyek.",
 		cells: {
 			jabodetabek: "Terbatas",
 			"jawa-barat": "Terbatas",
@@ -469,7 +469,7 @@ const serviceMatrix = [
 	},
 	{
 		service: "LN Return",
-		note: "Return pickup disusun agar reason coding tetap konsisten.",
+		note: "Penjemputan retur disusun agar kode alasan tetap konsisten.",
 		cells: {
 			jabodetabek: "Aktif",
 			"jawa-barat": "Aktif",
@@ -480,7 +480,7 @@ const serviceMatrix = [
 	},
 	{
 		service: "LN ClaimCenter",
-		note: "Alur klaim, bukti, dan clock recovery dibaca dari satu tempat.",
+		note: "Alur klaim, bukti, dan batas waktu recovery dibaca dari satu tempat.",
 		cells: {
 			jabodetabek: "Aktif",
 			"jawa-barat": "Aktif",
@@ -496,29 +496,29 @@ const proofCards = [
 		eyebrow: "Geo scan",
 		title: "Lokasi, waktu, dan jalur recovery menempel di setiap scan.",
 		description:
-			"Geo scan membuat coverage bukan sekadar daftar kota. Setiap pergerakan terekam dengan lokasi, waktu, dan node yang bisa dirujuk saat exception muncul.",
+			"Geo scan membuat jangkauan bukan sekadar daftar kota. Setiap pergerakan terekam dengan lokasi, waktu, dan node yang bisa dirujuk saat gangguan muncul.",
 		bullets: [
 			"Scan compliance 97,9%",
 			"Dispatch dan handoff sinkron",
-			"Recovery path terbaca dari satu sumber",
+			"Jalur pemulihan terbaca dari satu sumber",
 		],
 	},
 	{
-		eyebrow: "Photo POD",
+		eyebrow: "Foto POD",
 		title: "Bukti foto dipakai saat lane perlu kepastian tambahan.",
 		description:
-			"Untuk barang bernilai tinggi atau tujuan yang sensitif, photo POD membantu menutup celah di sisi penerima dan tim operasional.",
+			"Untuk barang bernilai tinggi atau tujuan yang sensitif, foto POD membantu menutup celah di sisi penerima dan tim operasional.",
 		bullets: [
 			"Untuk Secure dan lane sensitif",
-			"Memperjelas dispute",
-			"Menjaga proof stack tetap rapat",
+			"Memperjelas sengketa",
+			"Menjaga lapisan bukti tetap rapat",
 		],
 	},
 	{
-		eyebrow: "Claims clock",
+		eyebrow: "Jam klaim",
 		title: "Klaim tidak dibiarkan mengambang.",
 		description:
-			"Clock recovery memberi batas yang jelas untuk intake, review, dan penyelesaian klaim sehingga tim operasional dan finance membaca status yang sama.",
+			"Jam recovery memberi batas yang jelas untuk intake, review, dan penyelesaian klaim sehingga tim operasional dan finance membaca status yang sama.",
 		bullets: ["Target 2 x 24 jam", "Alur bukti terpusat", "Memotong bolak-balik antar tim"],
 	},
 ];
@@ -555,18 +555,18 @@ function getStatusTone(status: string) {
 		>
 			<div class="max-w-3xl space-y-6">
 				<p class="text-navy-light font-body text-sm font-semibold tracking-[0.18em] uppercase">
-					Coverage Explorer
+					Penjelajah Jangkauan
 				</p>
 				<div class="space-y-4">
 					<h1
 						id="jangkauan-heading"
 						class="font-display text-navy text-[clamp(2.6rem,5.4vw,5rem)] leading-[0.95] font-bold tracking-tight"
 					>
-						Dari ringkasan di beranda ke lane yang bisa Anda cek satu per satu.
+						Dari ringkasan di beranda ke detail lane yang bisa Anda cek satu per satu.
 					</h1>
 					<p class="font-body text-charcoal max-w-[58ch] text-base leading-7 sm:text-lg">
-						Halaman ini mengubah coverage menjadi alat keputusan: pilih wilayah, baca node aktif,
-						bandingkan lane yang terbuka, lalu cek mana yang masih review sebelum dikutip.
+						Halaman ini menjadikan jangkauan alat keputusan: pilih wilayah, baca node aktif,
+						bandingkan lane yang terbuka, lalu lihat mana yang masih review sebelum dikutip.
 					</p>
 				</div>
 
@@ -587,7 +587,7 @@ function getStatusTone(status: string) {
 						href="#jangkauan-bukti"
 						class="font-body text-navy-light border-mist-dark hover:bg-mist focus:outline-teal inline-flex min-h-11 items-center rounded-md border px-5 py-3 text-sm font-semibold no-underline focus:outline-2 focus:outline-offset-3"
 					>
-						Baca proof layer
+						Baca lapisan bukti
 					</a>
 				</div>
 			</div>
@@ -595,11 +595,11 @@ function getStatusTone(status: string) {
 			<aside class="jangkauan-map-shell border-mist-dark bg-mist/80 rounded-4xl border p-6 sm:p-8">
 				<div class="space-y-2">
 					<p class="text-navy-light font-body text-sm font-semibold tracking-[0.14em] uppercase">
-						Snapshot coverage
+						Ringkasan jangkauan
 					</p>
 					<p class="font-body text-charcoal-mid max-w-[30ch] text-sm leading-6">
-						Beranda memberi ringkasan. Explorer ini membuka detail lane, status, dan proof yang
-						menempel di setiap keputusan.
+						Beranda memberi ringkasan. Explorer ini membuka detail lane, status, dan bukti di balik
+						setiap keputusan.
 					</p>
 				</div>
 
@@ -706,7 +706,7 @@ function getStatusTone(status: string) {
 
 		<nav
 			class="border-mist-dark sticky top-[72px] z-40 mt-12 border-b bg-white/95 backdrop-blur-sm"
-			aria-label="Navigasi coverage explorer"
+			aria-label="Navigasi penjelajah jangkauan"
 		>
 			<div
 				class="flex items-center gap-2 overflow-x-auto py-3 text-[11px] font-medium tracking-wide"
@@ -749,8 +749,8 @@ function getStatusTone(status: string) {
 								Cari kota atau wilayah, lalu baca lane yang benar-benar dibuka.
 							</h2>
 							<p class="font-body text-charcoal-mid max-w-[32ch] text-sm leading-6">
-								Exploration dimulai dari wilayah, bukan dari daftar promo. Ketik nama kota atau
-								pilih wilayah untuk melihat status lane, node, dan proof layer.
+								Penelusuran dimulai dari wilayah, bukan dari daftar promo. Ketik nama kota atau
+								pilih wilayah untuk melihat status lane, node, dan bukti di baliknya.
 							</p>
 						</div>
 
@@ -773,7 +773,7 @@ function getStatusTone(status: string) {
 							class="mt-6 space-y-3"
 							data-coverage-tablist
 							aria-orientation="vertical"
-							aria-label="Wilayah coverage"
+							aria-label="Wilayah jangkauan"
 						>
 							{
 								coverageRegions.map((region, index) => (
@@ -828,7 +828,7 @@ function getStatusTone(status: string) {
 									<span
 										class="bg-navy mt-2 block h-1.5 w-1.5 shrink-0 rounded-full"
 										aria-hidden="true"></span>
-									<span>Terbatas berarti coverage ada, tetapi hanya pada node tertentu.</span>
+									<span>Terbatas berarti jangkauan ada, tetapi hanya pada node tertentu.</span>
 								</li>
 								<li class="font-body text-charcoal-mid flex gap-3 text-sm leading-6">
 									<span
@@ -887,14 +887,14 @@ function getStatusTone(status: string) {
 											{region.cityCount}
 										</p>
 										<p class="font-body text-charcoal-mid mt-2 text-sm leading-6">
-											coverage dibuka per lane, bukan disamaratakan.
+											jangkauan dibuka per lane, bukan dipukul rata.
 										</p>
 									</div>
 								</div>
 
 								<div class="border-mist-dark mt-6 border-t pt-5">
 									<p class="font-body text-navy-light text-sm font-semibold tracking-[0.14em] uppercase">
-										Route ribbon
+										Rangkaian rute
 									</p>
 									<div class="mt-4 flex flex-wrap items-center gap-2">
 										{region.nodes.map((node, nodeIndex) => (
@@ -981,7 +981,7 @@ function getStatusTone(status: string) {
 												</div>
 												<div>
 													<p class="font-body text-navy-light text-[0.68rem] font-semibold tracking-[0.14em] uppercase">
-														Proof layer
+														Lapisan bukti
 													</p>
 													<p class="font-body text-charcoal mt-1 text-sm leading-6">{lane.proof}</p>
 												</div>
@@ -1030,7 +1030,7 @@ function getStatusTone(status: string) {
 						id="jangkauan-layanan-heading"
 						class="font-display text-navy text-[clamp(1.8rem,3.3vw,2.7rem)] leading-[1.02] font-bold tracking-tight"
 					>
-						Coverage bukan cuma soal di mana, tapi juga layanan mana yang benar-benar dibuka.
+						Jangkauan bukan cuma soal lokasi, tapi juga layanan yang benar-benar dibuka.
 					</h2>
 					<p class="font-body text-charcoal-mid max-w-[55ch] text-base leading-7">
 						Tabel ini membantu Anda membandingkan layanan antar wilayah tanpa harus menebak-nebak
@@ -1061,8 +1061,8 @@ function getStatusTone(status: string) {
 						</span>
 					</div>
 					<p class="font-body text-charcoal-mid mt-4 text-sm leading-6">
-						Jika satu lane ditandai review, itu berarti tim akan mengecek node, cut-off, dan
-						handling sebelum komitmen diberikan.
+						Jika satu lane ditandai review, tim akan mengecek node, cut-off, dan handling sebelum
+						komitmen diberikan.
 					</p>
 				</div>
 			</div>
@@ -1107,7 +1107,7 @@ function getStatusTone(status: string) {
 				<div class="hidden overflow-x-auto lg:block">
 					<table class="w-full min-w-[64rem] border-collapse">
 						<caption class="sr-only">
-							Perbandingan status layanan LintasNusa per wilayah coverage
+							Perbandingan status layanan LintasNusa per wilayah jangkauan
 						</caption>
 						<thead class="bg-mist/55">
 							<tr>
@@ -1182,8 +1182,9 @@ function getStatusTone(status: string) {
 						handling.
 					</h2>
 					<p class="font-body text-charcoal-mid max-w-[58ch] text-base leading-7">
-						Bukti yang kuat membuat coverage terasa aman dipakai. Geo scan, photo POD, dan claims
-						clock menjaga agar tim ops, finance, dan customer service membaca status yang sama.
+						Bukti yang kuat membuat jangkauan terasa aman dipakai. Geo scan, foto POD, dan batas
+						waktu recovery menjaga agar tim operasional, finance, dan layanan pelanggan membaca
+						status yang sama.
 					</p>
 				</div>
 			</div>

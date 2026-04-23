@@ -2,12 +2,12 @@
 const teaserCards = [
 	{
 		eyebrow: "Layanan",
-		title: "Baca portofolio layanan hanya saat Anda memang perlu membandingkan alur.",
+		title: "Buka portofolio layanan saat Anda memang perlu membandingkan alur.",
 		description:
-			"Halaman layanan memuat ritme kirim, handling khusus, reverse logistics, dan bukti operasional yang menempel pada tiap skenario.",
+			"Halaman layanan memuat ritme kirim, handling khusus, reverse logistics, dan bukti operasional untuk tiap skenario.",
 		points: [
 			"Regular, next-day, same-day, COD, cold chain, secure delivery, dan reverse logistics.",
-			"Penjelasan kapan sebuah layanan sebaiknya dipakai, bukan hanya daftar nama produknya.",
+			"Penjelasan kapan sebuah layanan sebaiknya dipakai, bukan sekadar daftar nama produknya.",
 			"Ringkasan evidence layer yang diterima tim ops dan customer service.",
 		],
 		href: "/layanan",
@@ -16,12 +16,12 @@ const teaserCards = [
 	},
 	{
 		eyebrow: "Platform",
-		title: "Masuk ke detail sistem saat evaluasi Anda sudah bergeser ke workflow dan integrasi.",
+		title: "Lihat detail sistem saat evaluasi Anda sudah bergeser ke workflow dan integrasi.",
 		description:
-			"Halaman platform menjelaskan bagaimana recipient, merchant, ops, finance, dan enterprise bergerak dari operating layer yang sama.",
+			"Halaman platform menjelaskan bagaimana recipient, merchant, ops, finance, dan enterprise bekerja dari operating layer yang sama.",
 		points: [
 			"Satu login untuk peran yang berbeda tanpa memecah sumber data antar-tim.",
-			"Pembacaan SLA, exception, COD, dan return dari dashboard yang sama.",
+			"Pembacaan SLA, exception, COD, dan return di dashboard yang sama.",
 			"API, webhook, approval flow, dan incident reporting untuk implementasi enterprise.",
 		],
 		href: "/platform",
@@ -40,18 +40,18 @@ const teaserCards = [
 	<div class="mx-auto max-w-7xl px-6 sm:px-8">
 		<div class="grid gap-8 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-14">
 			<div class="space-y-4" data-home-reveal-item>
-				<p class="text-teal font-mono text-[10px] font-medium tracking-[0.2em] uppercase">
+				<p class="font-body text-teal text-[0.68rem] font-semibold tracking-[0.16em] uppercase">
 					Teaser Halaman Detail
 				</p>
 				<h2
 					id="capabilities-heading"
 					class="font-display text-navy max-w-[14ch] text-[clamp(2rem,4vw,3rem)] leading-[1.02] font-bold tracking-tight"
 				>
-					Homepage berhenti di tingkat keputusan. Detail lengkap dibuka di sini.
+					Homepage cukup sampai tahap keputusan. Detail lengkap ada di sini.
 				</h2>
 				<p class="font-body text-charcoal-mid max-w-[46ch] text-base leading-7">
-					Kami sengaja menahan halaman utama agar tetap fokus. Jika evaluasi Anda sudah masuk ke
-					tingkat skenario layanan atau arsitektur platform, lanjutkan ke halaman yang sesuai.
+					Kami sengaja menjaga halaman utama tetap fokus. Jika evaluasi Anda sudah masuk ke skenario
+					layanan atau arsitektur platform, lanjutkan ke halaman yang sesuai.
 				</p>
 			</div>
 
@@ -67,7 +67,7 @@ const teaserCards = [
 								<div class="space-y-4">
 									<p
 										class:list={[
-											"font-mono text-[10px] font-medium tracking-[0.2em] uppercase",
+											"font-body text-[0.68rem] font-semibold tracking-[0.16em] uppercase",
 											card.eyebrow === "Platform" ? "text-teal" : "text-teal",
 										]}
 									>

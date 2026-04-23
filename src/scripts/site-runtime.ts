@@ -1,4 +1,3 @@
-import { initFooter } from "./footer";
 import { initHeader } from "./header";
 import { initHomeAnimations } from "./home-animations";
 import { initJangkauanAnimations } from "./jangkauan-animations";
@@ -18,7 +17,7 @@ function disposeCurrentPage() {
 function runInitializers() {
 	disposeCurrentPage();
 
-	const cleanups: Array<() => void> = [initHeader(), initFooter()];
+	const cleanups: Array<() => void> = [initHeader()];
 	const page = document.querySelector<HTMLElement>("[data-page-view]")?.dataset.pageView;
 
 	if (page === "home") {
