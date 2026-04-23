@@ -38,14 +38,14 @@ const teaserCards = [
 	data-home-reveal
 >
 	<div class="mx-auto max-w-7xl px-6 sm:px-8">
-		<div class="grid gap-8 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-14">
+		<div class="space-y-6">
 			<div class="space-y-4" data-home-reveal-item>
 				<p class="font-body text-teal text-[0.68rem] font-semibold tracking-[0.16em] uppercase">
 					Teaser Halaman Detail
 				</p>
 				<h2
 					id="capabilities-heading"
-					class="font-display text-navy max-w-[14ch] text-[clamp(2rem,4vw,3rem)] leading-[1.02] font-bold tracking-tight"
+					class="font-display text-navy max-w-[20ch] text-[clamp(2rem,4vw,3rem)] leading-[1.02] font-bold tracking-tight"
 				>
 					Homepage cukup sampai tahap keputusan. Detail lengkap ada di sini.
 				</h2>
@@ -55,7 +55,7 @@ const teaserCards = [
 				</p>
 			</div>
 
-			<div class="grid gap-4 lg:grid-cols-2">
+			<div class="grid gap-4 sm:grid-cols-2">
 				{
 					teaserCards.map((card) => (
 						<article
