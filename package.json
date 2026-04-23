@@ -8,13 +8,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "bun run build && wrangler dev",
     "astro": "astro",
     "lint": "eslint --no-error-on-unmatched-pattern src/**/*.{js,ts,astro}",
     "format": "prettier --no-error-on-unmatched-pattern --write src/**/*.{js,ts,astro}",
-    "format:check": "prettier --no-error-on-unmatched-pattern --check src/**/*.{js,ts,astro}"
+    "format:check": "prettier --no-error-on-unmatched-pattern --check src/**/*.{js,ts,astro}",
+    "generate-types": "wrangler types",
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.2.1",
     "@astrojs/sitemap": "^3.7.2",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/inter": "^5.2.8",
@@ -37,6 +40,10 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.58.2"
+    "typescript-eslint": "^8.58.2",
+    "wrangler": "^4.84.1"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
